@@ -625,7 +625,7 @@ p.required { font-size:11px; text-align:right; color:#EB340A; }
     width: 30px;
     background: #45d8bb;
 }
-}
+
 .pager .pages a.next, .pager .pages a.previous {text-transform: lowercase; background:none; color: #666;  font-size: 14px; }
 .pager .pages a.next:hover, .pager .pages a.previous:hover { color: #00A5E8; }
 
@@ -4911,4 +4911,17 @@ ul.tabs li.active{
 
 .bootstrap-select {
     display: block !important;
+}
+
+.logo img{
+ width: 187px;   
+}
+
+.ma-featured-products .box-feature {
+margin-left: 115px;
+width: 40%;
+}
+
+.header{
+    margin-top: 16px;
 }

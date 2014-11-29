@@ -13,3 +13,4 @@ media/downloadable/
 media/tmp/
 tmp/
 cache/
+/nbproject/private/
