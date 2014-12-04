@@ -4991,3 +4991,14 @@ margin-bottom: 0px;
 text-overflow: inherit;
 white-space: inherit;
 }
+
+.ma-featured-products .box-feature {
+margin-left: 115px;
+width: 57%;
+}
+
+
+.ma-featured-products .products-grid .product-name {
+text-overflow: initial;
+white-space: initial;
+}
