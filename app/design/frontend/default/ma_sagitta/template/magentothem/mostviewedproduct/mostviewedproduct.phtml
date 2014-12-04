@@ -90,43 +90,14 @@
 								</article>
 							</div>
 						</div>
-			                <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>"><?php echo $this->htmlEscape($_product->getName()) ?></a></h2>
-							
-			                <div class="price-label">
-							<div class="box-price">
-								<?php echo $this->getPriceHtml($_product, true) ?>
-							</div>
-					</div>
+			                <h2 class="product-name">
+                                            <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>"><?php echo $this->htmlEscape($_product->getName()) ?></a></h2>
+						<?php echo $this->getPriceHtml($_product, true) ?>	
+			      
 						<?php if ( $this->getConfig('review') ): ?>
 									<?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
 						<?php endif; ?>
-					<div class="item-box-hover">	
-						<div class="box-inner">
-								<?php if ($this->getConfig('addtocart')) { ?>
-											<?php if($_product->isSaleable()): ?>
-												<button type="button" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('+ Add to Cart') ?></span></span></button>
-											<?php else: ?>
-												<p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
-											<?php endif; ?>
-								<?php }?>
-							    <div class="actions">
-									<?php if( $this->getConfig('addtowishlist') || $this->getConfig('addtocompare')){?>
-												    <ul class="add-to-links">
-													    <?php if( $this->getConfig('addtowishlist')){?>
-													    <?php if ($this->helper('wishlist')->isAllow()) : ?>
-														    <li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('+ Wishlist') ?></a></li>
-													    <?php endif; ?>
-													    <?php } ?>
-													    <?php if( $this->getConfig('addtocompare') ){?>
-													    <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
-														    <li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('+ Compare') ?></a></li>
-													    <?php endif; ?>
-													    <?php }?>
-												    </ul>
-									<?php }?>
-								</div>
-						</div>
-					</div>	
+					
 			                <?php if( $this->getConfig('description')){?>
 			                <div class="ma-desc">
 			                	<?php if(!$this->getConfig('maxlength')){?>

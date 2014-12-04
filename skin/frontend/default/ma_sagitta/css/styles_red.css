@@ -4976,6 +4976,9 @@ min-height: 50px;
    display: block; 
 }
 
+.ma-mostview-products .item .product-name a{
+    font-size: 16px;
+}
 .products-grid .product-name{
     text-align: center;
 }
@@ -5003,4 +5006,13 @@ width: 57%;
 .ma-featured-products .products-grid .product-name {
 text-overflow: initial;
 white-space: initial;
+}
+
+.ma-mostview-products .regular-price .price {
+line-height: 19px;
+color: #FD6161;
+}
+
+.ma-mostview-products .item:hover .product-name a {
+line-height: 24px;
 }
