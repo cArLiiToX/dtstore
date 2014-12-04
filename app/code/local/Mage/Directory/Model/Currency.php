@@ -219,7 +219,7 @@ class Mage_Directory_Model_Currency extends Mage_Core_Model_Abstract
      */
     public function format($price, $options = array(), $includeContainer = true, $addBrackets = false)
     {
-        echo 'Currecnt: =>'.$currency_symbol = Mage::app()->getLocale()->getCurrency();
+        echo 'Currecnt: =>'.Mage::app()->getLocale()->currency($this->getCode())->toCurrency($price, $options);
         return $this->formatPrecision($price, 0, $options, $includeContainer, $addBrackets);
     }
 
