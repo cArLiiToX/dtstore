@@ -4969,10 +4969,12 @@ white-space: initial;
 min-height: 50px;
 }
 
-.category-products .products-grid .item-inner:hover .item-box-hover, .category-products .products-grid .item .price-label {
+.category-products .products-grid .item-inner:hover .item-box-hover, .category-products .products-grid .item .price-label, .ma-mostview-products .item:hover .item-box-hover {
     display: none;
 }
-
+.ma-mostview-products .item:hover .product-name a{
+   display: block; 
+}
 
 .products-grid .product-name{
     text-align: center;
