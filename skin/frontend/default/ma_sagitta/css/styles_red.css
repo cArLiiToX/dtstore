@@ -4925,3 +4925,38 @@ width: 40%;
 .header{
     margin-top: 16px;
 }
+
+.pt_vmegamenu div.pt_menu .parentMenu a, .pt_vmegamenu div.pt_menu .parentMenu span.block-title {
+    padding: 18px 30px 18px 7px;
+}
+
+.megamenu-title {
+    display: inline-block;
+    width: 100%;
+    background: url("../images/bg-category.png") no-repeat 13px 20px #323a45;
+    padding: 0;
+    border-bottom: 3px solid #65AFC2;
+}
+
+
+.pt_vmegamenu div.pt_menu.active .parentMenu a {
+border-color: #65AFC2;
+color: #65AFC2;
+}
+
+.header .search-container button.button span {
+background: url("../images/icon-search.png") no-repeat 50% 50% #65AFC2;
+border: 0 none;
+height: 58px;
+line-height: 58px;
+padding: 0;
+width: 60px;
+border-bottom: 3px solid #65AFC2;
+border-radius: 0 5px 5px 0;
+}
+
+
+.header .search-container button.button:hover span {
+background: url("../images/icon-search.png") no-repeat 50% 50% #474E58;
+border-bottom: 3px solid #474E58;
+}
