@@ -4982,3 +4982,12 @@ min-height: 50px;
 text-align: center;
 width: 100%;
 }
+
+.products-grid .item {
+margin-bottom: 0px;
+}
+
+.product-name {
+text-overflow: inherit;
+white-space: inherit;
+}
