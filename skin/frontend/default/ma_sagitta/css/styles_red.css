@@ -4960,3 +4960,25 @@ border-radius: 0 5px 5px 0;
 background: url("../images/icon-search.png") no-repeat 50% 50% #474E58;
 border-bottom: 3px solid #474E58;
 }
+
+.products-grid .product-name {
+margin: 0px 0 0;
+overflow: hidden;
+text-overflow: initial;
+white-space: initial;
+min-height: 50px;
+}
+
+.category-products .products-grid .item-inner:hover .item-box-hover, .category-products .products-grid .item .price-label {
+    display: none;
+}
+
+
+.products-grid .product-name{
+    text-align: center;
+}
+
+.products-grid .price-box {
+text-align: center;
+width: 100%;
+}
