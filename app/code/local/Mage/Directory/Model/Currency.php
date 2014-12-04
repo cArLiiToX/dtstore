@@ -219,8 +219,13 @@ class Mage_Directory_Model_Currency extends Mage_Core_Model_Abstract
      */
     public function format($price, $options = array(), $includeContainer = true, $addBrackets = false)
     {
-        echo 'Currecnt: =>'.Mage::app()->getLocale()->currency($this->getCode())->getSymbol();
-        return $this->formatPrecision($price, 0, $options, $includeContainer, $addBrackets);
+        
+        if(Mage::app()->getLocale()->currency($this->getCode())->getSymbol() == 'US$'){
+            $FixPrice = $this->formatPrecision($price, 2, $options, $includeContainer, $addBrackets);
+        }else{
+            $FixPrice = $this->formatPrecision($price, 0, $options, $includeContainer, $addBrackets);
+        }
+        return $FixPrice;
     }
 
     /**
