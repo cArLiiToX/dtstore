@@ -179,8 +179,7 @@ class Mage_Directory_Model_Currency extends Mage_Core_Model_Abstract
      * @return float
      * @throws Exception
      */
-    public function convert($price, $toCurrency = null)
-    {
+    public function convert($price, $toCurrency = null){
         if (is_null($toCurrency)) {
             return $price;
         } else {
