@@ -32,7 +32,7 @@ $_product = $this->getProduct();
 if ($_product->getStockItem()->getQty() <= 0) {
     ?>
     <?php if ($this->displayProductStockStatus()): ?>
-        <?php if ($_product->isAvailable()): ?>
+        <?php if ($_product->isAvailable() &&  ($_product->getStockItem()->getQty() > 0) ): ?>
             <p class="availability in-stock"><?php echo $this->__('Availability:') ?> <span><?php echo (int) $_product->getStockItem()->getQty(); ?> unidad(es) disponibles.</span></p>
         <?php else: ?>
             <p class="availability out-of-stock"><?php echo $this->__('Availability:') ?> <span>Bajo Pedido</span></p>
