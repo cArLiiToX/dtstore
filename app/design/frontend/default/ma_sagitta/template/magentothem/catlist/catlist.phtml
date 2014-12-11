@@ -11,10 +11,7 @@
 		if($i == $last) echo "<div class='catgrid last col_$i'>";
 		else echo "<div class='catgrid col_$i'>";
 
-	    	echo '<div class="catlist_level_top">
-						<a href="' . Mage::getUrl($catTop->getUrlPath()). '">' 
-		                    .'<img src="'.$this->getImage($catTop).'" alt="'.$catTop->getName().'" />
-		                </a>
+	    	echo '<div class="catlist_level_top">		
 				<h3>'
 		                .$catTop->getName()
 		                .'</h3>
