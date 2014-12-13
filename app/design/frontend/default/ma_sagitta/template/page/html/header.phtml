@@ -34,13 +34,13 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-sm-12 col-sms12">
-                        <div style="position: absolute;margin-top: 16px;color: white;" >
+                        <div style="position: absolute;margin-top: 14px;color: white;margin-left: 120px" >
                             <b>Dolar Operativo Hoy:</b>
                             <?php
                             $obj_php = json_decode(file_get_contents('http://www.set-fx.com/stats?timestamp=1418426752515'));
                             $TRM = str_replace('.', '', $obj_php->trm);
                             //var_dump(number_format(pow(1/$TRM, 1),12));
-                            echo '<b style="color:green;color: rgb(255, 104, 18);">$'.$TRM.' </b>Pesos CO';
+                            echo '<b style="color:green;color: rgb(255, 104, 18);">$'.$TRM.' </b>CO';
                             ?> 
                         </div>
 
