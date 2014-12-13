@@ -29,12 +29,17 @@
  */
 
 
-.fb_button_ps { float: right; margin-left: 5px; }
-.welcome-msg img { margin-left: 5px; }
 
 .fb_button_ps {
 float: right;
 margin-left: -2px;
 margin-top: 16px;
 position: absolute;
+}
+
+.welcome-msg img {
+margin-left: 5px;
+width: 23px;
+position: absolute;
+margin-top: 13px;
 }
