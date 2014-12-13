@@ -3048,7 +3048,7 @@ p.welcome-msg { margin: 0; line-height: 50px; text-align: center; display: inlin
 .checkout-cart-index button.button  span {
     background: #c8411c!important;
 
-border-bottom: 3px solid #853111!important;
+border-bottom: none!important;
 
     
     color: #FFFFFF;
