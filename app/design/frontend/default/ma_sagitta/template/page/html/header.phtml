@@ -30,79 +30,97 @@
 
 <div class="header-container">
     <div class="header-container-inner">
-    <div class="top-link">
-        <div class="container">
-        <div class="row">
-                <div class="col-md-4 col-sm-12 col-sms12">
-                    <div class="currency-language">
-                        <?php echo $this->getChildHtml('currency_top') ?>
-                        <?php echo $this->getChildHtml('store_language') ?>
-                        <div class="link-mobile">
-                            <div class="title-link"><h2>Account</h2></div>
-                            <div class="link-content">
-                                <?php echo $this->getChildHtml('topLinks') ?>
-                            </div>
-                        </div>
-                        <div class="cart-mobile">
-                            <div class="top-cart-wrapper mobile">
-                                <div class="top-cart-contain">
-                                    <div id = "mini_cart_block_mobile">
-                                        <?php echo $this->getChildHtml('top_cart_mini_mobile') ?>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-2 col-sms12">
-                    <p class="welcome-msg"><?php echo $this->getWelcome() ?> <?php echo $this->getAdditionalHtml() ?></p>
-                </div>
-                
-                <div class="col-md-6 col-sms12">
-                    <?php echo $this->getChildHtml('topLinks') ?>
-                </div>
-                
-        </div>
-        </div>
-    </div>
-    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('header_static')->toHtml() ?>
-    <div class="header">
-        <div class="container">
-            <div class="header-content">
+        <div class="top-link">
+            <div class="container">
                 <div class="row">
-                    <div class="col-xs-12 col-md-3 col-sm-12">
-                        <?php if ($this->getIsHomePage()): ?>
-                        <h1 class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></h1>
-                        <?php else: ?>
-                            <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
-                        <?php endif ?>
-                        <div class="header-static-mobile">
-                            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('header_static')->toHtml() ?>
+                    <div class="col-md-4 col-sm-12 col-sms12">
+                        <div style="position: absolute;margin-top: 16px;color: white;" >
+                            <b>Dolar Operativo Hoy:</b>
+                            <?php
+                            $obj_php = json_decode(file_get_contents('http://www.set-fx.com/stats?timestamp=1418426752515'));
+                            $TRM = str_replace('.', '', $obj_php->trm);
+                            //var_dump(number_format(pow(1/$TRM, 1),12));
+                            echo '<b style="color:green;color: rgb(255, 104, 18);">$'.$TRM.' </b>Pesos CO';
+                            ?> 
+                        </div>
+
+                        <div class="currency-language">
+                            <?php echo $this->getChildHtml('currency_top') ?>
+                            <?php echo $this->getChildHtml('store_language') ?>
+                            <div class="link-mobile">
+                                <div class="title-link"><h2>Account</h2></div>
+                                <div class="link-content">
+                                    <?php echo $this->getChildHtml('topLinks') ?>
+                                </div>
+                            </div>
+                            <div class="cart-mobile">
+                                <div class="top-cart-wrapper mobile">
+                                    <div class="top-cart-contain">
+                                        <div id = "mini_cart_block_mobile">
+                                            <?php echo $this->getChildHtml('top_cart_mini_mobile') ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-md-6 col-sm-12">
-                            <div class="header-box">
-                                    <div class="search-container">
-                                    <?php echo $this->getChildHtml('topSearch') ?>
-                                    </div>
-                                    
-                            </div>
+                    <div class="col-md-2 col-sms12">
+
+
+
+
+                        <p class="welcome-msg">
+
+                            <?php echo $this->getWelcome() ?> <?php echo $this->getAdditionalHtml() ?>
+
+                        </p>
                     </div>
-                    <div class="col-xs-12 col-md-3 col-sm-12">
-                            <div class="header-box fly-images">
-                                <div class="top-cart-wrapper">
-                                        <div class="top-cart-contain">
-                                            <?php echo $this->getChildHtml('top_cart_mini') ?>
-                                        </div>
-                                </div>
-                                
-                            </div>
+
+                    <div class="col-md-6 col-sms12">
+                        <?php echo $this->getChildHtml('topLinks') ?>
                     </div>
+
                 </div>
             </div>
-            <?php echo $this->getChildHtml('topContainer'); ?>
         </div>
-    </div>
+        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('header_static')->toHtml() ?>
+        <div class="header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-3 col-sm-12">
+                            <?php if ($this->getIsHomePage()): ?>
+                                <h1 class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></h1>
+                            <?php else: ?>
+                                <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+                            <?php endif ?>
+                            <div class="header-static-mobile">
+                                <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('header_static')->toHtml() ?>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6 col-sm-12">
+                            <div class="header-box">
+                                <div class="search-container">
+                                    <?php echo $this->getChildHtml('topSearch') ?>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-3 col-sm-12">
+                            <div class="header-box fly-images">
+                                <div class="top-cart-wrapper">
+                                    <div class="top-cart-contain">
+                                        <?php echo $this->getChildHtml('top_cart_mini') ?>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php echo $this->getChildHtml('topContainer'); ?>
+            </div>
+        </div>
     </div>
     <?php echo $this->getChildHtml('topMenu') ?>
 </div>
