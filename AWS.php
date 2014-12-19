@@ -30,7 +30,7 @@ try
     $amazonEcs->associateTag(AWS_ASSOCIATE_TAG);
 
    
-    $response = $amazonEcs->lookup('B005GS3C9C');
+    $response = $amazonEcs->lookup('B002M78JA2');
    var_dump($response);
 
 }
