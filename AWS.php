@@ -14,8 +14,8 @@ if ("cli" !== PHP_SAPI)
 
 
 
-define('AWS_API_KEY', 'AKIAI4SE5JGMRBAIRVSA');
-define('AWS_API_SECRET_KEY', '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');
+define('AWS_API_KEY', 'AKIAJE3JSJ4HYRAAO3JQ');
+define('AWS_API_SECRET_KEY', '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');
 define('AWS_ASSOCIATE_TAG', 'dt004d-20');
 
 require 'AWS/lib/AmazonECS.class.php';
