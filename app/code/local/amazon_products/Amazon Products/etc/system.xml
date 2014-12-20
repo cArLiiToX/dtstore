@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * amazon_products_Amazon Products extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       amazon_products
+ * @package        amazon_products_Amazon Products
+ * @copyright      Copyright (c) 2014
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+--> 
+<config>
+    <tabs>
+        <amazon_products translate="label" module="amazon_products_amazon products">
+            <label>Amazon Products</label>
+            <sort_order>2000</sort_order>
+        </amazon_products>
+    </tabs>
+    <sections>
+        <amazon_products_amazon products translate="label" module="amazon_products_amazon products">
+            <class>separator-top</class>
+            <label>Amazon Products</label>
+            <tab>amazon_products</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>100</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+            </groups>
+        </amazon_products_amazon products>
+    </sections>
+</config>

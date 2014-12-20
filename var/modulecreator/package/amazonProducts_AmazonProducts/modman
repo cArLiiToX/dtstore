@@ -1,0 +1,10 @@
+app/code/community/amazonProducts_AmazonProducts    app/code/community/amazonProducts_AmazonProducts
+app/design/adminhtml/default/default/layout/amazonproducts_amazonproducts.xml    app/design/adminhtml/default/default/layout/amazonproducts_amazonproducts.xml
+app/design/adminhtml/default/default/template/amazonproducts_amazonproducts    app/design/adminhtml/default/default/template/amazonproducts_amazonproducts
+app/design/frontend/base/default/layout/amazonproducts_amazonproducts.xml    app/design/frontend/base/default/layout/amazonproducts_amazonproducts.xml
+app/etc/modules/amazonProducts_AmazonProducts.xml    app/etc/modules/amazonProducts_AmazonProducts.xml
+app/locale/en_US/amazonProducts_AmazonProducts.csv    app/locale/en_US/amazonProducts_AmazonProducts.csv
+skin/frontend/base/default/css/amazonproducts_amazonproducts    skin/frontend/base/default/css/amazonproducts_amazonproducts
+skin/frontend/base/default/images/amazonproducts_amazonproducts    skin/frontend/base/default/images/amazonproducts_amazonproducts
+skin/frontend/base/default/images/placeholder/amazonproduct.jpg    skin/frontend/base/default/images/placeholder/amazonproduct.jpg
+skin/frontend/base/default/js/amazonproducts_amazonproducts    skin/frontend/base/default/js/amazonproducts_amazonproducts

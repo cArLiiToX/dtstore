@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * amazon_products_Amazon Products extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       amazon_products
+ * @package        amazon_products_Amazon Products
+ * @copyright      Copyright (c) 2014
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<config>
+    <modules>
+        <amazon_products_Amazon Products>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Catalog />
+             </depends>
+        </amazon_products_Amazon Products>
+    </modules>
+</config>

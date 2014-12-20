@@ -1,0 +1,129 @@
+<?php
+/**
+ * amazonProducts_AmazonProducts extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       amazonProducts
+ * @package        amazonProducts_AmazonProducts
+ * @copyright      Copyright (c) 2014
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+?>
+<div class="entry-edit">
+    <div class="entry-edit-head">
+        <h4 class="icon-head head-edit-form fieldset-legend">
+            <?php echo Mage::helper('amazonproducts_amazonproducts')->__('Amazon Products') ?>
+        </h4>
+    </div>
+    <fieldset id="grop_fields">
+        <input type="hidden" name="amazonproduct_ids" id="product_amazonproducts" value="<?php echo $this->getIdsString() ?>">
+        <div id="product-amazonproducts" class="tree"></div>
+    </fieldset>
+</div>
+<?php if ($this->getRootNode() && $this->getRootNode()->hasChildren()): ?>
+<script type="text/javascript">
+    Ext.EventManager.onDocumentReady(function() {
+        var amazonproductLoader = new Ext.tree.TreeLoader({
+           dataUrl: '<?php echo $this->getLoadTreeUrl()?>'
+        });
+
+        amazonproductLoader.createNode = function(config) {
+            config.uiProvider = Ext.tree.CheckboxNodeUI;
+            var node;
+            if (config.children && !config.children.length) {
+                delete(config.children);
+                node = new Ext.tree.AsyncTreeNode(config);
+            } else {
+                node = new Ext.tree.TreeNode(config);
+            }
+            return node;
+        };
+        amazonproductLoader.on("beforeload", function(treeLoader, node) {
+            treeLoader.baseParams.amazonproduct = node.attributes.id;
+        });
+        amazonproductLoader.on("load", function(treeLoader, node, config) {
+            varienWindowOnload();
+        });
+        var tree = new Ext.tree.TreePanel('product-amazonproducts', {
+            animate:true,
+            loader: amazonproductLoader,
+            enableDD:false,
+            containerScroll: true,
+            rootUIProvider: Ext.tree.CheckboxNodeUI,
+            selModel: new Ext.tree.CheckNodeMultiSelectionModel(),
+            rootVisible: '<?php echo $this->getRootNode()->getIsVisible() ?>'
+        });
+        tree.on('check', function(node) {
+            if (node.attributes.checked) {
+                amazonproductAdd(node.id);
+            } else {
+                amazonproductRemove(node.id);
+            }
+            varienElementMethods.setHasChanges(node.getUI().checkbox);
+        }, tree);
+
+        var root = new Ext.tree.TreeNode({
+            text: '<?php echo $this->jsQuoteEscape($this->getRootNode()->getName()) ?>',
+            draggable:false,
+            checked:'<?php echo $this->getRootNode()->getChecked() ?>',
+            id:'<?php echo $this->getRootNode()->getId() ?>',
+            disabled: <?php echo ($this->getRootNode()->getDisabled() ? 'true' : 'false') ?>,
+            uiProvider: Ext.tree.CheckboxNodeUI
+        });
+        tree.setRootNode(root);
+        bildAmazonproductTree(root, <?php echo $this->getTreeJson() ?>);
+        tree.addListener('click', amazonproductClick.createDelegate(this));
+        // render the tree
+        tree.render();
+        root.expand();
+    });
+    function bildAmazonproductTree(parent, config) {
+        if (!config) {
+            return null;
+        }
+        if (parent && config && config.length) {
+            for (var i = 0; i < config.length; i++) {
+                config[i].uiProvider = Ext.tree.CheckboxNodeUI;
+                var node;
+                var _node = Object.clone(config[i]);
+                if (_node.children && !_node.children.length) {
+                    delete(_node.children);
+                    node = new Ext.tree.AsyncTreeNode(_node);
+                } else {
+                    node = new Ext.tree.TreeNode(config[i]);
+                }
+                parent.appendChild(node);
+                node.loader = node.getOwnerTree().loader;
+                if (config[i].children) {
+                    bildAmazonproductTree(node, config[i].children);
+                }
+            }
+        }
+    }
+    function amazonproductClick(node, e) {
+        if (node.disabled) {
+            return;
+        }
+        node.getUI().check(!node.getUI().checked());
+        varienElementMethods.setHasChanges(Event.element(e), e);
+    };
+    function amazonproductAdd(id) {
+        var ids = $('product_amazonproducts').value.split(',');
+        ids.push(id);
+        $('product_amazonproducts').value = ids.join(',');
+    }
+    function amazonproductRemove(id) {
+        var ids = $('product_amazonproducts').value.split(',');
+        while (-1 != ids.indexOf(id)) {
+            ids.splice(ids.indexOf(id), 1);
+        }
+        $('product_amazonproducts').value = ids.join(',');
+    }
+</script>
+<?php endif; ?>
