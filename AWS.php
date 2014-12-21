@@ -35,7 +35,7 @@ while ($row = $result->fetch()) {
     $html = file_get_contents('http://www.amazon.com/gp/aw/d/' . $code[1]);
 
 // Find all article blocks
-var_dump($html);
+
     $patron = '/<b>Price:(.*)&nbsp;</';
     preg_match_all($patron, $html, $coincidencias);
 //var_dump($coincidencias);
@@ -45,7 +45,7 @@ var_dump($html);
         $Items[] = str_replace('</b>&nbsp;$', '', $value);
     }
 
-    //var_dump($Items);
+    var_dump($Items);
 
     // get product model by product id, assuming you have known product id, $productId
     $_product = Mage::getModel('catalog/product')->load($row['product_id']);
