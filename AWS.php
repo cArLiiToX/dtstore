@@ -35,7 +35,7 @@ while ($row = $result->fetch()) {
     $html = file_get_contents('http://www.amazon.com/gp/aw/d/' . $code[1]);
 
 // Find all article blocks
-//var_dump($html);
+var_dump($html);
     $patron = '/<b>Price:(.*)&nbsp;</';
     preg_match_all($patron, $html, $coincidencias);
 //var_dump($coincidencias);
