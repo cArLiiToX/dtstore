@@ -33,11 +33,10 @@ class amazonProducts_AmazonProducts_Block_Amazonproduct_List extends Mage_Core_B
     {
         parent::__construct();
         $amazonproducts = Mage::getResourceModel('amazonproducts_amazonproducts/amazonproduct_collection')
-                         ->setStoreId(Mage::app()->getStore()->getId())
-                         ->addAttributeToSelect('*')
-                         ->addAttributeToFilter('status', 1);
+                         ->addStoreFilter(Mage::app()->getStore())
+                         ->addFieldToFilter('status', 1);
         ;
-        $amazonproducts->getSelect()->order('e.position');
+        $amazonproducts->getSelect()->order('main_table.position');
         $this->setAmazonproducts($amazonproducts);
     }
 
@@ -104,14 +103,29 @@ class amazonProducts_AmazonProducts_Block_Amazonproduct_List extends Mage_Core_B
         if ($recursion !== '0' && $level >= $recursion) {
             return '';
         }
+        $storeIds = Mage::getResourceSingleton(
+            'amazonproducts_amazonproducts/amazonproduct'
+        )
+        ->lookupStoreIds($amazonproduct->getId());
+        $validStoreIds = array(0, Mage::app()->getStore()->getId());
+        if (!array_intersect($storeIds, $validStoreIds)) {
+            return '';
+        }
         if (!$amazonproduct->getStatus()) {
             return '';
         }
-        $amazonproduct->setStoreId(Mage::app()->getStore()->getId());
-        $children = $amazonproduct->getChildrenAmazonproducts()->addAttributeToSelect('*');
+        $children = $amazonproduct->getChildrenAmazonproducts();
         $activeChildren = array();
         if ($recursion == 0 || $level < $recursion-1) {
             foreach ($children as $child) {
+                $childStoreIds = Mage::getResourceSingleton(
+                    'amazonproducts_amazonproducts/amazonproduct'
+                )
+                ->lookupStoreIds($child->getId());
+                $validStoreIds = array(0, Mage::app()->getStore()->getId());
+                if (!array_intersect($childStoreIds, $validStoreIds)) {
+                    continue;
+                }
                 if ($child->getStatus()) {
                     $activeChildren[] = $child;
                 }

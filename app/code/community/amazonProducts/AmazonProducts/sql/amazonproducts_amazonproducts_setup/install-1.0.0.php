@@ -30,33 +30,40 @@ $table = $this->getConnection()
         null,
         array(
             'identity'  => true,
-            'unsigned'  => true,
             'nullable'  => false,
             'primary'   => true,
         ),
-        'Entity ID'
+        'Amazon Product ID'
     )
     ->addColumn(
-        'entity_type_id',
-        Varien_Db_Ddl_Table::TYPE_SMALLINT,
-        null,
+        'name',
+        Varien_Db_Ddl_Table::TYPE_TEXT, 255,
         array(
-            'unsigned'  => true,
             'nullable'  => false,
-            'default'   => '0',
         ),
-        'Entity Type ID'
+        'Name'
     )
     ->addColumn(
-        'attribute_set_id',
-        Varien_Db_Ddl_Table::TYPE_SMALLINT,
-        null,
+        'enabled',
+        Varien_Db_Ddl_Table::TYPE_SMALLINT, null,
         array(
-            'unsigned'  => true,
             'nullable'  => false,
-            'default'   => '0',
         ),
-        'Attribute Set ID'
+        'Enabled'
+    )
+    ->addColumn(
+        'link',
+        Varien_Db_Ddl_Table::TYPE_TEXT, 255,
+        array(
+            'nullable'  => false,
+        ),
+        'Amazon Link'
+    )
+    ->addColumn(
+        'status',
+        Varien_Db_Ddl_Table::TYPE_SMALLINT, null,
+        array(),
+        'Enabled'
     )
     ->addColumn(
         'parent_id',
@@ -97,228 +104,79 @@ $table = $this->getConnection()
         'Children count'
     )
     ->addColumn(
-        'created_at',
-        Varien_Db_Ddl_Table::TYPE_TIMESTAMP,
-        null, array(),
-        'Creation Time'
-    )
-    ->addColumn(
         'updated_at',
         Varien_Db_Ddl_Table::TYPE_TIMESTAMP,
         null,
         array(),
-        'Update Time'
+        'Amazon Product Modification Time'
     )
-    ->addIndex(
-        $this->getIdxName(
-            'amazonproducts_amazonproducts/amazonproduct',
-            array('entity_type_id')
-        ),
-        array('entity_type_id')
-    )
-    ->addIndex(
-        $this->getIdxName(
-            'amazonproducts_amazonproducts/amazonproduct',
-            array('attribute_set_id')
-        ),
-        array('attribute_set_id')
-    )
-    ->addForeignKey(
-        $this->getFkName(
-            'amazonproducts_amazonproducts/amazonproduct',
-            'attribute_set_id',
-            'eav/attribute_set',
-            'attribute_set_id'
-        ),
-        'attribute_set_id',
-        $this->getTable('eav/attribute_set'),
-        'attribute_set_id',
-        Varien_Db_Ddl_Table::ACTION_CASCADE,
-        Varien_Db_Ddl_Table::ACTION_CASCADE
-    )
-    ->addForeignKey(
-        $this->getFkName(
-            'amazonproducts_amazonproducts/amazonproduct',
-            'entity_type_id',
-            'eav/entity_type',
-            'entity_type_id'
-        ),
-        'entity_type_id',
-        $this->getTable('eav/entity_type'),
-        'entity_type_id',
-        Varien_Db_Ddl_Table::ACTION_CASCADE,
-        Varien_Db_Ddl_Table::ACTION_CASCADE
-    )
+    ->addColumn(
+        'created_at',
+        Varien_Db_Ddl_Table::TYPE_TIMESTAMP,
+        null,
+        array(),
+        'Amazon Product Creation Time'
+    ) 
     ->setComment('Amazon Product Table');
 $this->getConnection()->createTable($table);
-
-$amazonproductEav = array();
-$amazonproductEav['int'] = array(
-    'type'      => Varien_Db_Ddl_Table::TYPE_INTEGER,
-    'length'    => null,
-    'comment'   => 'Amazon Product Datetime Attribute Backend Table'
-);
-
-$amazonproductEav['varchar'] = array(
-    'type'      => Varien_Db_Ddl_Table::TYPE_TEXT,
-    'length'    => 255,
-    'comment'   => 'Amazon Product Varchar Attribute Backend Table'
-);
-
-$amazonproductEav['text'] = array(
-    'type'      => Varien_Db_Ddl_Table::TYPE_TEXT,
-    'length'    => '64k',
-    'comment'   => 'Amazon Product Text Attribute Backend Table'
-);
-
-$amazonproductEav['datetime'] = array(
-    'type'      => Varien_Db_Ddl_Table::TYPE_DATETIME,
-    'length'    => null,
-    'comment'   => 'Amazon Product Datetime Attribute Backend Table'
-);
-
-$amazonproductEav['decimal'] = array(
-    'type'      => Varien_Db_Ddl_Table::TYPE_DECIMAL,
-    'length'    => '12,4',
-    'comment'   => 'Amazon Product Datetime Attribute Backend Table'
-);
-
-foreach ($amazonproductEav as $type => $options) {
-    $table = $this->getConnection()
-        ->newTable($this->getTable(array('amazonproducts_amazonproducts/amazonproduct', $type)))
-        ->addColumn(
-            'value_id',
-            Varien_Db_Ddl_Table::TYPE_INTEGER,
-            null,
-            array(
-                'identity'  => true,
-                'nullable'  => false,
-                'primary'   => true,
-            ),
-            'Value ID'
-        )
-        ->addColumn(
-            'entity_type_id',
-            Varien_Db_Ddl_Table::TYPE_SMALLINT,
-            null,
-            array(
-                'unsigned'  => true,
-                'nullable'  => false,
-                'default'   => '0',
-            ),
-            'Entity Type ID'
-        )
-        ->addColumn(
-            'attribute_id',
-            Varien_Db_Ddl_Table::TYPE_SMALLINT,
-            null,
-            array(
-                'unsigned'  => true,
-                'nullable'  => false,
-                'default'   => '0',
-            ),
-            'Attribute ID'
-        )
-        ->addColumn(
-            'store_id',
-            Varien_Db_Ddl_Table::TYPE_SMALLINT,
-            null,
-            array(
-                'unsigned'  => true,
-                'nullable'  => false,
-                'default'   => '0',
-            ),
-            'Store ID'
-        )
-        ->addColumn(
-            'entity_id',
-            Varien_Db_Ddl_Table::TYPE_INTEGER,
-            null,
-            array(
-                'unsigned'  => true,
-                'nullable'  => false,
-                'default'   => '0',
-            ),
-            'Entity ID'
-        )
-        ->addColumn(
-            'value',
-            $options['type'],
-            $options['length'], array(),
-            'Value'
-        )
-        ->addIndex(
-            $this->getIdxName(
-                array('amazonproducts_amazonproducts/amazonproduct', $type),
-                array('entity_id', 'attribute_id', 'store_id'),
-                Varien_Db_Adapter_Interface::INDEX_TYPE_UNIQUE
-            ),
-            array('entity_id', 'attribute_id', 'store_id'),
-            array('type' => Varien_Db_Adapter_Interface::INDEX_TYPE_UNIQUE)
-        )
-        ->addIndex(
-            $this->getIdxName(
-                array('amazonproducts_amazonproducts/amazonproduct', $type),
-                array('store_id')
-            ),
+$table = $this->getConnection()
+    ->newTable($this->getTable('amazonproducts_amazonproducts/amazonproduct_store'))
+    ->addColumn(
+        'amazonproduct_id',
+        Varien_Db_Ddl_Table::TYPE_SMALLINT,
+        null,
+        array(
+            'nullable'  => false,
+            'primary'   => true,
+        ),
+        'Amazon Product ID'
+    )
+    ->addColumn(
+        'store_id',
+        Varien_Db_Ddl_Table::TYPE_SMALLINT,
+        null,
+        array(
+            'unsigned'  => true,
+            'nullable'  => false,
+            'primary'   => true,
+        ),
+        'Store ID'
+    )
+    ->addIndex(
+        $this->getIdxName(
+            'amazonproducts_amazonproducts/amazonproduct_store',
             array('store_id')
-        )
-        ->addIndex(
-            $this->getIdxName(
-                array('amazonproducts_amazonproducts/amazonproduct', $type),
-                array('entity_id')
-            ),
-            array('entity_id')
-        )
-        ->addIndex(
-            $this->getIdxName(
-                array('amazonproducts_amazonproducts/amazonproduct', $type),
-                array('attribute_id')
-            ),
-            array('attribute_id')
-        )
-        ->addForeignKey(
-            $this->getFkName(
-                array('amazonproducts_amazonproducts/amazonproduct', $type),
-                'attribute_id',
-                'eav/attribute',
-                'attribute_id'
-            ),
-            'attribute_id',
-            $this->getTable('eav/attribute'),
-            'attribute_id',
-            Varien_Db_Ddl_Table::ACTION_CASCADE,
-            Varien_Db_Ddl_Table::ACTION_CASCADE
-        )
-        ->addForeignKey(
-            $this->getFkName(
-                array('amazonproducts_amazonproducts/amazonproduct', $type),
-                'entity_id',
-                'amazonproducts_amazonproducts/amazonproduct',
-                'entity_id'
-            ),
-            'entity_id',
-            $this->getTable('amazonproducts_amazonproducts/amazonproduct'),
-            'entity_id',
-            Varien_Db_Ddl_Table::ACTION_CASCADE,
-            Varien_Db_Ddl_Table::ACTION_CASCADE
-        )
-        ->addForeignKey(
-            $this->getFkName(
-                array('amazonproducts_amazonproducts/amazonproduct', $type),
-                'store_id',
-                'core/store',
-                'store_id'
-            ),
+        ),
+        array('store_id')
+    )
+    ->addForeignKey(
+        $this->getFkName(
+            'amazonproducts_amazonproducts/amazonproduct_store',
+            'amazonproduct_id',
+            'amazonproducts_amazonproducts/amazonproduct',
+            'entity_id'
+        ),
+        'amazonproduct_id',
+        $this->getTable('amazonproducts_amazonproducts/amazonproduct'),
+        'entity_id',
+        Varien_Db_Ddl_Table::ACTION_CASCADE,
+        Varien_Db_Ddl_Table::ACTION_CASCADE
+    )
+    ->addForeignKey(
+        $this->getFkName(
+            'amazonproducts_amazonproducts/amazonproduct_store',
             'store_id',
-            $this->getTable('core/store'),
-            'store_id',
-            Varien_Db_Ddl_Table::ACTION_CASCADE,
-            Varien_Db_Ddl_Table::ACTION_CASCADE
-        )
-        ->setComment($options['comment']);
-    $this->getConnection()->createTable($table);
-}
+            'core/store',
+            'store_id'
+        ),
+        'store_id',
+        $this->getTable('core/store'),
+        'store_id',
+        Varien_Db_Ddl_Table::ACTION_CASCADE,
+        Varien_Db_Ddl_Table::ACTION_CASCADE
+    )
+    ->setComment('Amazon Products To Store Linkage Table');
+$this->getConnection()->createTable($table);
 $table = $this->getConnection()
     ->newTable($this->getTable('amazonproducts_amazonproducts/amazonproduct_product'))
     ->addColumn(
@@ -409,51 +267,6 @@ $table = $this->getConnection()
     )
     ->setComment('Amazon Product to Product Linkage Table');
 $this->getConnection()->createTable($table);
-$table = $this->getConnection()
-    ->newTable($this->getTable('amazonproducts_amazonproducts/eav_attribute'))
-    ->addColumn(
-        'attribute_id',
-        Varien_Db_Ddl_Table::TYPE_INTEGER,
-        null,
-        array(
-            'identity'  => true,
-            'nullable'  => false,
-            'primary'   => true,
-        ),
-        'Attribute ID'
-    )
-    ->addColumn(
-        'is_global',
-        Varien_Db_Ddl_Table::TYPE_INTEGER,
-        null,
-        array(),
-        'Attribute scope'
-    )
-    ->addColumn(
-        'position',
-        Varien_Db_Ddl_Table::TYPE_INTEGER,
-        null,
-        array(),
-        'Attribute position'
-    )
-    ->addColumn(
-        'is_wysiwyg_enabled',
-        Varien_Db_Ddl_Table::TYPE_INTEGER,
-        null,
-        array(),
-        'Attribute uses WYSIWYG'
-    )
-    ->addColumn(
-        'is_visible',
-        Varien_Db_Ddl_Table::TYPE_INTEGER,
-        null,
-        array(),
-        'Attribute is visible'
-    )
-    ->setComment('AmazonProducts attribute table');
-$this->getConnection()->createTable($table);
-
-$this->installEntities();
 $this->addAttribute(
     'catalog_product',
     'entity_id',
@@ -478,5 +291,4 @@ $this->addAttribute(
         'user_defined'      => 1,
     )
 );
-
 $this->endSetup();

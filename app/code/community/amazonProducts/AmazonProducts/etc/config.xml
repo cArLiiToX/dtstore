@@ -52,12 +52,12 @@
                     <amazonproduct>
                         <table>amazonproducts_amazonproducts_amazonproduct</table>
                     </amazonproduct>
+                    <amazonproduct_store>
+                        <table>amazonproducts_amazonproducts_amazonproduct_store</table>
+                    </amazonproduct_store>
                     <amazonproduct_product>
                         <table>amazonproducts_amazonproducts_amazonproduct_product</table>
                     </amazonproduct_product>
-                    <eav_attribute>
-                        <table>amazonproducts_amazonproducts_eav_attribute</table>
-                    </eav_attribute>
                 </entities>
             </amazonproducts_amazonproducts_resource>
         </models>

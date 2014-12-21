@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Banners_Nikolai extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Banners
+ * @package        Banners_Nikolai
+ * @copyright      Copyright (c) 2014
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+--> 
+<layout>
+    <adminhtml_nikolai_bannerdt_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>banners_nikolai/bannerdt</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="banners_nikolai/adminhtml_bannerdt" name="bannerdt" />
+
+        </reference>
+    </adminhtml_nikolai_bannerdt_index>
+    <adminhtml_nikolai_bannerdt_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="banners_nikolai/adminhtml_bannerdt_grid" name="bannerdt_grid"/>
+        </block>
+    </adminhtml_nikolai_bannerdt_grid>
+    <!-- Bannerdt add/edit action -->
+    <adminhtml_nikolai_bannerdt_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>banners_nikolai/bannerdt</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="banners_nikolai/adminhtml_bannerdt_edit" name="bannerdt_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="banners_nikolai/adminhtml_bannerdt_edit_tabs" name="bannerdt_tabs"></block>
+        </reference>
+    </adminhtml_nikolai_bannerdt_edit>
+
+</layout>

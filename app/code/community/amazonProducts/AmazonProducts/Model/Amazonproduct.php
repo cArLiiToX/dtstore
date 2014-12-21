@@ -21,7 +21,7 @@
  * @package     amazonProducts_AmazonProducts
  * @author      Ultimate Module Creator
  */
-class amazonProducts_AmazonProducts_Model_Amazonproduct extends Mage_Catalog_Model_Abstract
+class amazonProducts_AmazonProducts_Model_Amazonproduct extends Mage_Core_Model_Abstract
 {
     /**
      * Entity code.
@@ -438,38 +438,6 @@ class amazonProducts_AmazonProducts_Model_Amazonproduct extends Mage_Catalog_Mod
             }
         }
         return $this->getStatus();
-    }
-
-    /**
-     * Retrieve default attribute set id
-     *
-     * @access public
-     * @return int
-     * @author Ultimate Module Creator
-     */
-    public function getDefaultAttributeSetId()
-    {
-        return $this->getResource()->getEntityType()->getDefaultAttributeSetId();
-    }
-
-    /**
-     * get attribute text value
-     *
-     * @access public
-     * @param $attributeCode
-     * @return string
-     * @author Ultimate Module Creator
-     */
-    public function getAttributeText($attributeCode)
-    {
-        $text = $this->getResource()
-            ->getAttribute($attributeCode)
-            ->getSource()
-            ->getOptionText($this->getData($attributeCode));
-        if (is_array($text)) {
-            return implode(', ', $text);
-        }
-        return $text;
     }
 
     /**

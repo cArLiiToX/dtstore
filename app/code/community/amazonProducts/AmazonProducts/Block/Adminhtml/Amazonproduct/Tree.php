@@ -82,21 +82,6 @@ class amazonProducts_AmazonProducts_Block_Adminhtml_Amazonproduct_Tree extends a
                     )
                 )
         );
-        $this->setChild(
-            'store_switcher',
-            $this->getLayout()->createBlock('adminhtml/store_switcher')
-                ->setSwitchUrl(
-                    $this->getUrl(
-                        '*/*/*',
-                        array(
-                            '_current' =>true,
-                            '_query'=>false,
-                            'store'=>null
-                        )
-                    )
-                )
-                ->setTemplate('store/switcher/enhanced.phtml')
-        );
         return parent::_prepareLayout();
     }
 
@@ -112,7 +97,6 @@ class amazonProducts_AmazonProducts_Block_Adminhtml_Amazonproduct_Tree extends a
         $collection = $this->getData('amazonproduct_collection');
         if (is_null($collection)) {
             $collection = Mage::getModel('amazonproducts_amazonproducts/amazonproduct')->getCollection();
-            $collection->addAttributeToSelect('name')->addAttributeToSelect('status');
             $this->setData('amazonproduct_collection', $collection);
         }
         return $collection;
@@ -406,51 +390,4 @@ class amazonProducts_AmazonProducts_Block_Adminhtml_Amazonproduct_Tree extends a
     {
         return true;
     }
-
-    /**
-     * get store switcher html
-     *
-     * @access public
-     * @return string
-     * @author Ultimate Module Creator
-     */
-    public function getStoreSwitcherHtml()
-    {
-        return $this->getChildHtml('store_switcher');
-    }
-
-    /**
-     * get current store
-     *
-     * @access public
-     * @return string
-     * @author Ultimate Module Creator
-     */
-    public function getStore()
-    {
-        $storeId = (int) $this->getRequest()->getParam('store');
-        return Mage::app()->getStore($storeId);
-    }
-
-    /**
-     * get switch url
-     *
-     * @access public
-     * @return string
-     * @author Ultimate Module Creator
-     */
-    public function getSwitchTreeUrl()
-    {
-        return $this->getUrl(
-            "*/amazonproducts_amazonproduct/tree",
-            array(
-                '_current'=>true,
-                'store'=>null,
-                '_query'=>false,
-                'id'=>null,
-                'parent'=>null
-            )
-        );
-    }
-
 }

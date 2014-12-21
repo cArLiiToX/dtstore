@@ -21,15 +21,13 @@
  * @package     amazonProducts_AmazonProducts
  * @author      Ultimate Module Creator
  */
-class amazonProducts_AmazonProducts_Model_Resource_Amazonproduct extends Mage_Catalog_Model_Resource_Abstract
+class amazonProducts_AmazonProducts_Model_Resource_Amazonproduct extends Mage_Core_Model_Resource_Db_Abstract
 {
     /**
      * Amazon Product tree object
      * @var Varien_Data_Tree_Db
      */
     protected $_tree;
-    protected $_amazonproductProductTable = null;
-
 
     /**
      * constructor
@@ -37,28 +35,68 @@ class amazonProducts_AmazonProducts_Model_Resource_Amazonproduct extends Mage_Ca
      * @access public
      * @author Ultimate Module Creator
      */
-    public function __construct()
+    public function _construct()
     {
-        $resource = Mage::getSingleton('core/resource');
-        $this->setType('amazonproducts_amazonproducts_amazonproduct')
-            ->setConnection(
-                $resource->getConnection('amazonproduct_read'),
-                $resource->getConnection('amazonproduct_write')
-            );
-        $this->_amazonproductProductTable = $this->getTable('amazonproducts_amazonproducts/amazonproduct_product');
-
+        $this->_init('amazonproducts_amazonproducts/amazonproduct', 'entity_id');
     }
 
     /**
-     * wrapper for main table getter
+     * Get store ids to which specified item is assigned
      *
      * @access public
-     * @return string
+     * @param int $amazonproductId
+     * @return array
      * @author Ultimate Module Creator
      */
-    public function getMainTable()
+    public function lookupStoreIds($amazonproductId)
     {
-        return $this->getEntityTable();
+        $adapter = $this->_getReadAdapter();
+        $select  = $adapter->select()
+            ->from($this->getTable('amazonproducts_amazonproducts/amazonproduct_store'), 'store_id')
+            ->where('amazonproduct_id = ?', (int)$amazonproductId);
+        return $adapter->fetchCol($select);
+    }
+
+    /**
+     * Perform operations after object load
+     *
+     * @access public
+     * @param Mage_Core_Model_Abstract $object
+     * @return amazonProducts_AmazonProducts_Model_Resource_Amazonproduct
+     * @author Ultimate Module Creator
+     */
+    protected function _afterLoad(Mage_Core_Model_Abstract $object)
+    {
+        if ($object->getId()) {
+            $stores = $this->lookupStoreIds($object->getId());
+            $object->setData('store_id', $stores);
+        }
+        return parent::_afterLoad($object);
+    }
+
+    /**
+     * Retrieve select object for load object data
+     *
+     * @param string $field
+     * @param mixed $value
+     * @param amazonProducts_AmazonProducts_Model_Amazonproduct $object
+     * @return Zend_Db_Select
+     */
+    protected function _getLoadSelect($field, $value, $object)
+    {
+        $select = parent::_getLoadSelect($field, $value, $object);
+        if ($object->getStoreId()) {
+            $storeIds = array(Mage_Core_Model_App::ADMIN_STORE_ID, (int)$object->getStoreId());
+            $select->join(
+                array('amazonproducts_amazonproduct_store' => $this->getTable('amazonproducts_amazonproducts/amazonproduct_store')),
+                $this->getMainTable() . '.entity_id = amazonproducts_amazonproduct_store.amazonproduct_id',
+                array()
+            )
+            ->where('amazonproducts_amazonproduct_store.store_id IN (?)', $storeIds)
+            ->order('amazonproducts_amazonproduct_store.store_id DESC')
+            ->limit(1);
+        }
+        return $select;
     }
 
     /**
@@ -86,7 +124,7 @@ class amazonProducts_AmazonProducts_Model_Resource_Amazonproduct extends Mage_Ca
      * @return amazonProducts_AmazonProducts_Model_Resource_Amazonproduct
      * @author Ultimate Module Creator
      */
-    protected function _beforeDelete(Varien_Object $object)
+    protected function _beforeDelete(Mage_Core_Model_Abstract $object)
     {
         parent::_beforeDelete($object);
         /**
@@ -141,11 +179,38 @@ class amazonProducts_AmazonProducts_Model_Resource_Amazonproduct extends Mage_Ca
      * @return amazonProducts_AmazonProducts_Model_Resource_Amazonproduct
      * @author Ultimate Module Creator
      */
-    protected function _afterSave(Varien_Object $object)
+    protected function _afterSave(Mage_Core_Model_Abstract $object)
     {
         if (substr($object->getPath(), -1) == '/') {
             $object->setPath($object->getPath() . $object->getId());
             $this->_savePath($object);
+        }
+
+
+        $oldStores = $this->lookupStoreIds($object->getId());
+        $newStores = (array)$object->getStores();
+        if (empty($newStores)) {
+            $newStores = (array)$object->getStoreId();
+        }
+        $table  = $this->getTable('amazonproducts_amazonproducts/amazonproduct_store');
+        $insert = array_diff($newStores, $oldStores);
+        $delete = array_diff($oldStores, $newStores);
+        if ($delete) {
+            $where = array(
+                'amazonproduct_id = ?' => (int) $object->getId(),
+                'store_id IN (?)' => $delete
+            );
+            $this->_getWriteAdapter()->delete($table, $where);
+        }
+        if ($insert) {
+            $data = array();
+            foreach ($insert as $storeId) {
+                $data[] = array(
+                    'amazonproduct_id'  => (int) $object->getId(),
+                    'store_id' => (int) $storeId
+                );
+            }
+            $this->_getWriteAdapter()->insertMultiple($table, $data);
         }
         return parent::_afterSave($object);
     }
@@ -286,8 +351,9 @@ class amazonProducts_AmazonProducts_Model_Resource_Amazonproduct extends Mage_Ca
     {
         $pathIds = array_reverse(explode('/', $amazonproduct->getPath()));
         $amazonproducts = Mage::getResourceModel('amazonproducts_amazonproducts/amazonproduct_collection')
-            ->addAttributeToFilter('entity_id', array('in' => $pathIds))
-            ->addAttributeToSelect('*');
+            ->addFieldToFilter('entity_id', array('in' => $pathIds))
+            ->load()
+            ->getItems();
         return $amazonproducts;
     }
 
@@ -303,12 +369,11 @@ class amazonProducts_AmazonProducts_Model_Resource_Amazonproduct extends Mage_Ca
     {
         $collection = $amazonproduct->getCollection();
         $collection
-            ->addAttributeToFilter('status', 1)
             ->addIdFilter($amazonproduct->getChildAmazonproducts())
-            ->setOrder('position', Varien_Db_Select::SQL_ASC);
+            ->setOrder('position', Varien_Db_Select::SQL_ASC)
+            ->load();
         return $collection;
     }
-
     /**
      * Return children ids of amazon product
      *
@@ -320,63 +385,18 @@ class amazonProducts_AmazonProducts_Model_Resource_Amazonproduct extends Mage_Ca
      */
     public function getChildren($amazonproduct, $recursive = true)
     {
-        $attributeId  = (int)$this->_getStatusAttributeId();
-        $backendTable = $this->getTable(array($this->getEntityTablePrefix(), 'int'));
-        $adapter      = $this->_getReadAdapter();
-        $checkSql     = $adapter->getCheckSql('c.value_id > 0', 'c.value', 'd.value');
         $bind = array(
-            'attribute_id' => $attributeId,
-            'store_id'     => $amazonproduct->getStoreId(),
-            'scope'        => 1,
-            'c_path'       => $amazonproduct->getPath() . '/%'
+            'c_path'   => $amazonproduct->getPath() . '/%'
         );
         $select = $this->_getReadAdapter()->select()
-            ->from(array('m' => $this->getEntityTable()), 'entity_id')
-            ->joinLeft(
-                array('d' => $backendTable),
-                'd.attribute_id = :attribute_id AND d.store_id = 0 AND d.entity_id = m.entity_id',
-                array()
-            )
-            ->joinLeft(
-                array('c' => $backendTable),
-                'c.attribute_id = :attribute_id AND c.store_id = :store_id AND c.entity_id = m.entity_id',
-                array()
-            )
-            ->where($checkSql . ' = :scope')
-            ->where($adapter->quoteIdentifier('path') . ' LIKE :c_path');
+            ->from(array('m' => $this->getMainTable()), 'entity_id')
+            ->where('status = ?', 1)
+            ->where($this->_getReadAdapter()->quoteIdentifier('path') . ' LIKE :c_path');
         if (!$recursive) {
-            $select->where($adapter->quoteIdentifier('level') . ' <= :c_level');
+            $select->where($this->_getReadAdapter()->quoteIdentifier('level') . ' <= :c_level');
             $bind['c_level'] = $amazonproduct->getLevel() + 1;
         }
-
-        return $adapter->fetchCol($select, $bind);
-    }
-
-    protected $_statusAttributeId = null;
-
-    /**
-     * Get "is_active" attribute identifier
-     *
-     * @access protected
-     * @return int
-     * @author Ultimate Module Creator
-     */
-    protected function _getStatusAttributeId()
-    {
-        if ($this->_statusAttributeId === null) {
-            $bind = array(
-                'amazonproducts_amazonproducts_amazonproduct' => amazonProducts_AmazonProducts_Model_Amazonproduct::ENTITY,
-                'status'        => 'status',
-            );
-            $select = $this->_getReadAdapter()->select()
-                ->from(array('a'=>$this->getTable('eav/attribute')), array('attribute_id'))
-                ->join(array('t'=>$this->getTable('eav/entity_type')), 'a.entity_type_id = t.entity_type_id')
-                ->where('entity_type_code = :amazonproducts_amazonproducts_amazonproduct')
-                ->where('attribute_code = :status');
-
-            $this->_statusAttributeId = $this->_getReadAdapter()->fetchOne($select, $bind);
-        }
-        return $this->_statusAttributeId;
+        return $this->_getReadAdapter()->fetchCol($select, $bind);
     }
 
     /**
@@ -388,7 +408,7 @@ class amazonProducts_AmazonProducts_Model_Resource_Amazonproduct extends Mage_Ca
      * @return amazonProducts_AmazonProducts_Model_Resource_Amazonproduct
      * @author Ultimate Module Creator
      */
-    protected function _beforeSave(Varien_Object $object)
+    protected function _beforeSave(Mage_Core_Model_Abstract $object)
     {
         parent::_beforeSave($object);
         if (!$object->getChildrenCount()) {

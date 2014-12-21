@@ -1,0 +1,6 @@
+app/code/community/Banners_Nikolai    app/code/community/Banners_Nikolai
+app/design/adminhtml/default/default/layout/banners_nikolai.xml    app/design/adminhtml/default/default/layout/banners_nikolai.xml
+app/design/adminhtml/default/default/template/banners_nikolai    app/design/adminhtml/default/default/template/banners_nikolai
+app/etc/modules/Banners_Nikolai.xml    app/etc/modules/Banners_Nikolai.xml
+app/locale/en_US/Banners_Nikolai.csv    app/locale/en_US/Banners_Nikolai.csv
+skin/frontend/base/default/images/placeholder/bannerdt.jpg    skin/frontend/base/default/images/placeholder/bannerdt.jpg

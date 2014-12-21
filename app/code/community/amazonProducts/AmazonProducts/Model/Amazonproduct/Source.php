@@ -36,7 +36,7 @@ class amazonProducts_AmazonProducts_Model_Amazonproduct_Source extends Mage_Eav_
         if (is_null($this->_options)) {
             $this->_options = Mage::getResourceModel('amazonproducts_amazonproducts/amazonproduct_collection')
 
-            ->addAttributeToSelect('name')            ->load()
+            ->load()
             ->toOptionArray();
         }
         $options = $this->_options;

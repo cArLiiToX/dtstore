@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Amazon_Products extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Amazon
+ * @package        Amazon_Products
+ * @copyright      Copyright (c) 2014
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<layout>
+    
+    <catalog_product_view>
+        <reference name="product.info">
+            <block type="amazon_products/catalog_product_list_amazon" name="product.info.amazons" as="product_amazons" template="amazon_products/catalog/product/list/amazon.phtml">
+                <action method="addToParentGroup"><group>detailed_info</group></action>
+                <action method="setTitle" translate="value" module="amazon_products"><value>Amazon Products</value></action>
+            </block>
+        </reference>
+    </catalog_product_view>
+</layout>

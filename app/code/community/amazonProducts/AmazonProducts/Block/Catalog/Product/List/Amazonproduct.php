@@ -35,9 +35,8 @@ class amazonProducts_AmazonProducts_Block_Catalog_Product_List_Amazonproduct ext
         if (!$this->hasData('amazonproduct_collection')) {
             $product = Mage::registry('product');
             $collection = Mage::getResourceSingleton('amazonproducts_amazonproducts/amazonproduct_collection')
-                ->setStoreId(Mage::app()->getStore()->getId())
-                ->addAttributeToSelect('name', 1)
-                ->addAttributeToFilter('status', 1)
+                ->addStoreFilter(Mage::app()->getStore())
+                ->addFieldToFilter('status', 1)
                 ->addProductFilter($product);
             $collection->getSelect()->order('related_product.position', 'ASC');
             $this->setData('amazonproduct_collection', $collection);

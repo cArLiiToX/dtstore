@@ -39,10 +39,6 @@
                                 <title>Amazon Product</title>
                                 <sort_order>0</sort_order>
                             </amazonproduct>
-                            <amazonproduct_attributes translate="title" module="amazonproducts_amazonproducts">
-                                <title>Manage Amazon Product attributes</title>
-                                <sort_order>7</sort_order>
-                            </amazonproduct_attributes>
                         </children>
                     </amazonproducts_amazonproducts>
                 </children>
@@ -59,11 +55,6 @@
                     <action>adminhtml/amazonproducts_amazonproduct</action>
                     <sort_order>0</sort_order>
                 </amazonproduct>
-                <amazonproduct_attributes translate="title" module="amazonproducts_amazonproducts">
-                    <title>Manage Amazon Product Attributes</title>
-                    <action>adminhtml/amazonproducts_amazonproduct_attribute</action>
-                    <sort_order>7</sort_order>
-                </amazonproduct_attributes>
             </children>
         </amazonproducts_amazonproducts>
     </menu>

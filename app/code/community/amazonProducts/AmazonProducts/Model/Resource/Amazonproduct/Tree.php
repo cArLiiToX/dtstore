@@ -105,7 +105,6 @@ class amazonProducts_AmazonProducts_Model_Resource_Amazonproduct_Tree extends Va
     protected function _getDefaultCollection($sorted = false)
     {
         $collection = Mage::getModel('amazonproducts_amazonproducts/amazonproduct')->getCollection();
-        $collection->addAttributeToSelect('name');
         if ($sorted) {
             if (is_string($sorted)) {
                 $collection->setOrder($sorted);
@@ -242,97 +241,35 @@ class amazonProducts_AmazonProducts_Model_Resource_Amazonproduct_Tree extends Va
                 $select = clone $this->_select;
             }
             $select
-                ->where('e.entity_id IN(?)', $pathIds)
-                ->order($this->_conn->getLengthSql('e.path') . ' ' . Varien_Db_Select::SQL_ASC);
+                ->where('main_table.entity_id IN(?)', $pathIds)
+                ->order($this->_conn->getLengthSql('main_table.path') . ' ' . Varien_Db_Select::SQL_ASC);
             $result = $this->_conn->fetchAll($select);
         }
         return $result;
     }
 
     /**
-     * Obtain select for amazon products with attributes.
+     * Obtain select for amazon products
      * By default everything from entity table is selected
-     * + name, status
+     * + name
      *
+     * @access public
      * @param bool $sorted
      * @param array $optionalAttributes
      * @return Zend_Db_Select
      * @author Ultimate Module Creator
      */
-    protected function _createCollectionDataSelect($sorted = true, $optionalAttributes = array())
+    protected function _createCollectionDataSelect($sorted = true)
     {
-        $select = $this->_getDefaultCollection($sorted ? $this->_orderField : false)
-            ->getSelect();
-        // add attributes to select
-        $attributes = array('name', 'status');
-        if ($optionalAttributes) {
-            $attributes = array_unique(array_merge($attributes, $optionalAttributes));
-        }
-        foreach ($attributes as $attributeCode) {
-            /* @var $attribute Mage_Eav_Model_Entity_Attribute */
-            $attribute = Mage::getResourceSingleton('amazonproducts_amazonproducts/amazonproduct')->getAttribute($attributeCode);
-            // join non-static attribute table
-            if (!$attribute->getBackend()->isStatic()) {
-                $tableDefault   = sprintf('d_%s', $attributeCode);
-                $tableStore     = sprintf('s_%s', $attributeCode);
-                $valueExpr      = $this->_conn
-                    ->getCheckSql("{$tableStore}.value_id > 0", "{$tableStore}.value", "{$tableDefault}.value");
-
-                $select
-                    ->joinLeft(
-                        array($tableDefault => $attribute->getBackend()->getTable()),
-                        sprintf(
-                            '%1$s.entity_id=e.entity_id AND %1$s.attribute_id=%2$d'.
-                            ' AND %1$s.entity_type_id=e.entity_type_id AND %1$s.store_id=%3$d',
-                            $tableDefault,
-                            $attribute->getId(),
-                            Mage_Core_Model_App::ADMIN_STORE_ID
-                        ),
-                        array($attributeCode => 'value')
-                    )
-                    ->joinLeft(
-                        array($tableStore => $attribute->getBackend()->getTable()),
-                        sprintf(
-                            '%1$s.entity_id=e.entity_id AND %1$s.attribute_id=%2$d'.
-                            ' AND %1$s.entity_type_id=e.entity_type_id AND %1$s.store_id=%3$d',
-                            $tableStore,
-                            $attribute->getId(),
-                            $this->getStoreId()
-                        ),
-                        array($attributeCode => $valueExpr)
-                    );
-            }
-        }
+        $select = $this->_getDefaultCollection($sorted ? $this->_orderField : false)->getSelect();
+        $amazonproductsTable = Mage::getSingleton('core/resource')
+            ->getTableName('amazonproducts_amazonproducts/amazonproduct');
+        $subConcat = $this->_conn->getConcatSql(array('main_table.path', $this->_conn->quote('/%')));
+        $subSelect = $this->_conn->select()
+            ->from(array('see' => $amazonproductsTable), null)
+            ->where('see.entity_id = main_table.entity_id')
+            ->orWhere('see.path LIKE ?', $subConcat);
         return $select;
-    }
-
-    /**
-     * Set store Id
-     *
-     * @access public
-     * @param integer $storeId
-     * @return amazonProducts_AmazonProducts_Model_Resource_Amazonproduct_Tree
-     * @author Ultimate Module Creator
-     */
-    public function setStoreId($storeId)
-    {
-        $this->_storeId = $storeId;
-        return $this;
-    }
-
-    /**
-     * Return store id
-     *
-     * @access public
-     * @return integer
-     * @author Ultimate Module Creator
-     */
-    public function getStoreId()
-    {
-        if ($this->_storeId === null) {
-            return Mage::app()->getStore()->getId();
-        }
-        return $this->_storeId;
     }
 
     /**
@@ -395,9 +332,9 @@ class amazonProducts_AmazonProducts_Model_Resource_Amazonproduct_Tree extends Va
         if ($onlyActive) {
             $disabledIds = $this->_getDisabledIds($collection);
             if ($disabledIds) {
-                $collection->addAttributeToFilter('entity_id', array('nin' => $disabledIds));
+                $collection->addFieldToFilter('entity_id', array('nin' => $disabledIds));
             }
-            $collection->addAttributeToFilter('status', 1);
+            $collection->addFieldToFilter('status', 1);
         }
         if ($toLoad) {
             $collection->load();

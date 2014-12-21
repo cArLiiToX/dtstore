@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns:typens="urn:{{var wsdl.name}}" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/"
+    name="{{var wsdl.name}}" targetNamespace="urn:{{var wsdl.name}}">
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:Magento">
+            <import namespace="http://schemas.xmlsoap.org/soap/encoding/" schemaLocation="http://schemas.xmlsoap.org/soap/encoding/" />
+            <complexType name="amazonproductsAmazonproductListEntity">
+                <all>
+                    <element name="entity_id" type="xsd:string" minOccurs="1" />
+                    <element name="name" type="xsd:string" minOccurs="1" />
+                    <element name="enabled" type="xsd:string" minOccurs="1" />
+                    <element name="link" type="xsd:string" minOccurs="1" />
+                    <element name="status" type="xsd:string" minOccurs="0" />
+                    <element name="parent_id" type="xsd:string" minOccurs="0" />
+                    <element name="path" type="xsd:string" minOccurs="0" />
+                    <element name="position" type="xsd:string" minOccurs="0" />
+                    <element name="level" type="xsd:string" minOccurs="0" />
+                    <element name="children_count" type="xsd:string" minOccurs="0" />
+
+                    <element name="created_at" type="xsd:string" minOccurs="1" />
+                    <element name="updated_at" type="xsd:string" minOccurs="1" />
+                </all>
+            </complexType>
+            <complexType name="amazonproductsAmazonproductListEntityArray">
+                <complexContent>
+                    <restriction base="soapenc:Array">
+                        <attribute ref="soapenc:arrayType" wsdl:arrayType="typens:amazonproductsAmazonproductListEntity[]" />
+                    </restriction>
+                </complexContent>
+            </complexType>
+            <complexType name="amazonproductsAmazonproductAddEntity">
+                <all>
+                    <element name="name" type="xsd:string" minOccurs="1" />
+                    <element name="enabled" type="xsd:string" minOccurs="1" />
+                    <element name="link" type="xsd:string" minOccurs="1" />
+                    <element name="status" type="xsd:string" minOccurs="0" />
+                    <element name="parent_id" type="xsd:string" minOccurs="0" />
+
+                </all>
+            </complexType>
+            <complexType name="amazonproductsAmazonproductUpdateEntity">
+                <all>
+                    <element name="name" type="xsd:string" minOccurs="1" />
+                    <element name="enabled" type="xsd:string" minOccurs="1" />
+                    <element name="link" type="xsd:string" minOccurs="1" />
+                    <element name="status" type="xsd:string" minOccurs="0" />
+                    <element name="parent_id" type="xsd:string" minOccurs="0" />
+
+                </all>
+            </complexType>
+            <complexType name="amazonproductsAmazonproductInfoEntity">
+                <all>
+                    <element name="entity_id" type="xsd:string" minOccurs="1" />
+                    <element name="name" type="xsd:string" minOccurs="1" />
+                    <element name="enabled" type="xsd:string" minOccurs="1" />
+                    <element name="link" type="xsd:string" minOccurs="1" />
+                    <element name="status" type="xsd:string" minOccurs="0" />
+                    <element name="parent_id" type="xsd:string" minOccurs="0" />
+                    <element name="path" type="xsd:string" minOccurs="0" />
+                    <element name="position" type="xsd:string" minOccurs="0" />
+                    <element name="level" type="xsd:string" minOccurs="0" />
+                    <element name="children_count" type="xsd:string" minOccurs="0" />
+
+                    <element name="created_at" type="xsd:string" minOccurs="1" />
+                    <element name="updated_at" type="xsd:string" minOccurs="1" />
+                </all>
+            </complexType>
+            <complexType name="amazonproductsAmazonproductMoveEntity">
+                <all>
+                <element name="amazonproduct_id" type="xsd:string" minOccurs="1" />
+                <element name="parent_id" type="xsd:string" minOccurs="1" />
+                <element name="after_id" type="xsd:string" minOccurs="0" />
+                </all>
+            </complexType>
+            <complexType name="amazonproductsAmazonproductAssignProductEntity">
+                <all>
+                <element name="amazonproductId" type="xsd:string" minOccurs="1" />
+                <element name="productId" type="xsd:string" minOccurs="1" />
+                <element name="position" type="xsd:string" minOccurs="0" />
+                </all>
+            </complexType>
+            <complexType name="amazonproductsAmazonproductUnassignProductEntity">
+                <all>
+                <element name="amazonproductId" type="xsd:string" minOccurs="1" />
+                <element name="productId" type="xsd:string" minOccurs="1" />
+                </all>
+            </complexType>
+                </schema>
+    </types>
+    <message name="amazonproductsAmazonproductListRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="filters" type="typens:filters"/>
+    </message>
+    <message name="amazonproductsAmazonproductListResponse">
+        <part name="result" type="typens:amazonproductsAmazonproductListEntityArray" />
+    </message>
+    <message name="amazonproductsAmazonproductInfoRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="amazonproductId" type="xsd:string" />
+    </message>
+    <message name="amazonproductsAmazonproductInfoResponse">
+        <part name="result" type="typens:amazonproductsAmazonproductInfoEntity" />
+    </message>
+    <message name="amazonproductsAmazonproductAddRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="data" type="typens:amazonproductsAmazonproductAddEntity" />
+    </message>
+    <message name="amazonproductsAmazonproductAddResponse">
+        <part name="result" type="xsd:int"/>
+    </message>
+    <message name="amazonproductsAmazonproductUpdateRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="amazonproductId" type="xsd:string" />
+        <part name="data" type="typens:amazonproductsAmazonproductUpdateEntity" />
+    </message>
+    <message name="amazonproductsAmazonproductUpdateResponse">
+        <part name="result" type="xsd:boolean" />
+    </message>
+    <message name="amazonproductsAmazonproductRemoveRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="amazonproductId" type="xsd:string" />
+    </message>
+    <message name="amazonproductsAmazonproductRemoveResponse">
+        <part name="result" type="xsd:boolean" />
+    </message>
+        <message name="amazonproductsAmazonproductMoveRequest">
+            <part name="session_id" type="xsd:string" />
+            <part name="amazonproduct_id" type="xsd:string" />
+            <part name="parent_id" type="xsd:string" />
+            <part name="after_id" type="xsd:string" />
+        </message>
+        <message name="amazonproductsAmazonproductMoveResponse">
+            <part name="id" type="xsd:boolean"/>
+        </message>
+        <message name="amazonproductsAmazonproductAssignProductRequest">
+            <part name="sessionId" type="xsd:string" />
+            <part name="amazonproduct_id" type="xsd:string" />
+            <part name="product_id" type="xsd:string" />
+            <part name="position" type="xsd:string" />
+        </message>
+        <message name="amazonproductsAmazonproductAssignProductResponse">
+            <part name="result" type="xsd:boolean" />
+        </message>
+        <message name="amazonproductsAmazonproductUnassignProductRequest">
+            <part name="session_id" type="xsd:string" />
+            <part name="amazonproduct_id" type="xsd:string" />
+            <part name="product_id" type="xsd:string" />
+        </message>
+        <message name="amazonproductsAmazonproductUnassignProductResponse">
+            <part name="result" type="xsd:boolean" />
+        </message>
+        <portType name="{{var wsdl.handler}}PortType">
+        <operation name="amazonproductsAmazonproductList">
+            <documentation>Retrieve list of amazon product</documentation>
+            <input message="typens:amazonproductsAmazonproductListRequest" />
+            <output message="typens:amazonproductsAmazonproductListResponse" />
+        </operation>
+        <operation name="amazonproductsAmazonproductInfo">
+            <documentation>Retrieve amazon product info</documentation>
+            <input message="typens:amazonproductsAmazonproductInfoRequest" />
+            <output message="typens:amazonproductsAmazonproductInfoResponse" />
+        </operation>
+        <operation name="amazonproductsAmazonproductAdd">
+            <documentation>Add amazon product</documentation>
+            <input message="typens:amazonproductsAmazonproductAddRequest" />
+            <output message="typens:amazonproductsAmazonproductAddResponse" />
+        </operation>
+        <operation name="amazonproductsAmazonproductUpdate">
+            <documentation>Update amazon product</documentation>
+            <input message="typens:amazonproductsAmazonproductUpdateRequest" />
+            <output message="typens:amazonproductsAmazonproductUpdateResponse" />
+        </operation>
+        <operation name="amazonproductsAmazonproductRemove">
+            <documentation>Remove amazon product</documentation>
+            <input message="typens:amazonproductsAmazonproductRemoveRequest" />
+            <output message="typens:amazonproductsAmazonproductRemoveResponse" />
+        </operation>
+        <operation name="amazonproductsAmazonproductMove">
+            <documentation>Move amazon product in tree</documentation>
+            <input message="typens:amazonproductsAmazonproductMoveRequest" />
+            <output message="typens:amazonproductsAmazonproductMoveResponse" />
+        </operation>
+        <operation name="amazonproductsAmazonproductAssignProduct">
+            <documentation>Assign product to amazon product</documentation>
+            <input message="typens:amazonproductsAmazonproductAssignProductRequest" />
+            <output message="typens:amazonproductsAmazonproductAssignProductResponse" />
+        </operation>
+        <operation name="amazonproductsAmazonproductUnassignProduct">
+            <documentation>Remove product from amazon product</documentation>
+            <input message="typens:amazonproductsAmazonproductUnassignProductRequest" />
+            <output message="typens:amazonproductsAmazonproductUnassignProductResponse" />
+        </operation>
+        </portType>
+    <binding name="{{var wsdl.handler}}Binding" type="typens:{{var wsdl.handler}}PortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+        <operation name="amazonproductsAmazonproductList">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="amazonproductsAmazonproductInfo">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="amazonproductsAmazonproductAdd">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="amazonproductsAmazonproductUpdate">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="amazonproductsAmazonproductRemove">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="amazonproductsAmazonproductMove">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="amazonproductsAmazonproductAssignProduct">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="amazonproductsAmazonproductUnassignProduct">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        </binding>
+    <service name="{{var wsdl.name}}Service">
+        <port name="{{var wsdl.handler}}Port" binding="typens:{{var wsdl.handler}}Binding">
+            <soap:address location="{{var wsdl.url}}" />
+        </port>
+    </service>
+</definitions>

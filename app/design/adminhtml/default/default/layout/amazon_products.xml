@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Amazon_Products extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Amazon
+ * @package        Amazon_Products
+ * @copyright      Copyright (c) 2014
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+--> 
+<layout>
+    <adminhtml_products_amazon_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>amazon_products/amazon</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="amazon_products/adminhtml_amazon" name="amazon" />
+
+        </reference>
+    </adminhtml_products_amazon_index>
+    <adminhtml_products_amazon_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="amazon_products/adminhtml_amazon_grid" name="amazon_grid"/>
+        </block>
+    </adminhtml_products_amazon_grid>
+    <!-- Amazon add/edit action -->
+    <adminhtml_products_amazon_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>amazon_products/amazon</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="amazon_products/adminhtml_amazon_edit" name="amazon_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="amazon_products/adminhtml_amazon_edit_tabs" name="amazon_tabs"></block>
+        </reference>
+    </adminhtml_products_amazon_edit>
+
+    <adminhtml_products_amazon_catalog_product_amazons>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="amazon_products/adminhtml_catalog_product_edit_tab_amazon" name="product.edit.tab.amazon"/>
+            <block type="adminhtml/widget_grid_serializer" name="amazon_grid_serializer">
+                <reference name="amazon_grid_serializer">
+                    <action method="initSerializerBlock">
+                        <grid_block_name>product.edit.tab.amazon</grid_block_name>
+                        <data_callback>getSelectedAmazons</data_callback>
+                        <hidden_input_name>amazons</hidden_input_name>
+                        <reload_param_name>product_amazons</reload_param_name>
+                    </action>
+                    <action method="addColumnInputName">
+                        <input_name>position</input_name>
+                    </action>
+                </reference>
+            </block>
+        </block>
+    </adminhtml_products_amazon_catalog_product_amazons>
+    <adminhtml_products_amazon_catalog_product_amazonsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="amazon_products/adminhtml_catalog_product_edit_tab_amazon" name="product.edit.tab.amazon"/>
+        </block>
+    </adminhtml_products_amazon_catalog_product_amazonsgrid>
+    <adminhtml_products_amazon_products>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="amazon_products/adminhtml_amazon_edit_tab_product" name="amazon.edit.tab.product"/>
+            <block type="adminhtml/widget_grid_serializer" name="product_grid_serializer">
+                <reference name="product_grid_serializer">
+                    <action method="initSerializerBlock">
+                        <grid_block_name>amazon.edit.tab.product</grid_block_name>
+                            <data_callback>getSelectedProducts</data_callback>
+                            <hidden_input_name>products</hidden_input_name>
+                            <reload_param_name>amazon_products</reload_param_name>
+                    </action>
+                    <action method="addColumnInputName">
+                        <input_name>position</input_name>
+                    </action>
+                </reference>
+            </block>
+        </block>
+    </adminhtml_products_amazon_products>
+    <adminhtml_products_amazon_productsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="amazon_products/adminhtml_amazon_edit_tab_product" name="amazon.edit.tab.product"/>
+        </block>
+    </adminhtml_products_amazon_productsgrid>
+</layout>

@@ -21,7 +21,7 @@
  * @package     amazonProducts_AmazonProducts
  * @author      Ultimate Module Creator
  */
-class amazonProducts_AmazonProducts_Model_Resource_Amazonproduct_Collection extends Mage_Catalog_Model_Resource_Collection_Abstract
+class amazonProducts_AmazonProducts_Model_Resource_Amazonproduct_Collection extends Mage_Core_Model_Resource_Db_Collection_Abstract
 {
     protected $_joinedFields = array();
 
@@ -36,6 +36,58 @@ class amazonProducts_AmazonProducts_Model_Resource_Amazonproduct_Collection exte
     {
         parent::_construct();
         $this->_init('amazonproducts_amazonproducts/amazonproduct');
+        $this->_map['fields']['store'] = 'store_table.store_id';
+    }
+
+    /**
+     * Add filter by store
+     *
+     * @access public
+     * @param int|Mage_Core_Model_Store $store
+     * @param bool $withAdmin
+     * @return amazonProducts_AmazonProducts_Model_Resource_Amazonproduct_Collection
+     * @author Ultimate Module Creator
+     */
+    public function addStoreFilter($store, $withAdmin = true)
+    {
+        if (!isset($this->_joinedFields['store'])) {
+            if ($store instanceof Mage_Core_Model_Store) {
+                $store = array($store->getId());
+            }
+            if (!is_array($store)) {
+                $store = array($store);
+            }
+            if ($withAdmin) {
+                $store[] = Mage_Core_Model_App::ADMIN_STORE_ID;
+            }
+            $this->addFilter('store', array('in' => $store), 'public');
+            $this->_joinedFields['store'] = true;
+        }
+        return $this;
+    }
+
+    /**
+     * Join store relation table if there is store filter
+     *
+     * @access protected
+     * @return amazonProducts_AmazonProducts_Model_Resource_Amazonproduct_Collection
+     * @author Ultimate Module Creator
+     */
+    protected function _renderFiltersBefore()
+    {
+        if ($this->getFilter('store')) {
+            $this->getSelect()->join(
+                array('store_table' => $this->getTable('amazonproducts_amazonproducts/amazonproduct_store')),
+                'main_table.entity_id = store_table.amazonproduct_id',
+                array()
+            )
+            ->group('main_table.entity_id');
+            /*
+             * Allow analytic functions usage because of one field grouping
+             */
+            $this->_useAnalyticFunction = true;
+        }
+        return parent::_renderFiltersBefore();
     }
 
     /**
@@ -223,7 +275,7 @@ class amazonProducts_AmazonProducts_Model_Resource_Amazonproduct_Collection exte
         if (!isset($this->_joinedFields['product'])) {
             $this->getSelect()->join(
                 array('related_product' => $this->getTable('amazonproducts_amazonproducts/amazonproduct_product')),
-                'related_product.amazonproduct_id = e.entity_id',
+                'related_product.amazonproduct_id = main_table.entity_id',
                 array('position')
             );
             $this->getSelect()->where('related_product.product_id = ?', $product);

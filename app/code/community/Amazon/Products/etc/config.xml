@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Amazon_Products extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Amazon
+ * @package        Amazon_Products
+ * @copyright      Copyright (c) 2014
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<config>
+    <modules>
+        <Amazon_Products>
+            <version>1.0.0</version>
+        </Amazon_Products>
+    </modules>
+    <global>
+        <resources>
+            <amazon_products_setup>
+                <setup>
+                    <module>Amazon_Products</module>
+                    <class>Amazon_Products_Model_Resource_Setup</class>
+                </setup>
+            </amazon_products_setup>
+        </resources>
+        <blocks>
+            <amazon_products>
+                <class>Amazon_Products_Block</class>
+            </amazon_products>
+        </blocks>
+        <helpers>
+            <amazon_products>
+                <class>Amazon_Products_Helper</class>
+            </amazon_products>
+        </helpers>
+        <models>
+            <amazon_products>
+                <class>Amazon_Products_Model</class>
+                <resourceModel>amazon_products_resource</resourceModel>
+            </amazon_products>
+            <amazon_products_resource>
+                <class>Amazon_Products_Model_Resource</class>
+                <entities>
+                    <amazon>
+                        <table>amazon_products_amazon</table>
+                    </amazon>
+                    <amazon_product>
+                        <table>amazon_products_amazon_product</table>
+                    </amazon_product>
+                </entities>
+            </amazon_products_resource>
+        </models>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <amazon_products>
+                    <file>amazon_products.xml</file>
+                </amazon_products>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Amazon_Products>
+                    <files>
+                        <default>Amazon_Products.csv</default>
+                    </files>
+                </Amazon_Products>
+            </modules>
+        </translate>
+        <events>
+            <core_block_abstract_prepare_layout_after>
+                <observers>
+                    <amazon_products_amazon_product>
+                        <type>singleton</type>
+                        <class>amazon_products/adminhtml_observer</class>
+                        <method>addProductAmazonBlock</method>
+                    </amazon_products_amazon_product>
+                </observers>
+            </core_block_abstract_prepare_layout_after>
+            <catalog_product_save_after>
+                <observers>
+                    <amazon_products_amazon_product>
+                        <type>singleton</type>
+                        <class>amazon_products/adminhtml_observer</class>
+                        <method>saveProductAmazonData</method>
+                    </amazon_products_amazon_product>
+                </observers>
+            </catalog_product_save_after>
+        </events>
+        <global_search>
+            <amazon>
+                <class>amazon_products/adminhtml_search_amazon</class>
+                <acl>amazon_products</acl>
+            </amazon>
+        </global_search>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Amazon_Products before="Mage_Adminhtml">Amazon_Products_Adminhtml</Amazon_Products>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <frontend>
+        <layout>
+            <updates>
+                <amazon_products>
+                    <file>amazon_products.xml</file>
+                </amazon_products>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Amazon_Products>
+                    <files>
+                        <default>Amazon_Products.csv</default>
+                    </files>
+                </Amazon_Products>
+            </modules>
+        </translate>
+    </frontend>
+    <default>
+        <amazon_products>
+        </amazon_products>
+    </default>
+</config>

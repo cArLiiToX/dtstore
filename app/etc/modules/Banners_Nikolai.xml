@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Banners_Nikolai extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Banners
+ * @package        Banners_Nikolai
+ * @copyright      Copyright (c) 2014
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<config>
+    <modules>
+        <Banners_Nikolai>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <Mage_Core />
+             </depends>
+        </Banners_Nikolai>
+    </modules>
+</config>

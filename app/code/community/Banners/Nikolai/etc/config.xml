@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Banners_Nikolai extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Banners
+ * @package        Banners_Nikolai
+ * @copyright      Copyright (c) 2014
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<config>
+    <modules>
+        <Banners_Nikolai>
+            <version>1.0.0</version>
+        </Banners_Nikolai>
+    </modules>
+    <global>
+        <resources>
+            <banners_nikolai_setup>
+                <setup>
+                    <module>Banners_Nikolai</module>
+                    <class>Banners_Nikolai_Model_Resource_Setup</class>
+                </setup>
+            </banners_nikolai_setup>
+        </resources>
+        <blocks>
+            <banners_nikolai>
+                <class>Banners_Nikolai_Block</class>
+            </banners_nikolai>
+        </blocks>
+        <helpers>
+            <banners_nikolai>
+                <class>Banners_Nikolai_Helper</class>
+            </banners_nikolai>
+        </helpers>
+        <models>
+            <banners_nikolai>
+                <class>Banners_Nikolai_Model</class>
+                <resourceModel>banners_nikolai_resource</resourceModel>
+            </banners_nikolai>
+            <banners_nikolai_resource>
+                <class>Banners_Nikolai_Model_Resource</class>
+                <entities>
+                    <bannerdt>
+                        <table>banners_nikolai_bannerdt</table>
+                    </bannerdt>
+                </entities>
+            </banners_nikolai_resource>
+        </models>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <banners_nikolai>
+                    <file>banners_nikolai.xml</file>
+                </banners_nikolai>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Banners_Nikolai>
+                    <files>
+                        <default>Banners_Nikolai.csv</default>
+                    </files>
+                </Banners_Nikolai>
+            </modules>
+        </translate>
+        <global_search>
+            <bannerdt>
+                <class>banners_nikolai/adminhtml_search_bannerdt</class>
+                <acl>banners_nikolai</acl>
+            </bannerdt>
+        </global_search>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Banners_Nikolai before="Mage_Adminhtml">Banners_Nikolai_Adminhtml</Banners_Nikolai>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

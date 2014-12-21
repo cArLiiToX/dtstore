@@ -21,56 +21,37 @@
  * @package     amazonProducts_AmazonProducts
  * @author      Ultimate Module Creator
  */
-class amazonProducts_AmazonProducts_Adminhtml_AmazonProducts_AmazonproductController extends Mage_Adminhtml_Controller_Action
+class amazonProducts_AmazonProducts_Adminhtml_Amazonproducts_AmazonproductController extends amazonProducts_AmazonProducts_Controller_Adminhtml_AmazonProducts
 {
     /**
-     * Initialize requested amazon product and put it into registry.
-     * Root amazon product can be returned, if inappropriate store/amazon product is specified
+     * init amazon product
      *
      * @access protected
-     * @param bool $getRootInstead
      * @return amazonProducts_AmazonProducts_Model_Amazonproduct
      * @author Ultimate Module Creator
      */
-    protected function _initAmazonproduct($getRootInstead = false)
+    protected function _initAmazonproduct()
     {
-        $this->_title($this->__('Amazon Products'))
-             ->_title($this->__('Manage Amazon Products'));
         $amazonproductId = (int) $this->getRequest()->getParam('id', false);
-        $storeId    = (int) $this->getRequest()->getParam('store');
         $amazonproduct = Mage::getModel('amazonproducts_amazonproducts/amazonproduct');
-        $amazonproduct->setStoreId($storeId);
-
         if ($amazonproductId) {
             $amazonproduct->load($amazonproductId);
-            if ($storeId) {
-                $rootId = Mage::helper('amazonproducts_amazonproducts/amazonproduct')->getRootAmazonproductId();
-                if (!in_array($rootId, $amazonproduct->getPathIds())) {
-                    // load root amazon product instead wrong one
-                    if ($getRootInstead) {
-                        $amazonproduct->load($rootId);
-                    } else {
-                        $this->_redirect('*/*/', array('_current'=>true, 'id'=>null));
-                        return false;
-                    }
-                }
-            }
+        } else {
+            $amazonproduct->setData($amazonproduct->getDefaultValues());
         }
-
         if ($activeTabId = (string) $this->getRequest()->getParam('active_tab_id')) {
             Mage::getSingleton('admin/session')->setAmazonproductActiveTabId($activeTabId);
         }
-
         Mage::register('amazonproduct', $amazonproduct);
         Mage::register('current_amazonproduct', $amazonproduct);
-        Mage::getSingleton('cms/wysiwyg_config')->setStoreId($this->getRequest()->getParam('store'));
         return $amazonproduct;
     }
 
     /**
-     * index action
+     * default action
      *
      * @access public
+     * @return void
      * @author Ultimate Module Creator
      */
     public function indexAction()
@@ -82,6 +63,7 @@ class amazonProducts_AmazonProducts_Adminhtml_AmazonProducts_AmazonproductContro
      * Add new amazon product form
      *
      * @access public
+     * @return void
      * @author Ultimate Module Creator
      */
     public function addAction()
@@ -94,59 +76,33 @@ class amazonProducts_AmazonProducts_Adminhtml_AmazonProducts_AmazonproductContro
      * Edit amazon product page
      *
      * @access public
+     * @return void
      * @author Ultimate Module Creator
      */
     public function editAction()
     {
         $params['_current'] = true;
         $redirect = false;
-
-        $storeId = (int) $this->getRequest()->getParam('store');
         $parentId = (int) $this->getRequest()->getParam('parent');
-        $_prevStoreId = Mage::getSingleton('admin/session')
-            ->getAmazonproductLastViewedStore(true);
-
-        if (!empty($_prevStoreId) && !$this->getRequest()->getQuery('isAjax')) {
-            $params['store'] = $_prevStoreId;
-            $redirect = true;
-        }
-
         $amazonproductId = (int) $this->getRequest()->getParam('id');
-        $_prevAmazonproductId = Mage::getSingleton('admin/session')
-            ->getLastEditedAmazonproduct(true);
-
-
-        if ($_prevAmazonproductId
-            && !$this->getRequest()->getQuery('isAjax')
-            && !$this->getRequest()->getParam('clear')) {
-             $this->getRequest()->setParam('id', $_prevAmazonproductId);
+        $_prevAmazonproductId = Mage::getSingleton('admin/session')->getLastEditedAmazonproduct(true);
+        if ($_prevAmazonproductId &&
+            !$this->getRequest()->getQuery('isAjax') &&
+            !$this->getRequest()->getParam('clear')) {
+            $this->getRequest()->setParam('id', $_prevAmazonproductId);
         }
-
         if ($redirect) {
             $this->_redirect('*/*/edit', $params);
             return;
         }
-
-        if ($storeId && !$amazonproductId && !$parentId) {
-            $store = Mage::app()->getStore($storeId);
-            $_prevAmazonproductId = (int)Mage::helper('amazonproducts_amazonproducts/amazonproduct')->getRootAmazonproductId();
-            $this->getRequest()->setParam('id', $_prevAmazonproductId);
-        }
-
         if (!($amazonproduct = $this->_initAmazonproduct())) {
             return;
         }
-
         $this->_title($amazonproductId ? $amazonproduct->getName() : $this->__('New Amazon Product'));
-
         $data = Mage::getSingleton('adminhtml/session')->getAmazonproductData(true);
         if (isset($data['amazonproduct'])) {
             $amazonproduct->addData($data['amazonproduct']);
         }
-
-        /**
-         * Build response for ajax request
-         */
         if ($this->getRequest()->getQuery('isAjax')) {
             $breadcrumbsPath = $amazonproduct->getPath();
             if (empty($breadcrumbsPath)) {
@@ -161,84 +117,43 @@ class amazonProducts_AmazonProducts_Adminhtml_AmazonProducts_AmazonproductContro
                     }
                 }
             }
-
-            Mage::getSingleton('admin/session')
-                ->setAmazonproductLastViewedStore($this->getRequest()->getParam('store'));
-            Mage::getSingleton('admin/session')
-                ->setLastEditedAmazonproduct($amazonproduct->getId());
+            Mage::getSingleton('admin/session')->setLastEditedAmazonproduct($amazonproduct->getId());
             $this->loadLayout();
-
             $eventResponse = new Varien_Object(
                 array(
-                    'content' => $this->getLayout()->getBlock('amazonproduct.edit')->getFormHtml()
-                        . $this->getLayout()->getBlock('amazonproduct.tree')
-                        ->getBreadcrumbsJavascript($breadcrumbsPath, 'editingAmazonproductBreadcrumbs'),
+                    'content' => $this->getLayout()->getBlock('amazonproduct.edit')->getFormHtml().
+                        $this->getLayout()->getBlock('amazonproduct.tree')->getBreadcrumbsJavascript(
+                            $breadcrumbsPath,
+                            'editingAmazonproductBreadcrumbs'
+                        ),
                     'messages' => $this->getLayout()->getMessagesBlock()->getGroupedHtml(),
                 )
             );
-
-            Mage::dispatchEvent(
-                'amazonproduct_prepare_ajax_response',
-                array(
-                    'response' => $eventResponse,
-                    'controller' => $this
-                )
-            );
-
-            $this->getResponse()->setBody(
-                Mage::helper('core')->jsonEncode($eventResponse->getData())
-            );
-
+            $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($eventResponse->getData()));
             return;
         }
-
         $this->loadLayout();
+        $this->_title(Mage::helper('amazonproducts_amazonproducts')->__('Amazon Products'))
+             ->_title(Mage::helper('amazonproducts_amazonproducts')->__('Amazon Products'));
         $this->_setActiveMenu('amazonproducts_amazonproducts/amazonproduct');
         $this->getLayout()->getBlock('head')->setCanLoadExtJs(true)
-            ->setContainerCssClass('amazonproducts');
+            ->setContainerCssClass('amazonproduct');
 
         $this->_addBreadcrumb(
             Mage::helper('amazonproducts_amazonproducts')->__('Manage Amazon Products'),
-            Mage::helper('catalog')->__('Manage Amazon Products')
+            Mage::helper('amazonproducts_amazonproducts')->__('Manage Amazon Products')
         );
-
-        $block = $this->getLayout()->getBlock('catalog.wysiwyg.js');
-        if ($block) {
-            $block->setStoreId($storeId);
+        if (Mage::getSingleton('cms/wysiwyg_config')->isEnabled()) {
+            $this->getLayout()->getBlock('head')->setCanLoadTinyMce(true);
         }
-
         $this->renderLayout();
-    }
-
-    /**
-     * WYSIWYG editor action for ajax request
-     *
-     * @access public
-     * @author Ultimate Module Creator
-     */
-    public function wysiwygAction()
-    {
-        $elementId = $this->getRequest()->getParam('element_id', md5(microtime()));
-        $storeId = $this->getRequest()->getParam('store_id', 0);
-        $storeMediaUrl = Mage::app()->getStore($storeId)->getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);
-
-        $content = $this->getLayout()->createBlock(
-            'adminhtml/catalog_helper_form_wysiwyg_content',
-            '',
-            array(
-                'editor_element_id' => $elementId,
-                'store_id'          => $storeId,
-                'store_media_url'   => $storeMediaUrl,
-            )
-        );
-
-        $this->getResponse()->setBody($content->toHtml());
     }
 
     /**
      * Get tree node (Ajax version)
      *
      * @access public
+     * @return void
      * @author Ultimate Module Creator
      */
     public function amazonproductsJsonAction()
@@ -250,7 +165,6 @@ class amazonProducts_AmazonProducts_Adminhtml_AmazonProducts_AmazonproductContro
         }
         if ($amazonproductId = (int) $this->getRequest()->getPost('id')) {
             $this->getRequest()->setParam('id', $amazonproductId);
-
             if (!$amazonproduct = $this->_initAmazonproduct()) {
                 return;
             }
@@ -262,96 +176,7 @@ class amazonProducts_AmazonProducts_Adminhtml_AmazonProducts_AmazonproductContro
     }
 
     /**
-     * Amazon Product save
-     *
-     * @access public
-     * @author Ultimate Module Creator
-     */
-    public function saveAction()
-    {
-        if (!$amazonproduct = $this->_initAmazonproduct()) {
-            return;
-        }
-
-        $storeId = $this->getRequest()->getParam('store');
-        $refreshTree = 'false';
-        if ($data = $this->getRequest()->getPost()) {
-            $amazonproduct->addData($data['amazonproduct']);
-            if (!$amazonproduct->getId()) {
-                $parentId = $this->getRequest()->getParam('parent');
-                if (!$parentId) {
-                    $parentId = Mage::helper('amazonproducts_amazonproducts/amazonproduct')->getRootAmazonproductId();
-                }
-                $parentAmazonproduct = Mage::getModel('amazonproducts_amazonproducts/amazonproduct')->load($parentId);
-                $amazonproduct->setPath($parentAmazonproduct->getPath());
-            }
-
-            /**
-             * Process "Use Config Settings" checkboxes
-             */
-            if ($useConfig = $this->getRequest()->getPost('use_config')) {
-                foreach ($useConfig as $attributeCode) {
-                    $amazonproduct->setData($attributeCode, null);
-                }
-            }
-
-            $amazonproduct->setAttributeSetId($amazonproduct->getDefaultAttributeSetId());
-
-            Mage::dispatchEvent(
-                'amazonproducts_amazonproducts_amazonproduct_prepare_save',
-                array(
-                    'amazonproduct' => $amazonproduct,
-                    'request' => $this->getRequest()
-                )
-            );
-
-            $amazonproduct->setData("use_post_data_config", $this->getRequest()->getPost('use_config'));
-
-            try {
-                $products = $this->getRequest()->getPost('amazonproduct_products', -1);
-                if ($products != -1) {
-                    $productData = array();
-                    parse_str($products, $productData);
-                    $products = array();
-                    foreach ($productData as $id => $position) {
-                        $products[$id]['position'] = $position;
-                    }
-                    $amazonproduct->setProductsData($productData);
-                }
-                /**
-                 * Check "Use Default Value" checkboxes values
-                 */
-                if ($useDefaults = $this->getRequest()->getPost('use_default')) {
-                    foreach ($useDefaults as $attributeCode) {
-                        $amazonproduct->setData($attributeCode, false);
-                    }
-                }
-
-                /**
-                 * Unset $_POST['use_config'] before save
-                 */
-                $amazonproduct->unsetData('use_post_data_config');
-
-                $amazonproduct->save();
-                Mage::getSingleton('adminhtml/session')->addSuccess(
-                    Mage::helper('amazonproducts_amazonproducts')->__('The amazon product has been saved.')
-                );
-                $refreshTree = 'true';
-            } catch (Exception $e) {
-                $this->_getSession()->addError($e->getMessage())
-                    ->setAmazonproductData($data);
-                $refreshTree = 'false';
-            }
-        }
-        $url = $this->getUrl('*/*/edit', array('_current' => true, 'id' => $amazonproduct->getId()));
-        $this->getResponse()->setBody(
-            '<script type="text/javascript">parent.updateContent("' . $url . '", {}, '.$refreshTree.');</script>'
-        );
-    }
-
-    /**
      * Move amazon product action
-     *
      * @access public
      * @author Ultimate Module Creator
      */
@@ -365,8 +190,7 @@ class amazonProducts_AmazonProducts_Adminhtml_AmazonProducts_AmazonproductContro
             return;
         }
         $parentNodeId   = $this->getRequest()->getPost('pid', false);
-        $prevNodeId     = $this->getRequest()->getPost('aid', false);
-
+        $prevNodeId = $this->getRequest()->getPost('aid', false);
         try {
             $amazonproduct->move($parentNodeId, $prevNodeId);
             $this->getResponse()->setBody("SUCCESS");
@@ -378,45 +202,6 @@ class amazonProducts_AmazonProducts_Adminhtml_AmazonProducts_AmazonproductContro
             );
             Mage::logException($e);
         }
-
-    }
-
-    /**
-     * Delete amazon product action
-     *
-     * @access public
-     * @author Ultimate Module Creator
-     */
-    public function deleteAction()
-    {
-        if ($id = (int) $this->getRequest()->getParam('id')) {
-            try {
-                $amazonproduct = Mage::getModel('amazonproducts_amazonproducts/amazonproduct')->load($id);
-                Mage::dispatchEvent(
-                    'amazonproducts_amazonproducts_controller_amazonproduct_delete',
-                    array('amazonproduct' => $amazonproduct)
-                );
-
-                Mage::getSingleton('admin/session')->setAmazonproductDeletedPath($amazonproduct->getPath());
-
-                $amazonproduct->delete();
-                Mage::getSingleton('adminhtml/session')->addSuccess(
-                    Mage::helper('amazonproducts_amazonproducts')->__('The amazon product has been deleted.')
-                );
-            } catch (Mage_Core_Exception $e) {
-                Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
-                $this->getResponse()->setRedirect($this->getUrl('*/*/edit', array('_current'=>true)));
-                return;
-            } catch (Exception $e) {
-                Mage::logException($e);
-                Mage::getSingleton('adminhtml/session')->addError(
-                    Mage::helper('amazonproducts_amazonproducts')->__('An error occurred while trying to delete the amazon product.')
-                );
-                $this->getResponse()->setRedirect($this->getUrl('*/*/edit', array('_current'=>true)));
-                return;
-            }
-        }
-        $this->getResponse()->setRedirect($this->getUrl('*/*/', array('_current'=>true, 'id'=>null)));
     }
 
     /**
@@ -424,23 +209,13 @@ class amazonProducts_AmazonProducts_Adminhtml_AmazonProducts_AmazonproductContro
      * Retrieve amazon product tree
      *
      * @access public
+     * @return void
      * @author Ultimate Module Creator
      */
     public function treeAction()
     {
-        $storeId = (int) $this->getRequest()->getParam('store');
         $amazonproductId = (int) $this->getRequest()->getParam('id');
-
-        if ($storeId) {
-            if (!$amazonproductId) {
-                $store = Mage::app()->getStore($storeId);
-                $rootId = Mage::helper('amazonproducts_amazonproducts/amazonproduct')->getRootAmazonproductId();
-                $this->getRequest()->setParam('id', $rootId);
-            }
-        }
-
         $amazonproduct = $this->_initAmazonproduct();
-
         $block = $this->getLayout()->createBlock('amazonproducts_amazonproducts/adminhtml_amazonproduct_tree');
         $root  = $block->getRoot();
         $this->getResponse()->setBody(
@@ -448,26 +223,26 @@ class amazonProducts_AmazonProducts_Adminhtml_AmazonProducts_AmazonproductContro
                 array(
                     'data' => $block->getTree(),
                     'parameters' => array(
-                        'text'         => $block->buildNodeName($root),
-                        'draggable'    => false,
-                        'allowDrop'    => ($root->getIsVisible()) ? true : false,
-                        'id'           => (int) $root->getId(),
-                        'expanded'     => (int) $block->getIsWasExpanded(),
-                        'store_id'     => (int) $block->getStore()->getId(),
+                        'text'          => $block->buildNodeName($root),
+                        'draggable'     => false,
+                        'allowDrop'     => ($root->getIsVisible()) ? true : false,
+                        'id'            => (int) $root->getId(),
+                        'expanded'      => (int) $block->getIsWasExpanded(),
                         'amazonproduct_id' => (int) $amazonproduct->getId(),
-                        'root_visible' => (int) $root->getIsVisible()
+                        'root_visible'  => (int) $root->getIsVisible()
                     )
                 )
             )
         );
     }
 
-   /**
-    * Build response for refresh input element 'path' in form
-    *
-    * @access public
-    * @author Ultimate Module Creator
-    */
+    /**
+     * Build response for refresh input element 'path' in form
+     *
+     * @access public
+     * @return void
+     * @author Ultimate Module Creator
+     */
     public function refreshPathAction()
     {
         if ($id = (int) $this->getRequest()->getParam('id')) {
@@ -484,6 +259,40 @@ class amazonProducts_AmazonProducts_Adminhtml_AmazonProducts_AmazonproductContro
     }
 
     /**
+     * Delete amazon product action
+     *
+     * @access public
+     * @return void
+     * @author Ultimate Module Creator
+     */
+    public function deleteAction()
+    {
+        if ($id = (int) $this->getRequest()->getParam('id')) {
+            try {
+                $amazonproduct = Mage::getModel('amazonproducts_amazonproducts/amazonproduct')->load($id);
+                Mage::getSingleton('admin/session')->setAmazonproductDeletedPath($amazonproduct->getPath());
+
+                $amazonproduct->delete();
+                Mage::getSingleton('adminhtml/session')->addSuccess(
+                    Mage::helper('amazonproducts_amazonproducts')->__('The amazon product has been deleted.')
+                );
+            } catch (Mage_Core_Exception $e) {
+                Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
+                $this->getResponse()->setRedirect($this->getUrl('*/*/edit', array('_current'=>true)));
+                return;
+            } catch (Exception $e) {
+                Mage::getSingleton('adminhtml/session')->addError(
+                    Mage::helper('amazonproducts_amazonproducts')->__('An error occurred while trying to delete the amazon product.')
+                );
+                $this->getResponse()->setRedirect($this->getUrl('*/*/edit', array('_current'=>true)));
+                Mage::logException($e);
+                return;
+            }
+        }
+        $this->getResponse()->setRedirect($this->getUrl('*/*/', array('_current'=>true, 'id'=>null)));
+    }
+
+    /**
      * Check if admin has permissions to visit related pages
      *
      * @access protected
@@ -493,6 +302,59 @@ class amazonProducts_AmazonProducts_Adminhtml_AmazonProducts_AmazonproductContro
     protected function _isAllowed()
     {
         return Mage::getSingleton('admin/session')->isAllowed('amazonproducts_amazonproducts/amazonproduct');
+    }
+
+    /**
+     * Amazon Product save action
+     *
+     * @access public
+     * @return void
+     * @author Ultimate Module Creator
+     */
+    public function saveAction()
+    {
+        if (!$amazonproduct = $this->_initAmazonproduct()) {
+            return;
+        }
+        $refreshTree = 'false';
+        if ($data = $this->getRequest()->getPost('amazonproduct')) {
+            $amazonproduct->addData($data);
+            if (!$amazonproduct->getId()) {
+                $parentId = $this->getRequest()->getParam('parent');
+                if (!$parentId) {
+                    $parentId = Mage::helper('amazonproducts_amazonproducts/amazonproduct')->getRootAmazonproductId();
+                }
+                $parentAmazonproduct = Mage::getModel('amazonproducts_amazonproducts/amazonproduct')->load($parentId);
+                $amazonproduct->setPath($parentAmazonproduct->getPath());
+            }
+            try {
+                $products = $this->getRequest()->getPost('amazonproduct_products', -1);
+                if ($products != -1) {
+                    $productData = array();
+                    parse_str($products, $productData);
+                    $products = array();
+                    foreach ($productData as $id => $position) {
+                        $products[$id]['position'] = $position;
+                    }
+                    $amazonproduct->setProductsData($productData);
+                }
+
+                $amazonproduct->save();
+                Mage::getSingleton('adminhtml/session')->addSuccess(
+                    Mage::helper('amazonproducts_amazonproducts')->__('The amazon product has been saved.')
+                );
+                $refreshTree = 'true';
+            }
+            catch (Exception $e) {
+                $this->_getSession()->addError($e->getMessage())->setAmazonproductData($data);
+                Mage::logException($e);
+                $refreshTree = 'false';
+            }
+        }
+        $url = $this->getUrl('*/*/edit', array('_current' => true, 'id' => $amazonproduct->getId()));
+        $this->getResponse()->setBody(
+            '<script type="text/javascript">parent.updateContent("' . $url . '", {}, '.$refreshTree.');</script>'
+        );
     }
 
     /**

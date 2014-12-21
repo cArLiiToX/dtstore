@@ -28,5 +28,4 @@ Mage::getModel('amazonproducts_amazonproducts/amazonproduct')
     ->setChildrenCount(0)
     ->setName('ROOT')
     ->setInitialSetupFlag(true)
-    ->setAttributeSetId(Mage::getModel('amazonproducts_amazonproducts/amazonproduct')->getDefaultAttributeSetId())
     ->save();
