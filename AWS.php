@@ -31,6 +31,7 @@ while ($row = $result->fetch()) {
 
     //var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
 
+    var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
     $html = file_get_contents('http://www.amazon.com/gp/aw/d/' . $code[1]);
 
 // Find all article blocks
