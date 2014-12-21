@@ -125,7 +125,7 @@
                  foreach ($resultQuery as $images) {
                      ?>
                     <div>
-                        <a u=image href="<?php echo isset($images['enlace'])?'http://'.$images['enlace']:'#'; ?>" onclick="<?php echo $images['onclick']; ?>"><img src="/media/bannerdt/image/<?php echo $images['image']; ?>" /></a>
+                        <a target="_blank" u=image href="<?php echo isset($images['enlace'])?'http://'.$images['enlace']:'#'; ?>" onclick="<?php echo $images['onclick']; ?>"><img src="/media/bannerdt/image/<?php echo $images['image']; ?>" /></a>
 
                     </div>
                 <?php }
@@ -196,7 +196,7 @@
                 foreach ($resultQuery as $images) {
                     ?>
                     <div>
-                        <a u=image href="<?php echo isset($images['enlace'])?'http://'.$images['enlace']:'#'; ?>" onclick="<?php echo $images['onclick']; ?>"><img src="/media/bannerdt/image/<?php echo $images['image']; ?>" /></a>
+                        <a target="_blank" u=image href="<?php echo isset($images['enlace'])?'http://'.$images['enlace']:'#'; ?>" onclick="<?php echo $images['onclick']; ?>"><img src="/media/bannerdt/image/<?php echo $images['image']; ?>" /></a>
 
                     </div>
                 <?php }
