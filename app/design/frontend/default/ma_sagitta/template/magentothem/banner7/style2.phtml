@@ -70,14 +70,14 @@
                 };
                 var jssor_slider1 = new $JssorSlider$("slider1_container", options);
                 var jssor_slider2 = new $JssorSlider$("slider2_container", options);
-                var jssor_slider3 = new $JssorSlider$("slider3_container", options);
+                
                 //responsive code begin
                         //you can remove responsive code if you don't want the slider scales while window resizes
                                 function ScaleSlider() {
                                 var parentWidth = jssor_slider1.$Elmt.parentNode.clientWidth;
                                         if (parentWidth){
-                                jssor_slider1.$ScaleWidth(Math.min(parentWidth, 840));
-                                        jssor_slider3.$ScaleWidth(Math.min(parentWidth, 840));
+                                        jssor_slider1.$ScaleWidth(Math.min(parentWidth, 840));
+                                        jssor_slider2.$ScaleWidth(Math.min(parentWidth, 840));
                                 }
                                 else{
                                 window.setTimeout(ScaleSlider, 30);
@@ -107,7 +107,7 @@
         ?>
         <!-- Jssor Slider Begin -->
         <!-- You can move inline styles to css file or css block. -->
-        <div id="slider1_container" style="position: relative; width: 840px;height: 250px; overflow: hidden;">
+        <div id="slider1_container" style="position: relative; width: 100%;height: 250px; overflow: hidden;">
 
             <!-- Loading Screen -->
             <div u="loading" style="position: absolute; top: 0px; left: 0px;">
@@ -120,7 +120,7 @@
             </div>
 
             <!-- Slides Container -->
-            <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 840px; height: 250px;
+            <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 100%; height: 250px;
                  overflow: hidden;">
                  <?php
                  foreach ($resultQuery as $images) {
@@ -176,7 +176,7 @@
         ?>
 
 
-        <div id="slider2_container" style="position: relative; width: 840px;height: 150px; overflow: hidden;float:left;margin-top: 15px;margin-bottom: 15px;">
+        <div id="slider2_container" style="position: relative; width: 100%;height: 150px; overflow: hidden;float:left;margin-top: 15px;margin-bottom: 15px;">
 
             <!-- Loading Screen -->
             <div u="loading" style="position: absolute; top: 0px; left: 0px;">
@@ -189,7 +189,7 @@
             </div>
 
             <!-- Slides Container -->
-            <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 840px; height: 150px;
+            <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 100%; height: 150px;
                  overflow: hidden;">
 
 
