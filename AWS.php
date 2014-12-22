@@ -31,8 +31,17 @@ while ($row = $result->fetch()) {
 
     //var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
 
-    var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
-    $html = file_get_contents('http://www.amazon.com/gp/aw/d/' . $code[1]);
+    
+    /* STEP 1. let’s create a cookie file */
+    $ckfile = tempnam ("/tmp", "CURLCOOKIE");
+    /* STEP 2. visit the homepage to set the cookie properly */
+    $ch = curl_init ('http://www.amazon.com/gp/aw/d/' . $code[1]);
+    curl_setopt ($ch, CURLOPT_COOKIEJAR, $ckfile); 
+    curl_setopt ($ch, CURLOPT_RETURNTRANSFER, true);
+    $html = curl_exec ($ch);
+    
+   /* var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
+    $html = file_get_contents('http://www.amazon.com/gp/aw/d/' . $code[1]);*/
 
 // Find all article blocks
 
