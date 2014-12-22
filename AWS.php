@@ -32,29 +32,15 @@ while ($row = $result->fetch()) {
     //var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
 
        
-    
-    
-/*    $ch  = curl_init();
-
-curl_setopt($ch, CURLOPT_URL, 'http://www.amazon.com/gp/aw/d/' . $code[1]);
-curl_setopt($ch, CURLOPT_COOKIEJAR, 'var/amazoncookie.txt');
-curl_setopt($ch, CURLOPT_COOKIEFILE, 'var/amazoncookie.txt');
-curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9.2.13) Gecko/20101206 Ubuntu/10.10 (maverick) Firefox/3.6.13');
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_HEADER, 1);        
-curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-
-$html = curl_exec($ch);
-
-  */  
-   var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
+   
+    var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
     $html = file_get_contents('http://www.amazon.com/gp/aw/d/' . $code[1]);
-var_dump($html);
+    var_dump($html);
 // Find all article blocks
 
     $patron = '/<b>Price:(.*)&nbsp;</';
     preg_match_all($patron, $html, $coincidencias);
-var_dump($coincidencias);
+    var_dump($coincidencias);
 
 
     foreach ($coincidencias as $key => $value) {
