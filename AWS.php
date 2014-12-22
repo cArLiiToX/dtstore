@@ -34,7 +34,7 @@ while ($row = $result->fetch()) {
        
     
     
-    $ch  = curl_init();
+/*    $ch  = curl_init();
 
 curl_setopt($ch, CURLOPT_URL, 'http://www.amazon.com/gp/aw/d/' . $code[1]);
 curl_setopt($ch, CURLOPT_COOKIEJAR, 'var/amazoncookie.txt');
@@ -45,11 +45,11 @@ curl_setopt($ch, CURLOPT_HEADER, 1);
 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 
 $html = curl_exec($ch);
-var_dump($html);
-    
-   /* var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
-    $html = file_get_contents('http://www.amazon.com/gp/aw/d/' . $code[1]);*/
 
+  */  
+   var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
+    $html = file_get_contents('http://www.amazon.com/gp/aw/d/' . $code[1]);
+var_dump($html);
 // Find all article blocks
 
     $patron = '/<b>Price:(.*)&nbsp;</';
