@@ -38,7 +38,7 @@ while ($row = $result->fetch()) {
 
     $patron = '/<b>Price:(.*)&nbsp;</';
     preg_match_all($patron, $html, $coincidencias);
-//var_dump($coincidencias);
+var_dump($coincidencias);
 
 
     foreach ($coincidencias as $key => $value) {
