@@ -19,7 +19,7 @@ $write = Mage::getSingleton('core/resource')->getConnection('core_write');
 $result = $write->query($sql);
 
 
-
+echo '<pre>';
 while ($row = $result->fetch()) {
     //var_dump($row);
 
@@ -64,5 +64,5 @@ var_dump($coincidencias);
     $New_Price = ($NuevoPrecioCalculado * $TRM) + 10000;
     $_product->setPrice($New_Price)->save();
 }
-
+echo '</pre>';
 ?>
