@@ -37,8 +37,8 @@ while ($row = $result->fetch()) {
     $ch  = curl_init();
 
 curl_setopt($ch, CURLOPT_URL, 'http://www.amazon.com/gp/aw/d/' . $code[1]);
-curl_setopt($ch, CURLOPT_COOKIEJAR, '/tmp/amazoncookie.txt');
-curl_setopt($ch, CURLOPT_COOKIEFILE, '/tmp/amazoncookie.txt');
+curl_setopt($ch, CURLOPT_COOKIEJAR, 'var/amazoncookie.txt');
+curl_setopt($ch, CURLOPT_COOKIEFILE, 'var/amazoncookie.txt');
 curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9.2.13) Gecko/20101206 Ubuntu/10.10 (maverick) Firefox/3.6.13');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_HEADER, 1);        
