@@ -31,16 +31,22 @@ while ($row = $result->fetch()) {
 
     //var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
 
+       
     
-    /* STEP 1. let’s create a cookie file */
-    $ckfile = tempnam ("/tmp", "CURLCOOKIE");
-    /* STEP 2. visit the homepage to set the cookie properly */
-    $ch = curl_init ('http://www.amazon.com/gp/aw/d/' . $code[1]);
-    curl_setopt ($ch, CURLOPT_COOKIEJAR, $ckfile); 
-    curl_setopt ($ch, CURLOPT_RETURNTRANSFER, true);
-    $html = curl_exec ($ch);
     
-    var_dump($html);
+    $ch  = curl_init();
+
+curl_setopt($ch, CURLOPT_URL, 'http://www.amazon.com/gp/aw/d/' . $code[1]);
+curl_setopt($ch, CURLOPT_COOKIEJAR, '/tmp/amazoncookie.txt');
+curl_setopt($ch, CURLOPT_COOKIEFILE, '/tmp/amazoncookie.txt');
+curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9.2.13) Gecko/20101206 Ubuntu/10.10 (maverick) Firefox/3.6.13');
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_HEADER, 1);        
+curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+
+$html = curl_exec($ch);
+var_dump($html);
+    
    /* var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
     $html = file_get_contents('http://www.amazon.com/gp/aw/d/' . $code[1]);*/
 
