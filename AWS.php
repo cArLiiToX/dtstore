@@ -63,6 +63,8 @@ var_dump($coincidencias);
     
     $New_Price = ($NuevoPrecioCalculado * $TRM) + 10000;
     $_product->setPrice($New_Price)->save();
+    
+    var_dump($html);
 }
 echo '</pre>';
 ?>
