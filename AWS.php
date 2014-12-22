@@ -259,6 +259,486 @@ while ($row = $result->fetch()) {
                                                         }
 
                                                         var_dump($Items);
+
+                                                        if (count($Items[1]) < 1) {
+                                                            var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                            $html = file_get_contents('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                            //var_dump($html);
+// Find all article blocks
+
+                                                            $patron = '/<b>Price:(.*)&nbsp;</';
+                                                            preg_match_all($patron, $html, $coincidencias);
+                                                            var_dump($coincidencias);
+
+                                                            $Items = array();
+                                                            foreach ($coincidencias as $key => $value) {
+                                                                $Items[] = str_replace('</b>&nbsp;$', '', $value);
+                                                            }
+
+                                                            var_dump($Items);
+
+                                                            if (count($Items[1]) < 1) {
+                                                                var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                $html = file_get_contents('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                //var_dump($html);
+// Find all article blocks
+
+                                                                $patron = '/<b>Price:(.*)&nbsp;</';
+                                                                preg_match_all($patron, $html, $coincidencias);
+                                                                var_dump($coincidencias);
+
+                                                                $Items = array();
+                                                                foreach ($coincidencias as $key => $value) {
+                                                                    $Items[] = str_replace('</b>&nbsp;$', '', $value);
+                                                                }
+
+                                                                var_dump($Items);
+
+                                                                if (count($Items[1]) < 1) {
+                                                                    var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                    $html = file_get_contents('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                    //var_dump($html);
+// Find all article blocks
+
+                                                                    $patron = '/<b>Price:(.*)&nbsp;</';
+                                                                    preg_match_all($patron, $html, $coincidencias);
+                                                                    var_dump($coincidencias);
+
+                                                                    $Items = array();
+                                                                    foreach ($coincidencias as $key => $value) {
+                                                                        $Items[] = str_replace('</b>&nbsp;$', '', $value);
+                                                                    }
+
+                                                                    var_dump($Items);
+                                                                    if (count($Items[1]) < 1) {
+                                                                        var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                        $html = file_get_contents('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                        //var_dump($html);
+// Find all article blocks
+
+                                                                        $patron = '/<b>Price:(.*)&nbsp;</';
+                                                                        preg_match_all($patron, $html, $coincidencias);
+                                                                        var_dump($coincidencias);
+
+                                                                        $Items = array();
+                                                                        foreach ($coincidencias as $key => $value) {
+                                                                            $Items[] = str_replace('</b>&nbsp;$', '', $value);
+                                                                        }
+
+                                                                        var_dump($Items);
+                                                                        if (count($Items[1]) < 1) {
+                                                                            var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                            $html = file_get_contents('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                            //var_dump($html);
+// Find all article blocks
+
+                                                                            $patron = '/<b>Price:(.*)&nbsp;</';
+                                                                            preg_match_all($patron, $html, $coincidencias);
+                                                                            var_dump($coincidencias);
+
+                                                                            $Items = array();
+                                                                            foreach ($coincidencias as $key => $value) {
+                                                                                $Items[] = str_replace('</b>&nbsp;$', '', $value);
+                                                                            }
+
+                                                                            var_dump($Items);
+                                                                            if (count($Items[1]) < 1) {
+                                                                                var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                $html = file_get_contents('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                //var_dump($html);
+// Find all article blocks
+
+                                                                                $patron = '/<b>Price:(.*)&nbsp;</';
+                                                                                preg_match_all($patron, $html, $coincidencias);
+                                                                                var_dump($coincidencias);
+
+                                                                                $Items = array();
+                                                                                foreach ($coincidencias as $key => $value) {
+                                                                                    $Items[] = str_replace('</b>&nbsp;$', '', $value);
+                                                                                }
+
+                                                                                var_dump($Items);
+                                                                                if (count($Items[1]) < 1) {
+                                                                                    var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                    $html = file_get_contents('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                    //var_dump($html);
+// Find all article blocks
+
+                                                                                    $patron = '/<b>Price:(.*)&nbsp;</';
+                                                                                    preg_match_all($patron, $html, $coincidencias);
+                                                                                    var_dump($coincidencias);
+
+                                                                                    $Items = array();
+                                                                                    foreach ($coincidencias as $key => $value) {
+                                                                                        $Items[] = str_replace('</b>&nbsp;$', '', $value);
+                                                                                    }
+
+                                                                                    var_dump($Items);
+                                                                                    if (count($Items[1]) < 1) {
+                                                                                        var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                        $html = file_get_contents('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                        //var_dump($html);
+// Find all article blocks
+
+                                                                                        $patron = '/<b>Price:(.*)&nbsp;</';
+                                                                                        preg_match_all($patron, $html, $coincidencias);
+                                                                                        var_dump($coincidencias);
+
+                                                                                        $Items = array();
+                                                                                        foreach ($coincidencias as $key => $value) {
+                                                                                            $Items[] = str_replace('</b>&nbsp;$', '', $value);
+                                                                                        }
+
+                                                                                        var_dump($Items);
+                                                                                        if (count($Items[1]) < 1) {
+                                                                                            var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                            $html = file_get_contents('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                            //var_dump($html);
+// Find all article blocks
+
+                                                                                            $patron = '/<b>Price:(.*)&nbsp;</';
+                                                                                            preg_match_all($patron, $html, $coincidencias);
+                                                                                            var_dump($coincidencias);
+
+                                                                                            $Items = array();
+                                                                                            foreach ($coincidencias as $key => $value) {
+                                                                                                $Items[] = str_replace('</b>&nbsp;$', '', $value);
+                                                                                            }
+
+                                                                                            var_dump($Items);
+                                                                                            if (count($Items[1]) < 1) {
+                                                                                                var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                                $html = file_get_contents('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                                //var_dump($html);
+// Find all article blocks
+
+                                                                                                $patron = '/<b>Price:(.*)&nbsp;</';
+                                                                                                preg_match_all($patron, $html, $coincidencias);
+                                                                                                var_dump($coincidencias);
+
+                                                                                                $Items = array();
+                                                                                                foreach ($coincidencias as $key => $value) {
+                                                                                                    $Items[] = str_replace('</b>&nbsp;$', '', $value);
+                                                                                                }
+
+                                                                                                var_dump($Items);
+                                                                                                if (count($Items[1]) < 1) {
+                                                                                                    var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                                    $html = file_get_contents('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                                    //var_dump($html);
+// Find all article blocks
+
+                                                                                                    $patron = '/<b>Price:(.*)&nbsp;</';
+                                                                                                    preg_match_all($patron, $html, $coincidencias);
+                                                                                                    var_dump($coincidencias);
+
+                                                                                                    $Items = array();
+                                                                                                    foreach ($coincidencias as $key => $value) {
+                                                                                                        $Items[] = str_replace('</b>&nbsp;$', '', $value);
+                                                                                                    }
+
+                                                                                                    var_dump($Items);
+                                                                                                    if (count($Items[1]) < 1) {
+                                                                                                        var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                                        $html = file_get_contents('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                                        //var_dump($html);
+// Find all article blocks
+
+                                                                                                        $patron = '/<b>Price:(.*)&nbsp;</';
+                                                                                                        preg_match_all($patron, $html, $coincidencias);
+                                                                                                        var_dump($coincidencias);
+
+                                                                                                        $Items = array();
+                                                                                                        foreach ($coincidencias as $key => $value) {
+                                                                                                            $Items[] = str_replace('</b>&nbsp;$', '', $value);
+                                                                                                        }
+
+                                                                                                        var_dump($Items);
+                                                                                                        if (count($Items[1]) < 1) {
+                                                                                                            var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                                            $html = file_get_contents('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                                            //var_dump($html);
+// Find all article blocks
+
+                                                                                                            $patron = '/<b>Price:(.*)&nbsp;</';
+                                                                                                            preg_match_all($patron, $html, $coincidencias);
+                                                                                                            var_dump($coincidencias);
+
+                                                                                                            $Items = array();
+                                                                                                            foreach ($coincidencias as $key => $value) {
+                                                                                                                $Items[] = str_replace('</b>&nbsp;$', '', $value);
+                                                                                                            }
+
+                                                                                                            var_dump($Items);
+                                                                                                            if (count($Items[1]) < 1) {
+                                                                                                                var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                                                $html = file_get_contents('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                                                //var_dump($html);
+// Find all article blocks
+
+                                                                                                                $patron = '/<b>Price:(.*)&nbsp;</';
+                                                                                                                preg_match_all($patron, $html, $coincidencias);
+                                                                                                                var_dump($coincidencias);
+
+                                                                                                                $Items = array();
+                                                                                                                foreach ($coincidencias as $key => $value) {
+                                                                                                                    $Items[] = str_replace('</b>&nbsp;$', '', $value);
+                                                                                                                }
+
+                                                                                                                var_dump($Items);
+
+                                                                                                                if (count($Items[1]) < 1) {
+                                                                                                                    var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                                                    $html = file_get_contents('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                                                    //var_dump($html);
+// Find all article blocks
+
+                                                                                                                    $patron = '/<b>Price:(.*)&nbsp;</';
+                                                                                                                    preg_match_all($patron, $html, $coincidencias);
+                                                                                                                    var_dump($coincidencias);
+
+                                                                                                                    $Items = array();
+                                                                                                                    foreach ($coincidencias as $key => $value) {
+                                                                                                                        $Items[] = str_replace('</b>&nbsp;$', '', $value);
+                                                                                                                    }
+
+                                                                                                                    var_dump($Items);
+                                                                                                                    if (count($Items[1]) < 1) {
+                                                                                                                        var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                                                        $html = file_get_contents('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                                                        //var_dump($html);
+// Find all article blocks
+
+                                                                                                                        $patron = '/<b>Price:(.*)&nbsp;</';
+                                                                                                                        preg_match_all($patron, $html, $coincidencias);
+                                                                                                                        var_dump($coincidencias);
+
+                                                                                                                        $Items = array();
+                                                                                                                        foreach ($coincidencias as $key => $value) {
+                                                                                                                            $Items[] = str_replace('</b>&nbsp;$', '', $value);
+                                                                                                                        }
+
+                                                                                                                        var_dump($Items);
+                                                                                                                        if (count($Items[1]) < 1) {
+                                                                                                                            var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                                                            $html = file_get_contents('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                                                            //var_dump($html);
+// Find all article blocks
+
+                                                                                                                            $patron = '/<b>Price:(.*)&nbsp;</';
+                                                                                                                            preg_match_all($patron, $html, $coincidencias);
+                                                                                                                            var_dump($coincidencias);
+
+                                                                                                                            $Items = array();
+                                                                                                                            foreach ($coincidencias as $key => $value) {
+                                                                                                                                $Items[] = str_replace('</b>&nbsp;$', '', $value);
+                                                                                                                            }
+
+                                                                                                                            var_dump($Items);
+                                                                                                                            if (count($Items[1]) < 1) {
+                                                                                                                                var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                                                                $html = file_get_contents('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                                                                //var_dump($html);
+// Find all article blocks
+
+                                                                                                                                $patron = '/<b>Price:(.*)&nbsp;</';
+                                                                                                                                preg_match_all($patron, $html, $coincidencias);
+                                                                                                                                var_dump($coincidencias);
+
+                                                                                                                                $Items = array();
+                                                                                                                                foreach ($coincidencias as $key => $value) {
+                                                                                                                                    $Items[] = str_replace('</b>&nbsp;$', '', $value);
+                                                                                                                                }
+
+                                                                                                                                var_dump($Items);
+                                                                                                                                if (count($Items[1]) < 1) {
+                                                                                                                                    var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                                                                    $html = file_get_contents('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                                                                    //var_dump($html);
+// Find all article blocks
+
+                                                                                                                                    $patron = '/<b>Price:(.*)&nbsp;</';
+                                                                                                                                    preg_match_all($patron, $html, $coincidencias);
+                                                                                                                                    var_dump($coincidencias);
+
+                                                                                                                                    $Items = array();
+                                                                                                                                    foreach ($coincidencias as $key => $value) {
+                                                                                                                                        $Items[] = str_replace('</b>&nbsp;$', '', $value);
+                                                                                                                                    }
+
+                                                                                                                                    var_dump($Items);
+                                                                                                                                    if (count($Items[1]) < 1) {
+                                                                                                                                        var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                                                                        $html = file_get_contents('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                                                                        //var_dump($html);
+// Find all article blocks
+
+                                                                                                                                        $patron = '/<b>Price:(.*)&nbsp;</';
+                                                                                                                                        preg_match_all($patron, $html, $coincidencias);
+                                                                                                                                        var_dump($coincidencias);
+
+                                                                                                                                        $Items = array();
+                                                                                                                                        foreach ($coincidencias as $key => $value) {
+                                                                                                                                            $Items[] = str_replace('</b>&nbsp;$', '', $value);
+                                                                                                                                        }
+
+                                                                                                                                        var_dump($Items);
+                                                                                                                                        if (count($Items[1]) < 1) {
+                                                                                                                                            var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                                                                            $html = file_get_contents('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                                                                            //var_dump($html);
+// Find all article blocks
+
+                                                                                                                                            $patron = '/<b>Price:(.*)&nbsp;</';
+                                                                                                                                            preg_match_all($patron, $html, $coincidencias);
+                                                                                                                                            var_dump($coincidencias);
+
+                                                                                                                                            $Items = array();
+                                                                                                                                            foreach ($coincidencias as $key => $value) {
+                                                                                                                                                $Items[] = str_replace('</b>&nbsp;$', '', $value);
+                                                                                                                                            }
+
+                                                                                                                                            var_dump($Items);
+                                                                                                                                            if (count($Items[1]) < 1) {
+                                                                                                                                                var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                                                                                $html = file_get_contents('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                                                                                //var_dump($html);
+// Find all article blocks
+
+                                                                                                                                                $patron = '/<b>Price:(.*)&nbsp;</';
+                                                                                                                                                preg_match_all($patron, $html, $coincidencias);
+                                                                                                                                                var_dump($coincidencias);
+
+                                                                                                                                                $Items = array();
+                                                                                                                                                foreach ($coincidencias as $key => $value) {
+                                                                                                                                                    $Items[] = str_replace('</b>&nbsp;$', '', $value);
+                                                                                                                                                }
+
+                                                                                                                                                var_dump($Items);
+                                                                                                                                                if (count($Items[1]) < 1) {
+                                                                                                                                                    var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                                                                                    $html = file_get_contents('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                                                                                    //var_dump($html);
+// Find all article blocks
+
+                                                                                                                                                    $patron = '/<b>Price:(.*)&nbsp;</';
+                                                                                                                                                    preg_match_all($patron, $html, $coincidencias);
+                                                                                                                                                    var_dump($coincidencias);
+
+                                                                                                                                                    $Items = array();
+                                                                                                                                                    foreach ($coincidencias as $key => $value) {
+                                                                                                                                                        $Items[] = str_replace('</b>&nbsp;$', '', $value);
+                                                                                                                                                    }
+
+                                                                                                                                                    var_dump($Items);
+                                                                                                                                                    if (count($Items[1]) < 1) {
+                                                                                                                                                        var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                                                                                        $html = file_get_contents('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                                                                                        //var_dump($html);
+// Find all article blocks
+
+                                                                                                                                                        $patron = '/<b>Price:(.*)&nbsp;</';
+                                                                                                                                                        preg_match_all($patron, $html, $coincidencias);
+                                                                                                                                                        var_dump($coincidencias);
+
+                                                                                                                                                        $Items = array();
+                                                                                                                                                        foreach ($coincidencias as $key => $value) {
+                                                                                                                                                            $Items[] = str_replace('</b>&nbsp;$', '', $value);
+                                                                                                                                                        }
+
+                                                                                                                                                        var_dump($Items);
+                                                                                                                                                        if (count($Items[1]) < 1) {
+                                                                                                                                                            var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                                                                                            $html = file_get_contents('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                                                                                            //var_dump($html);
+// Find all article blocks
+
+                                                                                                                                                            $patron = '/<b>Price:(.*)&nbsp;</';
+                                                                                                                                                            preg_match_all($patron, $html, $coincidencias);
+                                                                                                                                                            var_dump($coincidencias);
+
+                                                                                                                                                            $Items = array();
+                                                                                                                                                            foreach ($coincidencias as $key => $value) {
+                                                                                                                                                                $Items[] = str_replace('</b>&nbsp;$', '', $value);
+                                                                                                                                                            }
+
+                                                                                                                                                            var_dump($Items);
+                                                                                                                                                            if (count($Items[1]) < 1) {
+                                                                                                                                                                var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                                                                                                $html = file_get_contents('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                                                                                                //var_dump($html);
+// Find all article blocks
+
+                                                                                                                                                                $patron = '/<b>Price:(.*)&nbsp;</';
+                                                                                                                                                                preg_match_all($patron, $html, $coincidencias);
+                                                                                                                                                                var_dump($coincidencias);
+
+                                                                                                                                                                $Items = array();
+                                                                                                                                                                foreach ($coincidencias as $key => $value) {
+                                                                                                                                                                    $Items[] = str_replace('</b>&nbsp;$', '', $value);
+                                                                                                                                                                }
+
+                                                                                                                                                                var_dump($Items);
+                                                                                                                                                                if (count($Items[1]) < 1) {
+                                                                                                                                                                    var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                                                                                                    $html = file_get_contents('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                                                                                                    //var_dump($html);
+// Find all article blocks
+
+                                                                                                                                                                    $patron = '/<b>Price:(.*)&nbsp;</';
+                                                                                                                                                                    preg_match_all($patron, $html, $coincidencias);
+                                                                                                                                                                    var_dump($coincidencias);
+
+                                                                                                                                                                    $Items = array();
+                                                                                                                                                                    foreach ($coincidencias as $key => $value) {
+                                                                                                                                                                        $Items[] = str_replace('</b>&nbsp;$', '', $value);
+                                                                                                                                                                    }
+
+                                                                                                                                                                    var_dump($Items);
+                                                                                                                                                                    if (count($Items[1]) < 1) {
+                                                                                                                                                                        var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                                                                                                        $html = file_get_contents('http://www.amazon.com/gp/aw/d/' . $code[1]);
+                                                                                                                                                                        //var_dump($html);
+// Find all article blocks
+
+                                                                                                                                                                        $patron = '/<b>Price:(.*)&nbsp;</';
+                                                                                                                                                                        preg_match_all($patron, $html, $coincidencias);
+                                                                                                                                                                        var_dump($coincidencias);
+
+                                                                                                                                                                        $Items = array();
+                                                                                                                                                                        foreach ($coincidencias as $key => $value) {
+                                                                                                                                                                            $Items[] = str_replace('</b>&nbsp;$', '', $value);
+                                                                                                                                                                        }
+
+                                                                                                                                                                        var_dump($Items);
+                                                                                                                                                                    }
+                                                                                                                                                                }
+                                                                                                                                                            }
+                                                                                                                                                        }
+                                                                                                                                                    }
+                                                                                                                                                }
+                                                                                                                                            }
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
                                                     }
                                                 }
                                             }
