@@ -40,6 +40,7 @@ while ($row = $result->fetch()) {
     curl_setopt ($ch, CURLOPT_RETURNTRANSFER, true);
     $html = curl_exec ($ch);
     
+    var_dump($html);
    /* var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
     $html = file_get_contents('http://www.amazon.com/gp/aw/d/' . $code[1]);*/
 
