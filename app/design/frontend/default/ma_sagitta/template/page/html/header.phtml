@@ -39,8 +39,20 @@
                             <?php
                             $obj_php = json_decode(file_get_contents('http://www.set-fx.com/stats?timestamp=1418426752515'));
                             $TRM = str_replace('.', '', $obj_php->trm);
+
+                            $NewValueRoundUp50_ = explode(',', $TRM);
+
+                            $NewValueRoundUp50 = substr($NewValueRoundUp50_[0], -2);
+
+                            //var_dump($NewValueRoundUp50);
+                            if ($NewValueRoundUp50 < 50) {
+
+                                $NewValueRoundUp50 = substr($NewValueRoundUp50_[0], 0, -2) . '50';
+                            } else {
+                                $NewValueRoundUp50 = (substr($NewValueRoundUp50_[0], 0, -2) + 1) . '00';
+                            }
                             //var_dump(number_format(pow(1/$TRM, 1),12));
-                            echo '<b style="color:green;color: rgb(255, 104, 18);">$'.$TRM.' </b>CO';
+                            echo '<b style="color:green;color: rgb(255, 104, 18);">$' . $NewValueRoundUp50 . ' </b>CO';
                             ?> 
                         </div>
 
