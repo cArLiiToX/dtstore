@@ -16,14 +16,14 @@ $NewValueRoundUp50_ = explode(',',$TRM);
 
 $NewValueRoundUp50 = substr($NewValueRoundUp50_[0], -2);
 
-var_dump('Precio Redondeado Dolar: '.$NewValueRoundUp50);
+//var_dump('Precio Redondeado Dolar: '.$NewValueRoundUp50);
 if($NewValueRoundUp50 < 50){
     
     $NewValueRoundUp50 = substr($NewValueRoundUp50_[0], 0, -2).'50';
 }else{
     $NewValueRoundUp50 = (substr($NewValueRoundUp50_[0], 0, -2) + 1).'00';
 }
-
+var_dump('Nuevo precio dolar: '.$NewValueRoundUp50);
 //die($NewValueRoundUp50);
 
 
@@ -788,6 +788,8 @@ while ($row = $result->fetch()) {
     var_dump($NuevoPrecioCalculado);
 
     $New_Price = ($NuevoPrecioCalculado * $TRM) + 10000;
+    
+    var_dump($New_Price);
     $_product->setPrice($New_Price)->save();
 
     //var_dump($html);
