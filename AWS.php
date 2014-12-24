@@ -782,12 +782,12 @@ while ($row = $result->fetch()) {
 
     var_dump((int) round($NuevoPrecio[0]));
     var_dump((int) round($PrecioImportacion));
-    var_dump((int) round($TRM));
+    var_dump((int) round($NewValueRoundUp50));
 
     $NuevoPrecioCalculado = (int) round($NuevoPrecio[0]) + (int) round($PrecioImportacion);
     var_dump($NuevoPrecioCalculado);
 
-    $New_Price = ($NuevoPrecioCalculado * $TRM) + 10000;
+    $New_Price = ($NuevoPrecioCalculado * $NewValueRoundUp50) + 10000;
     
     var_dump($New_Price);
     $_product->setPrice($New_Price)->save();
