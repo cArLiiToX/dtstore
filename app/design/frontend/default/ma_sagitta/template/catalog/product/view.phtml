@@ -184,10 +184,22 @@ $id = $this->getProduct()->getEntityId();
             console.log('afuera')
         })
 
+<?php
+$pageURL = 'http';
+if ($_SERVER["HTTPS"] == "on") {
+    $pageURL .= "s";
+}
+$pageURL .= "://";
+if ($_SERVER["SERVER_PORT"] != "80") {
+    $pageURL .= $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . $_SERVER["REQUEST_URI"];
+} else {
+    $pageURL .= $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
+}
+?>
 
         jQuery('.send-question').click(function () {
             jQuery.post('/sendMessage.php', {product_id: <?php echo $id ?>, message: jQuery('#questionText').val()}, function (data) {
-                window.location = '/<?php echo $_SERVER['REQUEST_URI']?>';
+                window.location = '<?php echo $pageURL ?>';
             })
         })
     })
@@ -252,8 +264,8 @@ $id = $this->getProduct()->getEntityId();
                                         <span><?php echo $row['pregunta'] ?></span>
                                     </dd>
 
-    <?php if (isset($row['respuesta'])) {
-        ?>
+                                    <?php if (isset($row['respuesta'])) {
+                                        ?>
                                         <dt class="answer">
                                         <i class="vip-icon ch-icon-comments"></i>
                                         <label class="ch-hide" title="Respuesta">Respuesta:</label>
@@ -262,24 +274,25 @@ $id = $this->getProduct()->getEntityId();
                                             <span><?php echo $row['respuesta'] ?></span>
                                             <span class="time"> - <?php echo Mage::time_elapsed_string2($row['updated_at'], true) ?>.</span>
                                         </dd>
-    <?php }
-    ?>
+                                    <?php }
+                                    ?>
 
                                 </dl>
                             </li>
 
                         </span>
                     </ol>	
-                </div>
-    <?php
-}
-?>
 
+                    <?php
+                }
+                ?>
+
+            </div>
 
         </div>
-            <?php echo $this->getChildHtml('upsell_products') ?>
-            <?php echo $this->getChildHtml('related_slider') ?>
-            <?php echo $this->getChildHtml('product_additional_data') ?>
+        <?php echo $this->getChildHtml('upsell_products') ?>
+        <?php echo $this->getChildHtml('related_slider') ?>
+        <?php echo $this->getChildHtml('product_additional_data') ?>
     </div>
 </div>
 
