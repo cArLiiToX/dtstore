@@ -31,7 +31,12 @@
  */
 ?>
 <?php $_helper = $this->helper('catalog/output'); ?>
-<?php $_product = $this->getProduct(); ?>
+<?php
+$_product = $this->getProduct();
+$id = $this->getProduct()->getEntityId();
+?>
+
+
 <script type="text/javascript">
     var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
 </script>
@@ -74,39 +79,36 @@
                         <?php echo $this->getTierPriceHtml() ?>
                         <?php
                         echo $this->getChildHtml('extrahint');
-
-
-                       
                         ?>
 
 
                     </div>
 
-                        <?php if (!$this->hasOptions()): ?>
+                    <?php if (!$this->hasOptions()): ?>
                         <div class="add-to-box-view">
                             <?php if ($_product->isSaleable()): ?>
                                 <?php echo $this->getChildHtml('addtocart') ?>
                             <?php endif; ?>
-                        <?php //echo $this->getChildHtml('addto')  ?>
+                            <?php //echo $this->getChildHtml('addto')  ?>
                         </div>
                         <?php echo $this->getChildHtml('extra_buttons') ?>
-<?php elseif (!$_product->isSaleable()): ?>
+                    <?php elseif (!$_product->isSaleable()): ?>
 
 
-<?php endif; ?>
+                    <?php endif; ?>
 
 
                     <?php echo $this->getChildHtml('other'); ?>
 
                     <div class="add-to-box">
-                    <?php echo $this->getChildHtml('addto') ?>
-<?php if ($this->canEmailToFriend()): ?>
+                        <?php echo $this->getChildHtml('addto') ?>
+                        <?php if ($this->canEmailToFriend()): ?>
                             <p class="email-friend"><a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>"><?php echo $this->__('+ Email') ?></a></p>
                         <?php endif; ?>
                     </div>
 
-                        <?php if ($_product->isSaleable() && $this->hasOptions()): ?>
-    <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
+                    <?php if ($_product->isSaleable() && $this->hasOptions()): ?>
+                        <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
                     <?php endif; ?>
 
                     <?php if ($_product->isSaleable() && $this->hasOptions()): ?>
@@ -172,14 +174,112 @@
         }
     }.bind(productAddToCartForm);
     //]]>
+
+    jQuery(document).ready(function () {
+        jQuery('#questionText').focus(function () {
+            console.log('adentro')
+        })
+
+        jQuery('#questionText').focusout(function () {
+            console.log('afuera')
+        })
+
+
+        jQuery('.send-question').click(function () {
+            jQuery.post('/sendQuestion.php', {product_id: <?php echo $id ?>, message: jQuery('#questionText').val()}, function (data) {
+
+            })
+        })
+    })
         </script>
     </div>
 
     <div class="product-collateral">
-<?php echo $this->getChildHtml('info_tabs') ?>
-<?php echo $this->getChildHtml('upsell_products') ?>
-        <?php echo $this->getChildHtml('related_slider') ?>
-        <?php echo $this->getChildHtml('product_additional_data') ?>
+        <?php echo $this->getChildHtml('info_tabs') ?>
+
+
+        <div class="col-lg-12">
+            <div class="ch-box-lite new-questions">	
+                <!-- empieza el form -->	
+                <div class="make-question">	
+                    <form class="ch-form-row" method="post" id="form_quest">	
+                        <div class="wraper-textarea">	
+                            <i class="vip-icon ch-icon-comment"></i>	
+                            <span class="ch-hide">Pregunta:</span>	
+                            <p>	
+                                <textarea class="" name="questionText" id="questionText" cols="110" width="90%" title="Escribe tu pregunta..." placeholder="Escribe tu pregunta"></textarea>	
+                            </p>
+                            <?php
+                            if (Mage::getSingleton('customer/session')->isLoggedIn()) {
+                                ?>
+                                <a class="btn btn-primary btn-sm pull-right send-question" style="margin-top: -11px;margin-right: 8px;">Enviar</a>
+
+                                <?php
+                            } else {
+                                ?>
+                                <a class="btn btn-primary btn-sm pull-right login" style="margin-top: -11px;margin-right: 8px;" href="/customer/account/login/">Login</a>
+
+                                <?php
+                            }
+                            ?>
+                        </div>	
+
+                    </form>	
+                </div>	
+
+
+                <?php
+                $sql = "SELECT * FROM  preguntas_products_pregunta_product as app, preguntas_products_pregunta as aps WHERE aps.entity_id = app.pregunta_id and  status = 1 and product_id = $id order by aps.entity_id DESC";
+// fetch write database connection that is used in Mage_Core module
+                $write = Mage::getSingleton('core/resource')->getConnection('core_write');
+
+// now $write is an instance of Zend_Db_Adapter_Abstract
+                $result = $write->query($sql);
+                ?>
+
+                <?php
+                while ($row = $result->fetch()) {
+                    ?>
+                    <ol id="otherQuestions" class="list-questions">	
+                        <span id="groupQuestion1">
+                            <li id="Quest3392691926"> 
+                                <dl class="question" id="1"> 
+                                    <dt class="title">
+                                    <i class="vip-icon ch-icon-comment"></i>
+                                    <label class="ch-hide" title="Pregunta">Pregunta:</label>
+                                    </dt>
+                                    <dd class="txt">
+                                        <span><?php echo $row['pregunta'] ?></span>
+                                    </dd>
+
+    <?php if (isset($row['respuesta'])) {
+        ?>
+                                        <dt class="answer">
+                                        <i class="vip-icon ch-icon-comments"></i>
+                                        <label class="ch-hide" title="Respuesta">Respuesta:</label>
+                                        </dt>
+                                        <dd class="txt answer-txt">
+                                            <span><?php echo $row['respuesta'] ?></span>
+                                            <span class="time"> - <?php echo Mage::time_elapsed_string2($row['updated_at'], true) ?>.</span>
+                                        </dd>
+    <?php }
+    ?>
+
+                                </dl>
+                            </li>
+
+                        </span>
+                    </ol>	
+                </div>
+    <?php
+}
+?>
+
+
+        </div>
+            <?php echo $this->getChildHtml('upsell_products') ?>
+            <?php echo $this->getChildHtml('related_slider') ?>
+            <?php echo $this->getChildHtml('product_additional_data') ?>
     </div>
 </div>
 

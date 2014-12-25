@@ -1,0 +1,35 @@
+<?php
+/**
+ * Preguntas_Products extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Preguntas
+ * @package        Preguntas_Products
+ * @copyright      Copyright (c) 2014
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+/**
+ * Preguntas Product list template on product page
+ *
+ * @category    Preguntas
+ * @package     Preguntas_Products
+ * @author      Ultimate Module Creator
+ */
+?>
+<?php $preguntas = $this->getPreguntaCollection();?>
+<?php if ($preguntas && $preguntas->count() > 0) :?>
+<div class="box-collateral box-preguntas box-up-sell">
+    <?php foreach ($preguntas as $_pregunta) : ?>
+        <div class="item">
+            <?php echo $_pregunta->getName();?>
+<br />
+        </div>
+    <?php endforeach; ?>
+</div>
+<?php endif;?>

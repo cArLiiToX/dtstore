@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Preguntas_Products extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Preguntas
+ * @package        Preguntas_Products
+ * @copyright      Copyright (c) 2014
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<config>
+    <modules>
+        <Preguntas_Products>
+            <version>1.0.0</version>
+        </Preguntas_Products>
+    </modules>
+    <global>
+        <resources>
+            <preguntas_products_setup>
+                <setup>
+                    <module>Preguntas_Products</module>
+                    <class>Preguntas_Products_Model_Resource_Setup</class>
+                </setup>
+            </preguntas_products_setup>
+        </resources>
+        <blocks>
+            <preguntas_products>
+                <class>Preguntas_Products_Block</class>
+            </preguntas_products>
+        </blocks>
+        <helpers>
+            <preguntas_products>
+                <class>Preguntas_Products_Helper</class>
+            </preguntas_products>
+        </helpers>
+        <models>
+            <preguntas_products>
+                <class>Preguntas_Products_Model</class>
+                <resourceModel>preguntas_products_resource</resourceModel>
+            </preguntas_products>
+            <preguntas_products_resource>
+                <class>Preguntas_Products_Model_Resource</class>
+                <entities>
+                    <pregunta>
+                        <table>preguntas_products_pregunta</table>
+                    </pregunta>
+                    <pregunta_product>
+                        <table>preguntas_products_pregunta_product</table>
+                    </pregunta_product>
+                </entities>
+            </preguntas_products_resource>
+        </models>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <preguntas_products>
+                    <file>preguntas_products.xml</file>
+                </preguntas_products>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Preguntas_Products>
+                    <files>
+                        <default>Preguntas_Products.csv</default>
+                    </files>
+                </Preguntas_Products>
+            </modules>
+        </translate>
+        <events>
+            <core_block_abstract_prepare_layout_after>
+                <observers>
+                    <preguntas_products_pregunta_product>
+                        <type>singleton</type>
+                        <class>preguntas_products/adminhtml_observer</class>
+                        <method>addProductPreguntaBlock</method>
+                    </preguntas_products_pregunta_product>
+                </observers>
+            </core_block_abstract_prepare_layout_after>
+            <catalog_product_save_after>
+                <observers>
+                    <preguntas_products_pregunta_product>
+                        <type>singleton</type>
+                        <class>preguntas_products/adminhtml_observer</class>
+                        <method>saveProductPreguntaData</method>
+                    </preguntas_products_pregunta_product>
+                </observers>
+            </catalog_product_save_after>
+        </events>
+        <global_search>
+            <pregunta>
+                <class>preguntas_products/adminhtml_search_pregunta</class>
+                <acl>preguntas_products</acl>
+            </pregunta>
+        </global_search>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Preguntas_Products before="Mage_Adminhtml">Preguntas_Products_Adminhtml</Preguntas_Products>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <frontend>
+        <layout>
+            <updates>
+                <preguntas_products>
+                    <file>preguntas_products.xml</file>
+                </preguntas_products>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Preguntas_Products>
+                    <files>
+                        <default>Preguntas_Products.csv</default>
+                    </files>
+                </Preguntas_Products>
+            </modules>
+        </translate>
+    </frontend>
+    <default>
+        <preguntas_products>
+        </preguntas_products>
+    </default>
+</config>

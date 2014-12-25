@@ -1,0 +1,6 @@
+app/code/community/Preguntas_Products    app/code/community/Preguntas_Products
+app/design/adminhtml/default/default/layout/preguntas_products.xml    app/design/adminhtml/default/default/layout/preguntas_products.xml
+app/design/adminhtml/default/default/template/preguntas_products    app/design/adminhtml/default/default/template/preguntas_products
+app/design/frontend/base/default/layout/preguntas_products.xml    app/design/frontend/base/default/layout/preguntas_products.xml
+app/etc/modules/Preguntas_Products.xml    app/etc/modules/Preguntas_Products.xml
+app/locale/en_US/Preguntas_Products.csv    app/locale/en_US/Preguntas_Products.csv

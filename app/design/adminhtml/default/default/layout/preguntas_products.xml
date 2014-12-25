@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Preguntas_Products extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Preguntas
+ * @package        Preguntas_Products
+ * @copyright      Copyright (c) 2014
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+--> 
+<layout>
+    <adminhtml_products_pregunta_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>preguntas_products/pregunta</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="preguntas_products/adminhtml_pregunta" name="pregunta" />
+
+        </reference>
+    </adminhtml_products_pregunta_index>
+    <adminhtml_products_pregunta_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="preguntas_products/adminhtml_pregunta_grid" name="pregunta_grid"/>
+        </block>
+    </adminhtml_products_pregunta_grid>
+    <!-- Pregunta add/edit action -->
+    <adminhtml_products_pregunta_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>preguntas_products/pregunta</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="preguntas_products/adminhtml_pregunta_edit" name="pregunta_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="preguntas_products/adminhtml_pregunta_edit_tabs" name="pregunta_tabs"></block>
+        </reference>
+    </adminhtml_products_pregunta_edit>
+
+    <adminhtml_products_pregunta_catalog_product_preguntas>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="preguntas_products/adminhtml_catalog_product_edit_tab_pregunta" name="product.edit.tab.pregunta"/>
+            <block type="adminhtml/widget_grid_serializer" name="pregunta_grid_serializer">
+                <reference name="pregunta_grid_serializer">
+                    <action method="initSerializerBlock">
+                        <grid_block_name>product.edit.tab.pregunta</grid_block_name>
+                        <data_callback>getSelectedPreguntas</data_callback>
+                        <hidden_input_name>preguntas</hidden_input_name>
+                        <reload_param_name>product_preguntas</reload_param_name>
+                    </action>
+                    <action method="addColumnInputName">
+                        <input_name>position</input_name>
+                    </action>
+                </reference>
+            </block>
+        </block>
+    </adminhtml_products_pregunta_catalog_product_preguntas>
+    <adminhtml_products_pregunta_catalog_product_preguntasgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="preguntas_products/adminhtml_catalog_product_edit_tab_pregunta" name="product.edit.tab.pregunta"/>
+        </block>
+    </adminhtml_products_pregunta_catalog_product_preguntasgrid>
+    <adminhtml_products_pregunta_products>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="preguntas_products/adminhtml_pregunta_edit_tab_product" name="pregunta.edit.tab.product"/>
+            <block type="adminhtml/widget_grid_serializer" name="product_grid_serializer">
+                <reference name="product_grid_serializer">
+                    <action method="initSerializerBlock">
+                        <grid_block_name>pregunta.edit.tab.product</grid_block_name>
+                            <data_callback>getSelectedProducts</data_callback>
+                            <hidden_input_name>products</hidden_input_name>
+                            <reload_param_name>pregunta_products</reload_param_name>
+                    </action>
+                    <action method="addColumnInputName">
+                        <input_name>position</input_name>
+                    </action>
+                </reference>
+            </block>
+        </block>
+    </adminhtml_products_pregunta_products>
+    <adminhtml_products_pregunta_productsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="preguntas_products/adminhtml_pregunta_edit_tab_product" name="pregunta.edit.tab.product"/>
+        </block>
+    </adminhtml_products_pregunta_productsgrid>
+</layout>
