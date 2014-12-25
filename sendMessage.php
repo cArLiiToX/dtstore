@@ -46,7 +46,7 @@ $customer = $customerSession->getCustomer();
 if ($customerSession->isLoggedIn()) {
 
 
-    echo $sql = 'INSERT INTO `preguntas_products_pregunta` (name,email,pregunta,status,updated_at,created_at) values ("' . $customer->getName() . '","' 
+    $sql = 'INSERT INTO `preguntas_products_pregunta` (name,email,pregunta,status,updated_at,created_at) values ("' . $customer->getName() . '","' 
 . 
 $customer->getEmail() . '","' . $_REQUEST['message'] . '",1,"' . date('Y-m-d H:i:s') . '","' . date('Y-m-d H:i:s') . '")';
 
@@ -56,13 +56,43 @@ $customer->getEmail() . '","' . $_REQUEST['message'] . '",1,"' . date('Y-m-d H:i
     $lastInsertId = $write->lastInsertId();
 
 
-echo $sql = 'INSERT INTO `preguntas_products_pregunta_product` (pregunta_id, product_id,position) values ("' . $lastInsertId . '","' . 
+$sql = 'INSERT INTO `preguntas_products_pregunta_product` (pregunta_id, product_id,position) values ("' . $lastInsertId . '","' . 
 $_REQUEST['product_id'] . '",1)';
 $write = Mage::getSingleton('core/resource')->getConnection('core_write'); 
         $write->query($sql);
     $lastInsertId = $write->lastInsertId();
 
     var_dump($lastInsertId);
+}
+
+
+$toAddresses = array('nikolaisan@hotmail.com','carlos@xng.bz' );
+
+if (!Mage::isInstalled()) {
+    echo "Application is not installed yet, please complete install wizard first.";
+    exit;
+}
+
+
+$product = Mage::getModel('catalog/product')->load($_REQUEST['product_id']); 
+$from = $customer->getEmail();
+$html =  $customer->getName().' te envio una pregunta acerca del producto: <br /><b>'.$product->getName().'</b><br /><br /><br /><b>Pregunta:</b> '.$_REQUEST['message'].' <br /><br /><b>Enviada el:</b> '.date('Y-m-d H:i:s');
+
+// multiple recipients
+
+
+
+$subject = 'Nueva pregunta para el producto '.$product->getName().' - DT Store!';
+$message = $html;
+
+$headers = "Content-type: text/html; charset=iso-8859-1\r\n";
+$headers .= "From: $from\r\n";
+//$headers .= "BCC: mark@besthdeaths.com\r\n";
+
+foreach ($toAddresses as $to) {
+    if(mail($to, $subject, $message, $headers)){
+        echo "OK - sent message to {$to}";
+    }
 }
 
 
