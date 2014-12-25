@@ -17,7 +17,7 @@ Mage::register('isSecureArea', true);
 //$sql = 'UPDATE `preguntas_products_pregunta` set name= "'.$_REQUEST['name'].'", email= "'.$_REQUEST['email'].'", pregunta= "'.$_REQUEST['pregunta'].'" WHERE ';
 var_dump(Mage::getSingleton('customer/session')->isLoggedIn());
 
-var_dump( $customer = Mage::getSingleton('customer/session')->getCustomer());
+var_dump( $_SESSION);
 if (Mage::getSingleton('customer/session')->isLoggedIn()) {
 
     // Load the customer's data
