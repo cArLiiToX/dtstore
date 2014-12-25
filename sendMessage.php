@@ -21,10 +21,12 @@ if (Mage::getSingleton('customer/session')->isLoggedIn()) {
     // Load the customer's data
     $customer = Mage::getSingleton('customer/session')->getCustomer();
 
-    $sql = 'INSERT INTO `preguntas_products_pregunta` (name,email,pregunta,status,updated_at,created_at) values ("' . $customer->getName() . '","' . $customer->getEmail() . '","' . $_REQUEST['pregunta'] . '",1,"' . date('Y-m-d H:i:s') . '","' . date('Y-m-d H:i:s') . '"';
+    echo $sql = 'INSERT INTO `preguntas_products_pregunta` (name,email,pregunta,status,updated_at,created_at) values ("' . $customer->getName() . '","' . $customer->getEmail() . '","' . $_REQUEST['message'] . '",1,"' . date('Y-m-d H:i:s') . '","' . date('Y-m-d H:i:s') . '"';
 
 // fetch write database connection that is used in Mage_Core module
     $write = Mage::getSingleton('core/resource')->getConnection('core_write');
+    
+    var_dump($write);
 }
 
 
