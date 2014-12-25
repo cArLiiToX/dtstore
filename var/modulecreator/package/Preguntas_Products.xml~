@@ -100,7 +100,6 @@ http://opensource.org/licenses/mit-license.php
 <note><![CDATA[Contenido de la Pregunta]]></note>
 <position><![CDATA[30]]></position>
 <required><![CDATA[0]]></required>
-<admin_grid><![CDATA[1]]></admin_grid>
 <editor><![CDATA[0]]></editor>
 <default_value><![CDATA[]]></default_value>
 <index><![CDATA[2]]></index>
@@ -112,7 +111,6 @@ http://opensource.org/licenses/mit-license.php
 <note><![CDATA[]]></note>
 <position><![CDATA[40]]></position>
 <required><![CDATA[0]]></required>
-<admin_grid><![CDATA[1]]></admin_grid>
 <editor><![CDATA[0]]></editor>
 <default_value><![CDATA[]]></default_value>
 <index><![CDATA[3]]></index>
