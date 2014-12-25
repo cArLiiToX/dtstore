@@ -15,7 +15,7 @@ Mage::register('isSecureArea', true);
 
 //SELECT * FROM  preguntas_products_pregunta_product as app, preguntas_products_pregunta as aps WHERE aps.entity_id = app.pregunta_id and  status = 1 and product_id = $id order by aps.entity_id DESC
 //$sql = 'UPDATE `preguntas_products_pregunta` set name= "'.$_REQUEST['name'].'", email= "'.$_REQUEST['email'].'", pregunta= "'.$_REQUEST['pregunta'].'" WHERE ';
-
+var_dump(Mage::getSingleton('customer/session')->isLoggedIn());
 if (Mage::getSingleton('customer/session')->isLoggedIn()) {
 
     // Load the customer's data
