@@ -14,3 +14,8 @@ media/tmp/
 tmp/
 cache/
 /nbproject/private/
+media/catalog/
+media/bannerdt/
+var/report/
+var/amazoncookie.txt
+media/email/
