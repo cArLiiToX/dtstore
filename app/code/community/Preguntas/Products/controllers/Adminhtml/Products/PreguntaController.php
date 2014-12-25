@@ -274,6 +274,43 @@ class Preguntas_Products_Adminhtml_Products_PreguntaController extends Preguntas
     }
 
     /**
+     * mass Contestada change - action
+     *
+     * @access public
+     * @return void
+     * @author Ultimate Module Creator
+     */
+    public function massContestadaAction()
+    {
+        $preguntaIds = $this->getRequest()->getParam('pregunta');
+        if (!is_array($preguntaIds)) {
+            Mage::getSingleton('adminhtml/session')->addError(
+                Mage::helper('preguntas_products')->__('Please select preguntas products.')
+            );
+        } else {
+            try {
+                foreach ($preguntaIds as $preguntaId) {
+                $pregunta = Mage::getSingleton('preguntas_products/pregunta')->load($preguntaId)
+                    ->setContestada($this->getRequest()->getParam('flag_contestada'))
+                    ->setIsMassupdate(true)
+                    ->save();
+                }
+                $this->_getSession()->addSuccess(
+                    $this->__('Total of %d preguntas products were successfully updated.', count($preguntaIds))
+                );
+            } catch (Mage_Core_Exception $e) {
+                Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
+            } catch (Exception $e) {
+                Mage::getSingleton('adminhtml/session')->addError(
+                    Mage::helper('preguntas_products')->__('There was an error updating preguntas products.')
+                );
+                Mage::logException($e);
+            }
+        }
+        $this->_redirect('*/*/index');
+    }
+
+    /**
      * get grid of products action
      *
      * @access public

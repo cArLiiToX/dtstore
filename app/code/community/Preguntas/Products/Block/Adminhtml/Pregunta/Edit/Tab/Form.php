@@ -67,7 +67,7 @@ class Preguntas_Products_Block_Adminhtml_Pregunta_Edit_Tab_Form extends Mage_Adm
 
         $fieldset->addField(
             'pregunta',
-            'textarea',
+            'text',
             array(
                 'label' => Mage::helper('preguntas_products')->__('Pregunta'),
                 'name'  => 'pregunta',
@@ -78,11 +78,33 @@ class Preguntas_Products_Block_Adminhtml_Pregunta_Edit_Tab_Form extends Mage_Adm
 
         $fieldset->addField(
             'respuesta',
-            'textarea',
+            'text',
             array(
                 'label' => Mage::helper('preguntas_products')->__('Respuesta'),
                 'name'  => 'respuesta',
 
+           )
+        );
+
+        $fieldset->addField(
+            'contestada',
+            'select',
+            array(
+                'label' => Mage::helper('preguntas_products')->__('Contestada'),
+                'name'  => 'contestada',
+            'required'  => true,
+            'class' => 'required-entry',
+
+            'values'=> array(
+                array(
+                    'value' => 1,
+                    'label' => Mage::helper('preguntas_products')->__('Yes'),
+                ),
+                array(
+                    'value' => 0,
+                    'label' => Mage::helper('preguntas_products')->__('No'),
+                ),
+            ),
            )
         );
         $fieldset->addField(

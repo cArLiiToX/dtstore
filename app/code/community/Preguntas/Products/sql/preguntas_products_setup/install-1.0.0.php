@@ -51,15 +51,23 @@ $table = $this->getConnection()
     )
     ->addColumn(
         'pregunta',
-        Varien_Db_Ddl_Table::TYPE_TEXT, '64k',
+        Varien_Db_Ddl_Table::TYPE_TEXT, 255,
         array(),
         'Pregunta'
     )
     ->addColumn(
         'respuesta',
-        Varien_Db_Ddl_Table::TYPE_TEXT, '64k',
+        Varien_Db_Ddl_Table::TYPE_TEXT, 255,
         array(),
         'Respuesta'
+    )
+    ->addColumn(
+        'contestada',
+        Varien_Db_Ddl_Table::TYPE_SMALLINT, null,
+        array(
+            'nullable'  => false,
+        ),
+        'Contestada'
     )
     ->addColumn(
         'status',

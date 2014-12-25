@@ -103,6 +103,37 @@ class Preguntas_Products_Block_Adminhtml_Pregunta_Grid extends Mage_Adminhtml_Bl
             )
         );
         $this->addColumn(
+            'pregunta',
+            array(
+                'header' => Mage::helper('preguntas_products')->__('Pregunta'),
+                'index'  => 'pregunta',
+                'type'=> 'text',
+
+            )
+        );
+        $this->addColumn(
+            'respuesta',
+            array(
+                'header' => Mage::helper('preguntas_products')->__('Respuesta'),
+                'index'  => 'respuesta',
+                'type'=> 'text',
+
+            )
+        );
+        $this->addColumn(
+            'contestada',
+            array(
+                'header' => Mage::helper('preguntas_products')->__('Contestada'),
+                'index'  => 'contestada',
+                'type'    => 'options',
+                    'options'    => array(
+                    '1' => Mage::helper('preguntas_products')->__('Yes'),
+                    '0' => Mage::helper('preguntas_products')->__('No'),
+                )
+
+            )
+        );
+        $this->addColumn(
             'created_at',
             array(
                 'header' => Mage::helper('preguntas_products')->__('Created at'),
@@ -179,6 +210,26 @@ class Preguntas_Products_Block_Adminhtml_Pregunta_Grid extends Mage_Adminhtml_Bl
                             '1' => Mage::helper('preguntas_products')->__('Enabled'),
                             '0' => Mage::helper('preguntas_products')->__('Disabled'),
                         )
+                    )
+                )
+            )
+        );
+        $this->getMassactionBlock()->addItem(
+            'contestada',
+            array(
+                'label'      => Mage::helper('preguntas_products')->__('Change Contestada'),
+                'url'        => $this->getUrl('*/*/massContestada', array('_current'=>true)),
+                'additional' => array(
+                    'flag_contestada' => array(
+                        'name'   => 'flag_contestada',
+                        'type'   => 'select',
+                        'class'  => 'required-entry',
+                        'label'  => Mage::helper('preguntas_products')->__('Contestada'),
+                        'values' => array(
+                                '1' => Mage::helper('preguntas_products')->__('Yes'),
+                                '0' => Mage::helper('preguntas_products')->__('No'),
+                            )
+
                     )
                 )
             )
