@@ -5175,3 +5175,10 @@ margin-left: 20px;
 .new-questions .list-questions .question .time {
 color: #999;
 }
+
+.tracking-table th.label{
+    color: black;
+    border: 0;
+    font-size: 15px;
+    line-height: 30px;
+}
