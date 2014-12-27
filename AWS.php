@@ -7,23 +7,37 @@ Mage::app('admin');
 Mage::getSingleton("core/session", array("name" => "adminhtml"));
 Mage::register('isSecureArea', true);
 
-$obj_php = json_decode(file_get_contents('http://www.set-fx.com/stats?timestamp=1418426752515'));
-$TRM = str_replace('.', '', $obj_php->trm);
 
-var_dump('Precio Base Dolar: '.$TRM);
 
-$NewValueRoundUp50_ = explode(',',$TRM);
+var_dump('http://dolar.wilkinsonpc.com.co/widgets/gratis/dolar-cop-usd-1.html');
+$html = file_get_contents('http://dolar.wilkinsonpc.com.co/widgets/gratis/dolar-cop-usd-1.html');
+//var_dump($html);
+// Find all article blocks
+
+$patron = '/<div id="widget_valor">(.*)</';
+preg_match_all($patron, $html, $coincidencias);
+
+$Items = array();
+
+$TRM = str_replace(',', '', $coincidencias[1][0]);
+$TRM = str_replace('.', ',', $TRM);
+$TRM = str_replace('$', '', $TRM);
+
+
+var_dump('Precio Base Dolar: ' . $TRM);
+
+$NewValueRoundUp50_ = explode(',', $TRM);
 
 $NewValueRoundUp50 = substr($NewValueRoundUp50_[0], -2);
 
 //var_dump('Precio Redondeado Dolar: '.$NewValueRoundUp50);
-if($NewValueRoundUp50 < 50){
-    
-    $NewValueRoundUp50 = substr($NewValueRoundUp50_[0], 0, -2).'50';
-}else{
-    $NewValueRoundUp50 = (substr($NewValueRoundUp50_[0], 0, -2) + 1).'00';
+if ($NewValueRoundUp50 < 50) {
+
+    $NewValueRoundUp50 = substr($NewValueRoundUp50_[0], 0, -2) . '50';
+} else {
+    $NewValueRoundUp50 = (substr($NewValueRoundUp50_[0], 0, -2) + 1) . '00';
 }
-var_dump('Nuevo precio dolar: '.$NewValueRoundUp50);
+var_dump('Nuevo precio dolar: ' . $NewValueRoundUp50);
 //die($NewValueRoundUp50);
 
 
@@ -788,7 +802,7 @@ while ($row = $result->fetch()) {
     var_dump($NuevoPrecioCalculado);
 
     $New_Price = ($NuevoPrecioCalculado * $NewValueRoundUp50) + 10000;
-    
+
     var_dump($New_Price);
     $_product->setPrice($New_Price)->save();
 
