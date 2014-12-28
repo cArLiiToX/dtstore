@@ -7,14 +7,14 @@
     $effect_to_cart = Mage::getStoreConfig('ajaxcartsuper/ajaxcartsuper_config/effect_to_cart') ;
     $enable_module = Mage::getStoreConfig('ajaxcartsuper/ajaxcartsuper_config/enabled') ;
 	$usingSsl = Mage::getStoreConfig('ajaxcartsuper/ajaxcartsuper_config/using_ssl') ;
-    $titleBoxShopping = $this->__('Go to shopping cart');
-    $titleBoxShoppingContinue = $this->__('Continue Shopping');
-    $titleBoxShoppingW = $this->__('Go to wishlist');
-    $titleBoxShoppingC = $this->__('Go to list Compare');
-    $confirmDelete = $this-> __('Are you sure you would like to remove this item ?');
-    $addToCartSuccesful = $this->__('Item was successfully added to your cart');
-    $addToWishlistSuccesful = $this->__('Item was successfully added to your wishlist');
-    $addToCompareSuccesful = $this->__('Item was successfully added to your compare');
+    $titleBoxShopping = $this->__('Ir al carrito de compras');
+    $titleBoxShoppingContinue = $this->__('Continuar Comprando');
+    $titleBoxShoppingW = $this->__('Ir a la lista de Deseos');
+    $titleBoxShoppingC = $this->__('Ir a la lista de Comparación');
+    $confirmDelete = $this-> __('¿Estás seguro de que quieres remover este item ?');
+    $addToCartSuccesful = $this->__('El item fue agregado correctamente al carrito de compras');
+    $addToWishlistSuccesful = $this->__('El item fue agregado correctamente a su Lista de deseos');
+    $addToCompareSuccesful = $this->__('El item fue agregado correctamente a su Lista de Comparación');
     if(!$enable_module) return ;
     if($loading_bg==NULL) $loading_bg ='black';
     if($bg_opacity==NULL) $loading_bg =0.5
