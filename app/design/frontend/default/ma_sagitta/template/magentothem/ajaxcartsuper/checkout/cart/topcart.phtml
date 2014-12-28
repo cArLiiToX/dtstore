@@ -11,7 +11,7 @@
             <div class="block-cart">
                 <?php $_cartQty = $this->getSummaryCount() ?>
                 <div class="top-cart-title">
-                    <div class="shopping_cart"><?php echo $this->__('shopping cart') ?></div>
+                    <div class="shopping_cart"><?php echo $this->__('Carrito de Compras') ?></div>
                     <div class="shopping_cart_mobile"><?php echo $this->__('cart') ?></div>
                   <span><span><?php echo $_cartQty; ?> <?php if($_cartQty>1) { echo $this->__('items'); } else { echo $this->__('item'); } ?></span> - <?php echo Mage::helper('checkout')->formatPrice($this->getSubtotal()) ?></span>
                 </div>
