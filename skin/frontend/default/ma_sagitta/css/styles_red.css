@@ -5251,3 +5251,7 @@ dl, dd, dt {
 .footer-static-container {
  display:none;   
 }
+
+.tabs.tabs-new_products{
+    display:none;
+}
