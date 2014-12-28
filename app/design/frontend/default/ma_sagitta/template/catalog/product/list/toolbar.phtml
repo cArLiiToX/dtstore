@@ -52,7 +52,7 @@
             <?php endif; ?>
         </p>
         <div class="sort-by hidden-phone">
-            <label><?php echo $this->__('Sort by:') ?></label>
+            <label><?php echo $this->__('Ordenar por:') ?></label>
             <div class="select-sort-by">
             <select onchange="setLocation(this.value)">
             <?php foreach($this->getAvailableOrders() as $_key=>$_order): ?>
@@ -69,7 +69,7 @@
             <?php endif; ?>
         </div>	
 	<div class="limiter visible-desktop">
-            <label><?php echo $this->__('Show:') ?></label>
+            <label><?php echo $this->__('Mostrar') ?></label>
             <div class="select-limiter">
             <select onchange="setLocation(this.value)">
             <?php foreach ($this->getAvailableLimit() as  $_key=>$_limit): ?>
