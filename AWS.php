@@ -792,7 +792,7 @@ while ($row = $result->fetch()) {
 
 
     $PrecioImportacion = $_product->getResource()->getAttribute('precio_importacion')->getFrontend()->getValue($_product);
-
+    $PrecioEnvioNacional = $_product->getResource()->getAttribute('envionacional')->getFrontend()->getValue($_product);
 
     var_dump((int) round($NuevoPrecio[0]));
     var_dump((int) round($PrecioImportacion));
@@ -801,7 +801,7 @@ while ($row = $result->fetch()) {
     $NuevoPrecioCalculado = (int) round($NuevoPrecio[0]) + (int) round($PrecioImportacion);
     var_dump($NuevoPrecioCalculado);
 
-    $New_Price = ($NuevoPrecioCalculado * $NewValueRoundUp50) + 10000;
+    $New_Price = (($NuevoPrecioCalculado * $NewValueRoundUp50) + 10000) + (int) $PrecioEnvioNacional;
 
     var_dump($New_Price);
     $_product->setPrice($New_Price)->save();
