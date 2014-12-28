@@ -5271,3 +5271,11 @@ font-size: 14px;
 .top-link .top-link-checkout, .top-link a[title="Mi Lista de Deseos:"]{
     display:none!important;
 }
+
+.link-top-header{
+    color: white;
+}
+
+.link-top-header:hover{
+    color: #c8411c;
+}
