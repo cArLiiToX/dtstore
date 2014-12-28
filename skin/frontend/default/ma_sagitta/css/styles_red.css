@@ -2579,8 +2579,12 @@ background: #C8411C;
 text-transform: uppercase;
 font-size: 12px;
 color: #FFFFFF;
-padding: 7px 7px;
+padding: 5px 7px;
 font-family: 'titilliumwebsemibold';
+}
+
+.email-friend {
+    margin-top: 4px;
 }
 .product-view .email-friend a:hover {
     background: #474e58;
@@ -2611,6 +2615,10 @@ font-family: 'titilliumwebsemibold';
     width: 10px;
     background:url(../images/bg-qty.png) no-repeat 0 0;
     cursor:pointer;
+}
+
+.add-to-box br{
+    display: none;
 }
 .add-to-cart input.qty-decrease { 
     border: medium none;
