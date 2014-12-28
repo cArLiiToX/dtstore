@@ -318,7 +318,7 @@ button.btn-cart span { background:none; border:0; line-height: 19px; padding:0; 
 button.btn-cart span span { background: none;}
 button.btn-cart:hover span { background:none; color: #c8411c;}
 button.btn-cart:hover span span { background: none;}
-.product-view button.btn-cart span { background:#c8411c; color: #fff; border-bottom: 3px solid #3bb89f; padding: 8px 18px;}
+.product-view button.btn-cart span { background:#c8411c; color: #fff; border-bottom: 3px solid #813628; padding: 8px 18px;}
 .product-view button.btn-cart:hover span {
     background:#474e58;
     border-bottom: 3px solid #323a45;
