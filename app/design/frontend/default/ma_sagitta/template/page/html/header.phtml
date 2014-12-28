@@ -65,14 +65,18 @@
                             echo '<b style="color:green;color: rgb(255, 104, 18);">$' . $NewValueRoundUp50 . ' </b>CO';
                             ?> 
                         </div>
-                        
+
                         <script>
-                        jQuery('.selectpicker li a span.text').click(function(){ 
-                            var str = jQuery(this).text(); 
-                            var res = str.replace("-", "");
-                            var res2 = res.replace("&nbsp;-", ""); 
-                            jQuery('#search').attr('placeholder', 'Buscar en '+ res2 );
-                        })
+
+                            jQuery(document).ready(function () {
+                                jQuery('.selectpicker li a span.text').click(function () {
+                                    var str = jQuery(this).text();
+                                    var res = str.replace("-", "");
+                                    var res2 = res.replace("&nbsp;-", "");
+                                    jQuery('#search').attr('placeholder', 'Buscar en ' + res2);
+                                })
+                            })
+
                         </script>
 
                         <div class="currency-language">
