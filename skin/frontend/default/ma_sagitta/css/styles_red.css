@@ -4328,9 +4328,11 @@ font-family: 'titilliumwebsemibold';
 
 
 .home-banner-static .banner-box img { width: 100%;}
-
+.jssorb01{
+    display: none;
+}
 #back-top {
-    background: url("../images/back-top.png") no-repeat scroll 50% 50% #ddd;
+    background: url("../images/back-top.png") no-repeat scroll 50% 50% #E73F12;
     bottom: 35px;
     display: none;
     height: 55px;
