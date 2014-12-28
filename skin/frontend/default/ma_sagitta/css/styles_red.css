@@ -5247,3 +5247,7 @@ dl, dd, dt {
 .static-left {
     top: 260px;
 }
+
+.footer-static-container {
+ display:none;   
+}
