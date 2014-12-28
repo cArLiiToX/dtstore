@@ -1097,6 +1097,7 @@ p.welcome-msg { margin: 0; line-height: 50px; text-align: center; display: inlin
     width:300px;
     border: 0;
     margin: 0;
+    box-shadow: none;
 }
 .header .search-container button.button {
     float: right;
