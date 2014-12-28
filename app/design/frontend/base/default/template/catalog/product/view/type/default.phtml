@@ -32,13 +32,24 @@ $_product = $this->getProduct();
 if ($_product->getStockItem()->getQty() <= 0) {
     ?>
     <?php if ($this->displayProductStockStatus()): ?>
-        <?php if ($_product->isAvailable() &&  ($_product->getStockItem()->getQty() > 0) ): ?>
+        <?php if ($_product->isAvailable() && ($_product->getStockItem()->getQty() > 0)): ?>
             <p class="availability in-stock"><?php echo $this->__('Availability:') ?> <span><?php echo (int) $_product->getStockItem()->getQty(); ?> unidad(es) disponibles.</span></p>
         <?php else: ?>
             <p class="availability out-of-stock"><?php echo $this->__('Availability:') ?> <span>Bajo Pedido</span></p>
         <?php endif; ?>
     <?php endif; ?>
-            <p style="margin-top: 6px;font-style: italic;font-weight: bold">Tiempo de entrega: 20-25 días hábiles</p>
+
+    <?php
+    $sql = 'SELECT * FROM  amazon_products_amazon_product as app, amazon_products_amazon as aps WHERE aps.entity_id = app.amazon_id and  status = 1 and product_id='.$_product->getEntityId();
+// fetch write database connection that is used in Mage_Core module
+    $write = Mage::getSingleton('core/resource')->getConnection('core_write');
+
+// now $write is an instance of Zend_Db_Adapter_Abstract
+    $result = $write->query($sql);
+    
+    var_dump($result);
+    ?>
+    <p style="margin-top: 6px;font-style: italic;font-weight: bold">Tiempo de entrega: 20-25 días hábiles</p>
     <?php
 }else {
     ?>
@@ -49,7 +60,7 @@ if ($_product->getStockItem()->getQty() <= 0) {
             <p class="availability out-of-stock"><?php echo $this->__('Availability:') ?> <span>Bajo Pedido</span></p>
         <?php endif; ?>
     <?php endif; ?>
-            <p style="margin-top: 6px;font-style: italic;font-weight: bold">Tiempo de entrega: 1-3 días hábiles</p>
+    <p style="margin-top: 6px;font-style: italic;font-weight: bold">Tiempo de entrega: 1-3 días hábiles</p>
     <?php
 }
 ?>
