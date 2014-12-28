@@ -11,8 +11,8 @@
             <div class="block-cart">
                 <?php $_cartQty = $this->getSummaryCount() ?>
                 <div class="top-cart-title">
-                    <div class="shopping_cart"><?php echo $this->__('Carrito de Compras') ?></div>
-                    <div class="shopping_cart_mobile"><?php echo $this->__('cart') ?></div>
+                    <div class="shopping_cart"><a href="/checkout/cart/"><?php echo $this->__('Carrito de Compras') ?></a></div>
+                    <div class="shopping_cart_mobile"><a href="/checkout/cart/"><?php echo $this->__('Carrito') ?></a></div>
                   <span><span><?php echo $_cartQty; ?> <?php if($_cartQty>1) { echo $this->__('items'); } else { echo $this->__('item'); } ?></span> - <?php echo Mage::helper('checkout')->formatPrice($this->getSubtotal()) ?></span>
                 </div>
                 <div class="cart_arrow"></div>
@@ -26,7 +26,7 @@
                         </ol>
                         <script type="text/javascript">decorateList('cart-sidebar', 'none-recursive')</script>
                     <?php else: ?>
-                        <p class="empty"><?php echo $this->__('You have no items in your shopping cart.') ?></p>
+                        <p class="empty"><?php echo $this->__('Usted no tiene items en su carrito de compras.') ?></p>
                     <?php endif ?>
                     <div class="cart-bottom">
                         <div class="subtotal-title"><?php echo $this->__('Subtotal') ?></div>
