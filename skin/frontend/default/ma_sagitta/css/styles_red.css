@@ -5267,3 +5267,7 @@ font-size: 14px;
 .cart-collaterals .shipping{
     display:none;
 }
+
+.top-link .top-link-checkout, .top-link a[title="Mi Lista de Deseos:"]{
+    display:none;
+}
