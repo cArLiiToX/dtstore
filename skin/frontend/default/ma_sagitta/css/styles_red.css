@@ -5269,5 +5269,5 @@ font-size: 14px;
 }
 
 .top-link .top-link-checkout, .top-link a[title="Mi Lista de Deseos:"]{
-    display:none;
+    display:none!important;
 }
