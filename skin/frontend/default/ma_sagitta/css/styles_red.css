@@ -2264,13 +2264,13 @@ p.welcome-msg { margin: 0; line-height: 50px; text-align: center; display: inlin
     color: #fff;
 }
 .products-list .link-compare,.product-view .link-compare {
-    background: #f1f1f1;
-    border-bottom: 3px solid #e5e5e5;
-    text-transform: uppercase;
-    font-size: 14px;
-    color: #999999;
-    padding: 8px 29px;
-    font-family:'titilliumwebsemibold';
+    border-bottom: 3px solid #323a45;
+background: #C8411C;
+text-transform: uppercase;
+font-size: 12px;
+color: #FFFFFF;
+padding: 7px 7px;
+font-family: 'titilliumwebsemibold';
 }
 .products-list .link-compare:hover,.product-view .link-compare:hover  {
     background: #474e58;
@@ -2574,14 +2574,13 @@ p.welcome-msg { margin: 0; line-height: 50px; text-align: center; display: inlin
     width: 100%;
 }
 .product-view .email-friend a {
-    background: #f1f1f1;
-    border-bottom: 3px solid #e5e5e5;
-    text-transform: uppercase;
-    font-size: 14px;
-    color: #999999;
-    display: block;
-    padding:7px 38px 6px;
-    font-family:'titilliumwebsemibold';
+    border-bottom: 3px solid #323a45;
+background: #C8411C;
+text-transform: uppercase;
+font-size: 12px;
+color: #FFFFFF;
+padding: 7px 7px;
+font-family: 'titilliumwebsemibold';
 }
 .product-view .email-friend a:hover {
     background: #474e58;
