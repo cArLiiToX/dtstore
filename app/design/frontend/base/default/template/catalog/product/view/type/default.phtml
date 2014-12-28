@@ -47,10 +47,23 @@ if ($_product->getStockItem()->getQty() <= 0) {
 // now $write is an instance of Zend_Db_Adapter_Abstract
     $result = $write->query($sql);
     
-    var_dump($result);
-    ?>
+    
+    $i=0;
+    while ($row = $result->fetch()) {
+        $i++;
+    }
+    
+    if($i>0){
+         ?>
+    <p style="margin-top: 6px;font-style: italic;font-weight: bold">Tiempo de entrega: 10-15 días hábiles</p>
+    <?php
+    }else{
+         ?>
     <p style="margin-top: 6px;font-style: italic;font-weight: bold">Tiempo de entrega: 20-25 días hábiles</p>
     <?php
+    }
+    
+  
 }else {
     ?>
     <?php if ($this->displayProductStockStatus()): ?>
