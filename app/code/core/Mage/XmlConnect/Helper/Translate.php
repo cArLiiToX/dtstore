@@ -163,7 +163,7 @@ class Mage_XmlConnect_Helper_Translate extends Mage_Core_Helper_Abstract
             'DateText' => $this->__('Date'),
             'DateTitle' => $this->__('Date:'),
             'Delete' => $this->__('Delete'),
-            'DeleteItemMessage' => $this->__('Are you sure you want to remove this item?'),
+            'DeleteItemMessage' => $this->__('¿Deseas eliminar este item?'),
             'DeleteRecordButtonTitle' => $this->__('Delete'),
             'Description' => $this->__('Description'),
             'DiscountButtonTitle' => $this->__('Apply'),

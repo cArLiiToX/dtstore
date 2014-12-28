@@ -5255,3 +5255,7 @@ dl, dd, dt {
 .tabs.tabs-new_products{
     display:none;
 }
+
+.top-cart-contain .shopping_cart {
+font-size: 17px;
+}
