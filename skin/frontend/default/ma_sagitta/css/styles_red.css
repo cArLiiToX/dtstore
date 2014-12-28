@@ -5201,12 +5201,12 @@ dl, dd, dt {
 
 .fb_button_ps{
     width: 142px;
-    margin-top: -2px;
+margin-top: 14px;
 }
 
 
 #login-form .fb_button_ps{
     width: 142px;
-    margin-top: -15px;
+    margin-top: 1px;
     margin-left: 9px;
 }
