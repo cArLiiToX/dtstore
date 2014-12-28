@@ -2248,13 +2248,15 @@ p.welcome-msg { margin: 0; line-height: 50px; text-align: center; display: inlin
 .category-products .products-list button.btn-cart:hover span span { padding: 0; border: 0; background: none;}
 .products-list .add-to-links li { margin: 13px 0 0;}
 .products-list .link-wishlist,.product-view .link-wishlist {
-    background: #f1f1f1;
     border-bottom: 3px solid #e5e5e5;
+
+    border-bottom: 3px solid #323a45;
+    background: #C8411C;
     text-transform: uppercase;
-    font-size: 14px;
-    color: #999999;
-    padding: 8px 29px;
-    font-family:'titilliumwebsemibold';
+    font-size: 12px;
+    color: #FFFFFF;
+    padding: 7px 7px;
+    font-family: 'titilliumwebsemibold';
 }
 .products-list .link-wishlist:hover,.product-view .link-wishlist:hover {
     background: #474e58;
@@ -2822,7 +2824,7 @@ p.welcome-msg { margin: 0; line-height: 50px; text-align: center; display: inlin
     color: #777777;
     display: inline-block;
     font-family: 'titilliumwebsemibold';
-    font-size: 20px;
+    font-size: 17px;
     margin: 0;
     padding: 0 0 13px;
     line-height: 30px;
@@ -5203,7 +5205,7 @@ dl, dd, dt {
 
 .fb_button_ps{
     width: 142px;
-margin-top: 14px;
+    margin-top: 14px;
 }
 
 
@@ -5220,7 +5222,7 @@ margin-top: 14px;
 }
 
 .box-title h2{
-     font-size: 15px;
+    font-size: 15px;
     font-weight: bolder;
     color: black;
 }
@@ -5234,5 +5236,5 @@ margin-top: 14px;
 }
 
 .static-left {
-top: 260px;
+    top: 260px;
 }
