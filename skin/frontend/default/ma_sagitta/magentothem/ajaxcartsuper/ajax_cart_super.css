@@ -20,3 +20,8 @@
 .pop_wishlist.wrapper_box #product_info_box {padding-bottom:10px;}
 
 #product_info_box .p_image, #product_info_box .p_name { text-align: center;}
+
+.wrapper_box {
+position: fixed;
+width: 388px;
+}
