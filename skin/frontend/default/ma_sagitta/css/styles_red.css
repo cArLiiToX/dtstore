@@ -109,7 +109,7 @@ body          {font-size: 14px; font-family: 'titilliumweb'; line-height: 20px; 
 
 img           { border:0; vertical-align:top; }
 
-a             { color:#777777; text-decoration: none; }
+a             { color:#777777; text-decoration: none; color: #FF0C02; text-decoration: none; font-weight: bold;}
 a:hover       { text-decoration: none; color: #c8411c; }
 :focus        { outline:none; }
 a:focus        { outline:none; }
@@ -136,7 +136,7 @@ caption,th,td { vertical-align:top; text-align:left; font-weight:normal; }
 
 /* Content */
 p             { margin:0 0 10px; }
-strong        { font-weight:normal; }
+strong        { font-weight:normal;color: #c8411c;font-weight: bolder;font-size: 15px; }
 address       { font-style:normal; line-height:1.35; }
 cite          { font-style:normal; }
 q,
@@ -303,7 +303,7 @@ button.button { overflow:visible; width:auto; border:0; padding:0; margin:0; bac
 button.button span { background:none; display:block; padding: 0; text-align:center; white-space:nowrap; color:#777; }
 button.button span span {
     border: 0 none;
-    color: #777;
+    color: #E73F12;;
     font-family: 'titilliumwebsemibold';
     font-size: 16px;
     font-weight: normal;
@@ -5195,7 +5195,8 @@ dl, dd, dt {
 
 
 .order-items h3.table-caption{
-    margin-top: 92px;
+    margin-top: 103px;
+    font-size: 23px;
 }
 
 
@@ -5211,7 +5212,17 @@ margin-top: 14px;
     margin-left: 9px;
 }
 
+.order-items h2, .order-items h3, .order-date {
+    font-size: 15px;
+    font-weight: bolder;
+    color: #FD5252;
+}
 
+.box-title h2{
+     font-size: 15px;
+    font-weight: bolder;
+    color: black;
+}
 .static-left .twitter {
     top: 53px;
 }
