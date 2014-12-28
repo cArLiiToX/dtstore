@@ -25,6 +25,7 @@
     position: relative;
     z-index: 1;
     top: -20px;
+    font-weight: normal;
 }
 
 #pt_menu_home a span {
