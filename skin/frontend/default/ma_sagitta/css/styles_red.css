@@ -2811,7 +2811,7 @@ p.welcome-msg { margin: 0; line-height: 50px; text-align: center; display: inlin
     color: #aaaaaa;
     display: block;
     font-family: 'titilliumwebsemibold';
-    font-size: 20px;
+    font-size: 17px;
     line-height: 30px;
     padding:0;
     text-transform: uppercase;
@@ -2841,7 +2841,7 @@ p.welcome-msg { margin: 0; line-height: 50px; text-align: center; display: inlin
     color: #777777;
     display: inline-block;
     font-family: 'titilliumwebsemibold';
-    font-size: 20px;
+    font-size: 17px;
     margin: 0;
     padding: 0 0 13px;
     line-height: 30px;
