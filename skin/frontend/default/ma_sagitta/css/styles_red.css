@@ -5259,3 +5259,7 @@ dl, dd, dt {
 .top-cart-contain .shopping_cart {
 font-size: 17px;
 }
+
+button.button span span {
+font-size: 14px;
+}
