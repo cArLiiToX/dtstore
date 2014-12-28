@@ -17,9 +17,9 @@ padding: 6px 35px;
 		else echo "<div class='catgrid col_$i'>";
 
 	    	echo '<div class="catlist_level_top">		
-				<h3 style="font-size: 11px;">'
-		                .$catTop->getName()
-		                .'</h3>
+				<h3 style="font-size: 11px;">
+		                <a href="' . Mage::getUrl($cat->getUrlPath()). '">'.$catTop->getName()
+		                .'</a></h3>
 			</div>';
 
 	   
