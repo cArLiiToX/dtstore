@@ -25,3 +25,43 @@
 [24-Dec-2014 05:42:38 UTC] PHP Fatal error:  Allowed memory size of 67108864 bytes exhausted (tried to allocate 9912000 bytes) in /home/nikolaisan/public_html/staging/lib/Varien/Image/Adapter/Gd2.php on line 407
 [24-Dec-2014 13:25:18 UTC] PHP Fatal error:  Allowed memory size of 67108864 bytes exhausted (tried to allocate 9912000 bytes) in /home/nikolaisan/public_html/staging/lib/Varien/Image/Adapter/Gd2.php on line 407
 [25-Dec-2014 18:50:34 UTC] PHP Fatal error:  Using $this when not in object context in /home/nikolaisan/public_html/staging/sendMessage.php on line 20
+[25-Dec-2014 22:06:12 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'dtstore.preguntas_products_pregunta_product' doesn't exist' in /home/nikolaisan/public_html/staging/lib/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /home/nikolaisan/public_html/staging/lib/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /home/nikolaisan/public_html/staging/lib/Varien/Db/Statement/Pdo/Mysql.php(110): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /home/nikolaisan/public_html/staging/app/code/core/Zend/Db/Statement.php(291): Varien_Db_Statement_Pdo_Mysql->_execute(Array)
+#3 /home/nikolaisan/public_html/staging/lib/Zend/Db/Adapter/Abstract.php(480): Zend_Db_Statement->execute(Array)
+#4 /home/nikolaisan/public_html/staging/lib/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO `pr...', Array)
+#5 /home/nikolaisan/public_html/staging/lib/Varien/Db/Adapter/Pdo/Mysql.php(428): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO `pr...', Array)
+#6 /home/ in /home/nikolaisan/public_html/staging/lib/Zend/Db/Statement/Pdo.php on line 234
+[25-Dec-2014 22:06:14 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'dtstore.preguntas_products_pregunta_product' doesn't exist' in /home/nikolaisan/public_html/staging/lib/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /home/nikolaisan/public_html/staging/lib/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /home/nikolaisan/public_html/staging/lib/Varien/Db/Statement/Pdo/Mysql.php(110): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /home/nikolaisan/public_html/staging/app/code/core/Zend/Db/Statement.php(291): Varien_Db_Statement_Pdo_Mysql->_execute(Array)
+#3 /home/nikolaisan/public_html/staging/lib/Zend/Db/Adapter/Abstract.php(480): Zend_Db_Statement->execute(Array)
+#4 /home/nikolaisan/public_html/staging/lib/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO `pr...', Array)
+#5 /home/nikolaisan/public_html/staging/lib/Varien/Db/Adapter/Pdo/Mysql.php(428): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO `pr...', Array)
+#6 /home/ in /home/nikolaisan/public_html/staging/lib/Zend/Db/Statement/Pdo.php on line 234
+[26-Dec-2014 10:02:29 UTC] PHP Fatal error:  Allowed memory size of 67108864 bytes exhausted (tried to allocate 9912000 bytes) in /home/nikolaisan/public_html/staging/lib/Varien/Image/Adapter/Gd2.php on line 407
+[28-Dec-2014 07:42:08 UTC] PHP Fatal error:  Allowed memory size of 67108864 bytes exhausted (tried to allocate 8000 bytes) in /home/nikolaisan/public_html/staging/lib/Varien/Image/Adapter/Gd2.php on line 407
+[28-Dec-2014 07:43:21 UTC] PHP Fatal error:  Allowed memory size of 67108864 bytes exhausted (tried to allocate 8000 bytes) in /home/nikolaisan/public_html/staging/lib/Varien/Image/Adapter/Gd2.php on line 407
+[28-Dec-2014 07:43:43 UTC] PHP Fatal error:  Allowed memory size of 67108864 bytes exhausted (tried to allocate 8000 bytes) in /home/nikolaisan/public_html/staging/lib/Varien/Image/Adapter/Gd2.php on line 407
+[28-Dec-2014 07:44:05 UTC] PHP Fatal error:  Allowed memory size of 67108864 bytes exhausted (tried to allocate 8000 bytes) in /home/nikolaisan/public_html/staging/lib/Varien/Image/Adapter/Gd2.php on line 407
+[28-Dec-2014 07:44:12 UTC] PHP Fatal error:  Allowed memory size of 67108864 bytes exhausted (tried to allocate 8000 bytes) in /home/nikolaisan/public_html/staging/lib/Varien/Image/Adapter/Gd2.php on line 407
+[28-Dec-2014 07:44:16 UTC] PHP Fatal error:  Allowed memory size of 67108864 bytes exhausted (tried to allocate 8000 bytes) in /home/nikolaisan/public_html/staging/lib/Varien/Image/Adapter/Gd2.php on line 407
+[28-Dec-2014 07:44:50 UTC] PHP Fatal error:  Allowed memory size of 67108864 bytes exhausted (tried to allocate 8000 bytes) in /home/nikolaisan/public_html/staging/lib/Varien/Image/Adapter/Gd2.php on line 407
+[28-Dec-2014 07:44:55 UTC] PHP Fatal error:  Allowed memory size of 67108864 bytes exhausted (tried to allocate 2000 bytes) in /home/nikolaisan/public_html/staging/lib/Varien/Image/Adapter/Gd2.php on line 407
+[28-Dec-2014 07:45:00 UTC] PHP Fatal error:  Allowed memory size of 67108864 bytes exhausted (tried to allocate 8000 bytes) in /home/nikolaisan/public_html/staging/lib/Varien/Image/Adapter/Gd2.php on line 407
+[28-Dec-2014 07:45:21 UTC] PHP Fatal error:  Allowed memory size of 67108864 bytes exhausted (tried to allocate 8000 bytes) in /home/nikolaisan/public_html/staging/lib/Varien/Image/Adapter/Gd2.php on line 407
+[28-Dec-2014 07:45:25 UTC] PHP Fatal error:  Allowed memory size of 67108864 bytes exhausted (tried to allocate 8000 bytes) in /home/nikolaisan/public_html/staging/lib/Varien/Image/Adapter/Gd2.php on line 407
+[28-Dec-2014 07:46:54 UTC] PHP Fatal error:  Allowed memory size of 67108864 bytes exhausted (tried to allocate 12032 bytes) in /home/nikolaisan/public_html/staging/lib/Varien/Image/Adapter/Gd2.php on line 60
+[28-Dec-2014 20:13:10 UTC] PHP Fatal error:  Allowed memory size of 67108864 bytes exhausted (tried to allocate 32768 bytes) in /home/nikolaisan/public_html/staging/app/design/adminhtml/default/default/template/sales/order/create/form/address.phtml on line 76
+[28-Dec-2014 20:13:23 UTC] PHP Fatal error:  Allowed memory size of 67108864 bytes exhausted (tried to allocate 1039725 bytes) in /home/nikolaisan/public_html/staging/includes/src/__default.php on line 36663
+[28-Dec-2014 22:33:28 UTC] PHP Fatal error:  Interface 'Mage_Catalog_Model_Product_Configuration_Item_Interface' not found in /home/nikolaisan/public_html/staging/includes/src/Mage_Sales_Model_Quote_Item_Abstract.php on line 43
+[28-Dec-2014 22:57:27 UTC] PHP Fatal error:  Call to a member function getUrlPath() on a non-object in /home/nikolaisan/public_html/staging/app/design/frontend/default/ma_sagitta/template/magentothem/catlist/catlist.phtml on line 21
+[28-Dec-2014 22:57:28 UTC] PHP Fatal error:  Call to a member function getUrlPath() on a non-object in /home/nikolaisan/public_html/staging/app/design/frontend/default/ma_sagitta/template/magentothem/catlist/catlist.phtml on line 21
+[28-Dec-2014 22:57:31 UTC] PHP Fatal error:  Call to a member function getUrlPath() on a non-object in /home/nikolaisan/public_html/staging/app/design/frontend/default/ma_sagitta/template/magentothem/catlist/catlist.phtml on line 21
+[28-Dec-2014 22:57:34 UTC] PHP Fatal error:  Call to a member function getUrlPath() on a non-object in /home/nikolaisan/public_html/staging/app/design/frontend/default/ma_sagitta/template/magentothem/catlist/catlist.phtml on line 21
+[28-Dec-2014 22:57:34 UTC] PHP Fatal error:  Call to a member function getUrlPath() on a non-object in /home/nikolaisan/public_html/staging/app/design/frontend/default/ma_sagitta/template/magentothem/catlist/catlist.phtml on line 21
+[30-Dec-2014 07:52:38 UTC] PHP Fatal error:  Allowed memory size of 67108864 bytes exhausted (tried to allocate 9912000 bytes) in /home/nikolaisan/public_html/staging/includes/src/Varien_Image_Adapter_Gd2.php on line 407

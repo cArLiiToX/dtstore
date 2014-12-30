@@ -63,7 +63,7 @@ class Magentothem_Ajaxcartsuper_AjaxcartController extends Mage_Checkout_CartCon
                         $this->loadLayout();
                         $sidebarCart = "";
                         $mini_cart = "";
-						$mini_cart_mobile = "";
+			$mini_cart_mobile = "";
                         $toplink = "";
                         if ($this->getLayout()->getBlock('cart_sidebar')) {
                             $sidebarCart = $this->getLayout()->getBlock('cart_sidebar')->toHtml();
