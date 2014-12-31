@@ -52,35 +52,35 @@ if ($_product->getStockItem()->getQty() <= 0) {
     while ($row = $result->fetch()) {
         $i++;
     }
+    $Date = DateTime::createFromFormat('d/m/Y', date('d/m/Y'));
+    if (date('Y') == "2014") {
 
-    if ($i > 0) {
-        $Date = DateTime::createFromFormat('d/m/Y', date('d/m/Y'));
-        if (date('Y') == "2014") {
-
-            $DateBegin = DateTime::createFromFormat('d/m/Y', '20/11/2014');
-            $DateEnd = DateTime::createFromFormat('d/m/Y', '10/01/2015');
-        } else if (date('Y') == "2015") {
-            $DateBegin = DateTime::createFromFormat('d/m/Y', '20/11/2014');
-            $DateEnd = DateTime::createFromFormat('d/m/Y', '10/01/2015');
-            if (date('m') > 10) {
-                $DateBegin = DateTime::createFromFormat('d/m/Y', '20/11/2015');
-                $DateEnd = DateTime::createFromFormat('d/m/Y', '10/01/2016');
-            }
-        } else if (date('Y') == "2016") {
+        $DateBegin = DateTime::createFromFormat('d/m/Y', '20/11/2014');
+        $DateEnd = DateTime::createFromFormat('d/m/Y', '10/01/2015');
+    } else if (date('Y') == "2015") {
+        $DateBegin = DateTime::createFromFormat('d/m/Y', '20/11/2014');
+        $DateEnd = DateTime::createFromFormat('d/m/Y', '10/01/2015');
+        if (date('m') > 10) {
             $DateBegin = DateTime::createFromFormat('d/m/Y', '20/11/2015');
             $DateEnd = DateTime::createFromFormat('d/m/Y', '10/01/2016');
-            if (date('m') > 10) {
-                $DateBegin = DateTime::createFromFormat('d/m/Y', '20/11/2016');
-                $DateEnd = DateTime::createFromFormat('d/m/Y', '10/01/2017');
-            }
-        } else if (date('Y') == "2017") {
+        }
+    } else if (date('Y') == "2016") {
+        $DateBegin = DateTime::createFromFormat('d/m/Y', '20/11/2015');
+        $DateEnd = DateTime::createFromFormat('d/m/Y', '10/01/2016');
+        if (date('m') > 10) {
             $DateBegin = DateTime::createFromFormat('d/m/Y', '20/11/2016');
             $DateEnd = DateTime::createFromFormat('d/m/Y', '10/01/2017');
-            if (date('m') > 10) {
-                $DateBegin = DateTime::createFromFormat('d/m/Y', '20/11/2017');
-                $DateEnd = DateTime::createFromFormat('d/m/Y', '10/01/2018');
-            }
         }
+    } else if (date('Y') == "2017") {
+        $DateBegin = DateTime::createFromFormat('d/m/Y', '20/11/2016');
+        $DateEnd = DateTime::createFromFormat('d/m/Y', '10/01/2017');
+        if (date('m') > 10) {
+            $DateBegin = DateTime::createFromFormat('d/m/Y', '20/11/2017');
+            $DateEnd = DateTime::createFromFormat('d/m/Y', '10/01/2018');
+        }
+    }
+    if ($i > 0) {
+
 
         if ($Date >= $DateBegin && $Date <= $DateEnd) {
             ?>
@@ -96,9 +96,39 @@ if ($_product->getStockItem()->getQty() <= 0) {
             <?php
         }
     } else {
-        ?>
-        <p style="margin-top: 6px;font-style: italic;font-weight: bold">Tiempo de entrega: 20-25 días hábiles</p>
-        <?php
+        if ($Date >= $DateBegin && $Date <= $DateEnd) {
+            ?>
+            <p style="margin-top: 6px;font-style: italic;font-weight: bold">Tiempo de entrega: 30-35 días hábiles</p>
+
+            <?php
+        } else {
+            if (date('Y') == "2015") {
+                $DateBegin = DateTime::createFromFormat('d/m/Y', '15/02/2015');
+                $DateEnd = DateTime::createFromFormat('d/m/Y', '25/02/2015');
+            } else if (date('Y') == "2016") {
+                $DateBegin = DateTime::createFromFormat('d/m/Y', '04/02/2016');
+                $DateEnd = DateTime::createFromFormat('d/m/Y', '14/02/2016');
+            } else if (date('Y') == "2017") {
+                $DateBegin = DateTime::createFromFormat('d/m/Y', '24/01/2017');
+                $DateEnd = DateTime::createFromFormat('d/m/Y', '03/02/2017');
+            } else if (date('Y') == "2018") {
+                $DateBegin = DateTime::createFromFormat('d/m/Y', '12/02/2018');
+                $DateEnd = DateTime::createFromFormat('d/m/Y', '23/02/2018');
+            } else if (date('Y') == "2019") {
+                $DateBegin = DateTime::createFromFormat('d/m/Y', '30/01/2019');
+                $DateEnd = DateTime::createFromFormat('d/m/Y', '10/02/2019');
+            }
+
+            if ($Date >= $DateBegin && $Date <= $DateEnd) {
+                ?>                  
+                <p style="margin-top: 6px;font-style: italic;font-weight: bold">Tiempo de entrega: 30-35 días hábiles</p>
+                <?php
+            } else {
+                ?>                  
+                <p style="margin-top: 6px;font-style: italic;font-weight: bold">Tiempo de entrega: 20-25 días hábiles</p>
+                <?php
+            }
+        }
     }
 } else {
     ?>
