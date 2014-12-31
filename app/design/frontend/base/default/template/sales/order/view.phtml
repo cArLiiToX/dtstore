@@ -24,7 +24,15 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
-<div id="as-root"></div><script>(function(e,t,n){var r,i=e.getElementsByTagName(t)[0];if(e.getElementById(n))return;r=e.createElement(t);r.id=n;r.src="//apps.aftership.com/all.js";i.parentNode.insertBefore(r,i)})(document,"script","aftership-jssdk")</script>
+<div id="as-root"></div><script>(function (e, t, n) {
+        var r, i = e.getElementsByTagName(t)[0];
+        if (e.getElementById(n))
+            return;
+        r = e.createElement(t);
+        r.id = n;
+        r.src = "//apps.aftership.com/all.js";
+        i.parentNode.insertBefore(r, i)
+    })(document, "script", "aftership-jssdk")</script>
 
 <div class="order-items order-details">
     <?php if ($this->helper('giftmessage/message')->getIsMessagesAvailable('items', $this->getOrder())): ?>
@@ -68,20 +76,201 @@
                 $_size = $tracks->count();
                 foreach ($tracks as $track):
                     ?>
-                    <?php if ($track->isCustom()): ?>
-                        <?php //echo $this->escapeHtml($track->getNumber()) ?>
-        <br />
-        <br />
-                        <div style="margin-top: -3px;margin-left: 30px;" class="as-track-button" data-width="100" data-size="small"   data-support="true"  data-tracking-number="<?php echo $this->escapeHtml($track->getNumber()) ?>"></div>
-                        <br />
-                    
+                    <?php
+                    if ($track->isCustom()):
+
+
+                        if (strtolower(str_replace(" ", "", $this->escapeHtml($track->getTitle()))) == "servientrega") {
+                            //   var_dump($this->escapeHtml($track->getNumber()));
+                            //var_dump($this->escapeHtml($track->getTitle()));
+
+                            $html = file_get_contents('http://www.servientrega.com/RastreoContado/RastreoContado2.faces?idGuia=' . $track->getNumber() . '&idPais=1');
+                            //<span id="form01:textNumGui11" class="outputText">918607097</span>
+                            //$Guia = '/<span id="form01:textNumGui11" class="outputText">(.*)</';
+                            $Guia = "'<span id=\"form01:textNumGui11\" class=\"outputText\">(.*?)</span>'si";
+                            preg_match($Guia, $html, $CGuia);
+
+                            //var_dump($CGuia[1]);
+
+                            $Sender = "'<span id=\"form01:textNomRem11\" class=\"outputText\">(.*?)</span>'si";
+                            preg_match($Sender, $html, $CSender);
+
+                           // var_dump($CSender[1]);
+
+                            $AddressDest = "'<span id=\"form01:textDirDes11\" class=\"outputText\">(.*?)</span>'si";
+                            preg_match($AddressDest, $html, $CAddressDest);
+
+                            //var_dump($CAddressDest[1]);
+
+                            $Destino = "'<span id=\"form01:textNomDes11\" class=\"outputText\">(.*?)</span>'si";
+                            preg_match($Destino, $html, $CDestino);
+
+                            //var_dump($CDestino[1]);
+
+                            $Regimen = "'<span id=\"form01:textFecEst1111\" class=\"outputText\">(.*?)</span>'si";
+                            preg_match($Regimen, $html, $CRegimen);
+
+                            //var_dump($CRegimen[1]);
+
+                            $DesdeCiudad = "'<span id=\"form01:textCiuRem11\" class=\"outputText\">(.*?)</span>'si";
+                            preg_match($DesdeCiudad, $html, $CDesdeCiudad);
+
+                            //var_dump($CDesdeCiudad[1]);
+
+                            $DireccionRemitente = "'<span id=\"form01:textDirRem11\" class=\"outputText\">(.*?)</span>'si";
+                            preg_match($DireccionRemitente, $html, $CDireccionRemitente);
+
+                           // var_dump($CDireccionRemitente[1]);
+
+                            $NombreRecip = "'<span id=\"form01:textNomRec11\" class=\"outputText\">(.*?)</span>'si";
+                            preg_match($NombreRecip, $html, $CNombreRecip);
+
+                            //var_dump($CNombreRecip[1]);
+
+                            $Status = "'<span id=\"form01:textEstAct11\" class=\"outputText\">(.*?)</span>'si";
+                            preg_match($Status, $html, $CStatus);
+
+                            //var_dump($CStatus[1]);
+
+
+                            $FechaEnv = "'<span id=\"form01:textFecEnv11\" class=\"outputText\">(.*?)</span>'si";
+                            preg_match($FechaEnv, $html, $CFechaEnv);
+
+                            //var_dump($CFechaEnv[1]);
+
+
+                            $FechaEstim = "'<span id=\"form01:textFecEst111\" class=\"outputText\">(.*?)</span>'si";
+                            preg_match($FechaEstim, $html, $CFechaEstim);
+
+                            //var_dump($CFechaEstim[1]);
+
+                            $Filas = "'<tr data-ri=\"(.*?)\" class=\"ui-widget-content (.*?)\" role=\"row\">(.*?)</tr>'si";
+                            preg_match_all($Filas, $html, $CFilas);
+                            ?>
+                            <div class="box-account box-info">
+                                <div class="box-head">
+                                    <h2>Envio Nacional - Servientrega</h2>
+                                    <h3>Servientrega Tracking - <?php echo $CGuia[1] ?></h3>
+                                </div>
+                                <div class="col2-set" style="font-size: 13px!important;font-weight: normal!important;color: black!important;">
+                                    <div class="col-1">
+                                        <div class="box">
+                                            <div class="box-title">
+                                                <b>Guia Nro:</b> <?php echo $CGuia[1] ?>
+                                            </div>
+                                            <div class="box-title">
+                                                <b> Enviado Por:</b> <?php echo ucwords(strtolower($CSender[1])) ?>
+                                            </div>
+
+                                            <div class="box-title">
+                                                <b> Ciudad de Envio:</b> <?php echo ucfirst(strtolower($CDesdeCiudad[1])) ?>
+                                            </div>
+                                            <div class="box-title">
+                                                <b>Fecha de Envio:</b> <?php echo $CFechaEnv[1] ?>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <div class="box">
+                                            <div class="box-title">
+                                                <b>Recibe: </b><?php echo ucwords(strtolower($CNombreRecip[1])) ?>
+                                            </div>
+                                            <div class="box-title">
+                                                <b>Direccion Destino: </b><?php echo ucfirst(strtolower($CAddressDest[1])) ?>
+                                            </div>
+
+                                            <div class="box-title">
+                                                <b>Regimen: </b><?php echo ucfirst(strtolower($CRegimen[1])) ?>
+                                            </div>
+                                            <div class="box-title">
+                                                <b>Fecha estimada de entrega: </b><?php 
+                                                $FixDate = explode('/',$CFechaEstim[1]);
+                                               
+                                                    echo  $FixDate[1].'/'.$FixDate[0].'/'.$FixDate[2];
+                                                
+                                                
+                                                ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <table class="data-table" id="my-orders-table">
+                                <thead>
+                                    <tr class="first last">
+                                        <th>Movimiento</th>
+                                        <th>Detalle</th>
+                                        <th>Destino</th>
+                                        <th>Fecha</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    foreach ($CFilas[3] as $key => $value) {
+                                        //var_dump(end(explode('class="outputText">',$value)));
+
+                                        $Filas = "'<span id=\"form01:tableEx4:(.*?):textdnalNomMov11\" class=\"outputText\">(.*?)</span>'si";
+                                        preg_match_all($Filas, $value, $CFilas1);
+
+
+                                        // var_dump($CFilas1);
+
+                                        $Filas = "'<span id=\"form01:tableEx4:(.*?):textOriMov11\" class=\"outputText\">(.*?)</span>'si";
+                                        preg_match_all($Filas, $value, $CFilas2);
+
+                                        // var_dump($CFilas2);
+
+                                        $Filas = "'<span id=\"form01:tableEx4:(.*?):textDesMov11\" class=\"outputText\">(.*?)</span>'si";
+                                        preg_match_all($Filas, $value, $CFilas3);
+
+                                        // var_dump($CFilas3);
+
+                                        $Filas = "'<span id=\"form01:tableEx4:(.*?):textFecMov11\" class=\"outputText\">(.*?)</span>'si";
+                                        preg_match_all($Filas, $value, $CFilas4);
+
+                                        //  var_dump($CFilas4);
+                                        ?>
+                                        <tr class="first odd">
+                                            <td style="background: white"><span class="nobr" style="font-size: 11px;color: black"><?php echo ucfirst(strtolower($CFilas1[2][0])) ?></span></td>
+                                            <td style="background: white"><span class="nobr" style="font-size: 11px;color: black"><?php echo ucfirst(strtolower($CFilas2[2][0])) ?></span></td>
+                                            <td style="background: white"><span class="nobr" style="font-size: 11px;color: black"><?php echo ucfirst(strtolower($CFilas3[2][0])) ?></span></td>
+                                            <td style="background: white"><span class="nobr" style="font-size: 11px;color: black"><?php echo ucfirst(strtolower($CFilas4[2][0])) ?></span></td>
+
+                                        </tr>
+
+                                        <?php
+                                    }
+
+
+
+                                    // break;
+                                    ?>
+                                </tbody>
+                            </table>
+
+                            <?php
+                        } else {
+                            ?>
+                            <br />
+                            <br />
+                            <div style="margin-top: -3px;margin-left: 30px;" class="as-track-button" data-width="100" data-size="small"   data-support="true"  data-tracking-number="<?php echo $this->escapeHtml($track->getNumber()) ?>"></div>
+                            <br />
+                            <?php
+                        }
+                        ?>
+
+
+
                     <?php else: ?>
                         <br />
                         <div style="margin-top: -3px;margin-left: 30px;" class="as-track-button" data-width="100" data-size="small" data-support="true"  data-tracking-number="<?php echo $this->escapeHtml($track->getNumber()) ?>"></div>
                         <br />
                         <?php /* <a href="#"  onclick="popWin('<?php echo $this->helper('shipping')->getTrackingPopupUrlBySalesModel($track) ?>','trackorder','width=800,height=600,left=0,top=0,resizable=yes,scrollbars=yes')"  ><?php echo $this->escapeHtml($track->getNumber()) ?></a> */ ?>
                     <?php endif; ?>
-                        <br />
+                    <br />
                     <?php if ($i != $_size): ?><?php endif; ?>
                     <?php
                     $i++;
@@ -92,16 +281,16 @@
             <?php endif; ?>
         <?php endforeach; ?>
         <?php if ($_order->getTracksCollection()->count()) : ?>
-            
-    <?php endif; ?>
+
+        <?php endif; ?>
     </h2>
 
     <?php echo $this->getChildHtml('order_items') ?>
 
-        <?php if ($this->helper('giftmessage/message')->getIsMessagesAvailable('order', $_order) && $_order->getGiftMessageId()): ?>
+    <?php if ($this->helper('giftmessage/message')->getIsMessagesAvailable('order', $_order) && $_order->getGiftMessageId()): ?>
         <div class="order-additional order-gift-message">
             <h2 class="sub-title"><?php echo $this->__('Gift Message for This Order') ?></h2>
-    <?php $_giftMessage = $this->helper('giftmessage/message')->getGiftMessageForEntity($_order); ?>
+            <?php $_giftMessage = $this->helper('giftmessage/message')->getGiftMessageForEntity($_order); ?>
             <dl class="gift-message">
                 <dt><strong><?php echo $this->__('From:') ?></strong> <?php echo $this->escapeHtml($_giftMessage->getSender()) ?></dt>
                 <dt><strong><?php echo $this->__('To:') ?></strong> <?php echo $this->escapeHtml($_giftMessage->getRecipient()) ?></dt>
@@ -109,18 +298,18 @@
             </dl>
         </div>
     <?php endif; ?>
-<?php $_history = $this->getOrder()->getVisibleStatusHistory() ?>
-<?php if (count($_history)): ?>
+    <?php $_history = $this->getOrder()->getVisibleStatusHistory() ?>
+    <?php if (count($_history)): ?>
         <div class="order-additional order-comments">
             <h2 class="sub-title"><?php echo $this->__('About Your Order') ?></h2>
             <dl class="order-about">
                 <?php foreach ($_history as $_historyItem): ?>
                     <dt><?php echo $this->formatDate($_historyItem->getCreatedAtStoreDate(), 'medium', true) ?></dt>
                     <dd><?php echo $this->escapeHtml($_historyItem->getComment()) ?></dd>
-        <?php endforeach; ?>
+                <?php endforeach; ?>
             </dl>
         </div>
-<?php endif; ?>
+    <?php endif; ?>
     <div class="buttons-set">
         <p class="back-link"><a href="<?php echo $this->getBackUrl() ?>"><small>&laquo; </small><?php echo $this->getBackTitle() ?></a></p>
     </div>

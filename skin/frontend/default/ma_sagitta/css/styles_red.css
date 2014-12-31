@@ -5292,3 +5292,11 @@ font-size: 17px;
     margin-left: 40px;
 }
 
+#payment_form_bankpayment li{
+   font-size: 13px;
+margin: 0px;
+padding: 0px;
+text-align: center;
+}
+
+
