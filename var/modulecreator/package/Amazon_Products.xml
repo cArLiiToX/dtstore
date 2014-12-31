@@ -2,7 +2,7 @@
 <module>
 <namespace><![CDATA[Amazon]]></namespace>
 <module_name><![CDATA[Products]]></module_name>
-<install><![CDATA[0]]></install>
+<install><![CDATA[]]></install>
 <codepool><![CDATA[community]]></codepool>
 <version><![CDATA[1.0.0]]></version>
 <license><![CDATA[{{Namespace}}_{{Module}} extension
