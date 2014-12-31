@@ -5124,10 +5124,6 @@ fb_button_ps {
 }
 
 
-dl, dd, dt {
-    display: inline-block;
-    vertical-align: middle;
-}
 
 .new-questions dl, .new-questions dt, .new-questions dd {
     display: block;
@@ -5279,3 +5275,20 @@ font-size: 14px;
 .link-top-header:hover{
     color: #c8411c;
 }
+
+
+label[for="s_method_freeshipping_freeshipping"]{
+    display:none;
+}
+
+
+dl.sp-methods{
+margin-left: 44px;
+font-weight: bold;
+font-size: 17px;    
+}
+
+#shipping-method-buttons-container .button{
+    margin-left: 40px;
+}
+
