@@ -34,7 +34,7 @@
             <?php if ($this->getMethod()->getPayWithinXDays() > 0): ?>
                 <?php echo $this->__('Please transfer the money within %s days to one of the following bank accounts', $this->getMethod()->getPayWithinXDays()); ?>:
             <?php else: ?>
-                <?php echo $this->__('Por favor finaliza el pedido, en breve recibirás un e-mail con el resumen de éste y los datos necesarios para realizar el pago en efectivo. No olvides que una vez hecho el pago debes subir el recibo a la plataforma (foto o escaneado) para que sea validado y procesado.'); ?>:
+                <?php echo $this->__('Por favor finaliza el pedido, en breve recibirás un e-mail con el resumen de éste y los datos necesarios para realizar el pago en efectivo. No olvides que una vez hecho el pago debes subir el recibo a la plataforma (foto o escaneado) para que sea validado y procesado.'); ?>
             <?php endif; ?>
         <?php endif; ?>
         <br /><br />
