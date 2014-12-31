@@ -30,7 +30,12 @@ class Magentothem_Onsaleslider_Block_Onsaleslider extends Mage_Catalog_Block_Pro
 				->addTaxPercents()			
 				->addStoreFilter()
 				->addIdFilter($arr_productids)// id product
-				->addAttributeToFilter('special_to_date', array('date'=>true, 'from'=> $todayDate));
+				//->addAttributeToFilter('special_to_date', array('date'=>true, 'from'=> $todayDate));
+                                ->addAttributeToFilter('special_from_date', array('date' => true, 'to' => NOW()))
+                                ->addAttributeToFilter('special_to_date', array('or' => array(
+                                                        0 => array('date' => true, 'from' => NOW()),
+                                                        1 => array('is' => new Zend_Db_Expr('null')))
+                                                      ), 'left');
 		}
 		else {
 		$products = Mage::getResourceModel('catalog/product_collection')
@@ -41,10 +46,17 @@ class Magentothem_Onsaleslider_Block_Onsaleslider extends Mage_Catalog_Block_Pro
 				->addTaxPercents()			
 				->addStoreFilter()
 				->addAttributeToFilter('category_id', array('in' => $_rootcatID))
-				->addAttributeToFilter('special_to_date', array('date'=>true, 'from'=> $todayDate));
+				//->addAttributeToFilter('special_to_date', array('date'=>true, 'from'=> $todayDate));
+                                ->addAttributeToFilter('special_from_date', array('date' => true, 'to' => NOW()))
+                                ->addAttributeToFilter('special_to_date', array('or' => array(
+                                                        0 => array('date' => true, 'from' => NOW()),
+                                                        1 => array('is' => new Zend_Db_Expr('null')))
+                                                      ), 'left');
 		}
         Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($products);
         Mage::getSingleton('catalog/product_visibility')->addVisibleInCatalogFilterToCollection($products);
+        
+        //var_dump($products);
         $products->setPageSize($this->getConfig('qty'))->setCurPage(1);
         $this->setProductCollection($products);
     }
