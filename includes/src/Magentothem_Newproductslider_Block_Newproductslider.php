@@ -21,29 +21,41 @@ class Magentothem_Newproductslider_Block_Newproductslider extends Mage_Catalog_B
 		if($cateids){
 			$arr_catid = explode(",", $cateids);
 			$products = Mage::getResourceModel('catalog/product_collection')
-				->joinField('category_id', 'catalog/category_product', 'category_id', 'product_id = entity_id', null, 'left')
-				->addAttributeToSelect(Mage::getSingleton('catalog/config')->getProductAttributes())
+                                ->joinField('qty', 'cataloginventory/stock_item', 'qty', 'product_id=entity_id', '{{table}}.is_in_stock=1', 'left')
+				//->joinField('category_id', 'catalog/category_product', 'category_id', 'product_id = entity_id', null, 'left')
+				//->joinField('is_in_stock', 'cataloginventory/stock_item', 'is_in_stock', 'product_id=entity_id', 'is_in_stock=1', '{{table}}.stock_id=1', 'left')
+                                ->addAttributeToSelect(Mage::getSingleton('catalog/config')->getProductAttributes())
 				->addMinimalPrice()
 				->addUrlRewrite()
 				->addTaxPercents()
 				->addStoreFilter()
-				->addAttributeToFilter('category_id', array('in' => $arr_catid))
-				->addAttributeToFilter('news_from_date', array('date'=>true, 'to'=> $todayDate))
+                                ->addAttributeToFilter('qty', array("gt" => 0))
+				//->addAttributeToFilter('category_id', array('in' => $arr_catid))
+				/*->addAttributeToFilter('news_from_date', array('date'=>true, 'to'=> $todayDate))
 				->addAttributeToFilter(array(array('attribute'=>'news_to_date', 'date'=>true, 'from'=>$todayDate), array('attribute'=>'news_to_date', 'is' => new Zend_Db_Expr('null'))),'','left')
-				->addAttributeToSort('news_from_date','desc');			
+				->addAttributeToSort('news_from_date','desc')
+                                ->addAttributeToFilter('is_in_stock', array('eq' => 1))*/;	
+                        
+                         //Mage::getSingleton('cataloginventory/stock')->addInStockFilterToCollection($products);
 		} else {
 			$root_cat = Mage::app()->getStore()->getRootCategoryId();
 			$products = Mage::getResourceModel('catalog/product_collection')
-				->joinField('category_id', 'catalog/category_product', 'category_id', 'product_id = entity_id', null, 'left')
-				->addAttributeToSelect(Mage::getSingleton('catalog/config')->getProductAttributes())
+                                ->joinField('qty', 'cataloginventory/stock_item', 'qty', 'product_id=entity_id', '{{table}}.is_in_stock=1', 'left')
+				//->joinField('category_id', 'catalog/category_product', 'category_id', 'product_id = entity_id', null, 'left')
+				//->joinField('is_in_stock', 'cataloginventory/stock_item', 'is_in_stock', 'product_id=entity_id', 'is_in_stock=1', '{{table}}.stock_id=1', 'left')                           
+                                ->addAttributeToSelect(Mage::getSingleton('catalog/config')->getProductAttributes())
 				->addMinimalPrice()
 				->addUrlRewrite()
 				->addTaxPercents()
 				->addStoreFilter()
-				->addAttributeToFilter('category_id', array('in' => $root_cat))
-				->addAttributeToFilter('news_from_date', array('date'=>true, 'to'=> $todayDate))
+                                ->addAttributeToFilter('qty', array("gt" => 0))
+				//->addAttributeToFilter('category_id', array('in' => $root_cat))
+				/*->addAttributeToFilter('news_from_date', array('date'=>true, 'to'=> $todayDate))
 				->addAttributeToFilter(array(array('attribute'=>'news_to_date', 'date'=>true, 'from'=>$todayDate), array('attribute'=>'news_to_date', 'is' => new Zend_Db_Expr('null'))),'','left')
-				->addAttributeToSort('news_from_date','desc');			
+				->addAttributeToSort('news_from_date','desc')
+                                ->addAttributeToFilter('is_in_stock', array('eq' => 1))*/;
+                       // Mage::getSingleton('cataloginventory/stock')->addInStockFilterToCollection($products);
+                        
 		}
 		
         Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($products);
