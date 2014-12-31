@@ -16,15 +16,17 @@ class Magentothem_Newproductlist_Block_Newproductlist extends Mage_Catalog_Block
 		$todayDate  = Mage::app()->getLocale()->date()->toString(Varien_Date::DATETIME_INTERNAL_FORMAT);
     	$storeId    = Mage::app()->getStore()->getId();
 		$collection = Mage::getResourceModel('catalog/product_collection')
+                        ->joinField('qty', 'cataloginventory/stock_item', 'qty', 'product_id=entity_id', '{{table}}.is_in_stock=1', 'left')
 			->addAttributeToSelect(Mage::getSingleton('catalog/config')->getProductAttributes())
 			->addMinimalPrice()
 			->addUrlRewrite()
 			->addTaxPercents()			
 			->addStoreFilter()
-			->addAttributeToFilter('news_from_date', array('date'=>true, 'to'=> $todayDate))
+                        ->addAttributeToFilter('qty', array("gt" => 0));
+			/*->addAttributeToFilter('news_from_date', array('date'=>true, 'to'=> $todayDate))
 			->addAttributeToFilter(array(array('attribute'=>'news_to_date', 'date'=>true, 'from'=>$todayDate), array('attribute'=>'news_to_date', 'is' => new Zend_Db_Expr('null'))),'','left')
 			->setOrder($this->getConfig('sort'),$this->getConfig('direction'))
-			->addAttributeToSort('news_from_date','desc');		
+			->addAttributeToSort('news_from_date','desc');	*/	
         Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($collection);
         Mage::getSingleton('catalog/product_visibility')->addVisibleInCatalogFilterToCollection($collection);
         $limit = (int)$this->getRequest()->getParam('limit') ? (int)$this->getRequest()->getParam('limit') : (int)$this->getToolbarBlock()->getDefaultPerPageValue();
