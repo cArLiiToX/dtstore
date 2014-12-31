@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 ############################################
 ## uncomment these lines for CGI mode
 ## make sure to specify the correct cgi php binary file name
@@ -209,4 +207,4 @@
 ## http://developer.yahoo.com/performance/rules.html#etags
 
     #FileETag none
->>>>>>> Stashed changes
+
