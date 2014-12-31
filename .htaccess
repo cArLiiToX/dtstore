@@ -117,9 +117,6 @@
     RewriteEngine on
 
    
-    RewriteRule ^enstock/ index.php/newproductlist?section=enstock [QSA,L]
-    RewriteRule ^enstock index.php/newproductlist?section=enstock [QSA,L]
-    
 ############################################
 ## you can put here your magento root folder
 ## path relative to web root
