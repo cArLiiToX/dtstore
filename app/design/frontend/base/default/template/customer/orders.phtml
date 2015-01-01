@@ -28,6 +28,9 @@
  * @deprecated  after 1.4.0.0-alpha3
  */
 ?>
+
+
+<script type="text/javascript" src="http://malsup.github.com/jquery.form.js"></script>
 <div class="page-title">
     <h1><?php echo $this->__('My Orders') ?></h1>
 </div>
@@ -41,6 +44,7 @@
             <th><?php echo $this->__('Total') ?></th>
             <th><?php echo $this->__('Status') ?></th>
             <th><?php echo $this->__('Details') ?></th>
+            <th><?php echo $this->__('Carga de Recibos') ?></th>
         </tr>
     </thead>
     <tbody>
@@ -52,6 +56,50 @@
             <td><?php echo $order->getGrandTotal() ?>&nbsp;</td>
             <td><?php echo $order->getStatus() ?>&nbsp;</td>
             <td><a href="<?php echo $this->getUrl('customer/order/view', array('order'=>$order->getOrderId())) ?>"><?php echo $this->__('View Order') ?></a>&nbsp;</td>
+        <td>
+                        <script type="text/javascript">
+                            jQuery(document).ready(function ()
+                            {
+                                jQuery('#photoimg-<?php echo $order->getRealOrderId() ?>').live('change', function ()
+                                {
+                                    jQuery("#preview-<?php echo $order->getRealOrderId() ?>").html('');
+                                    jQuery("#preview-<?php echo $order->getRealOrderId() ?>").html('<img src="/loader.gif" alt="Uploading...."/>');
+                                    
+                                    jQuery("#imageform-<?php echo $order->getRealOrderId() ?>").ajaxForm(
+                                            {
+                                                target: '#preview-<?php echo $order->getRealOrderId() ?>'
+                                            }).submit();
+                                            
+                                            
+                                });
+                            });
+                        </script>
+
+
+                        <form id="imageform-<?php echo $order->getRealOrderId() ?>" method="post" enctype="multipart/form-data" action='/ajaximage.php'>
+                            <input type="hidden" value="<?php echo $order->getId() ?>" name="orderid" />
+                            Subir Recibo <input style="width: 87px;" type="file" name="photoimg" id="photoimg-<?php echo $order->getRealOrderId() ?>" />
+                        </form>
+
+                        <div id='preview-<?php echo $order->getRealOrderId() ?>'>
+                            <?php
+                            $sql = 'SELECT * from recibo_upload_sales where orderid = '.$order->getId();
+                            // fetch write database connection that is used in Mage_Core module
+                            $write = Mage::getSingleton('core/resource')->getConnection('core_write');
+
+                            // now $write is an instance of Zend_Db_Adapter_Abstract
+                            $result = $write->query($sql);
+                            
+                            while ($row = $result->fetch()) {
+                                ?>
+                            <script>jQuery("#imageform-<?php echo $order->getRealOrderId() ?>").hide();</script>
+                            
+                            <?php
+                                echo "<img src='/uploads/" . $row['image'] . "' class='preview'>";
+                            }
+                            ?>
+                        </div>
+                    </td>
         </tr>
     <?php endforeach ?>
     </tbody>
