@@ -5320,3 +5320,9 @@ height: 56px;
 margin-top: 10px;
 background-size: 50%;
 }
+
+.ma-mostview-products .mostview-products .item .label-pro-sale {
+top: 122px;
+right: -100px;
+opacity: 1;
+}
