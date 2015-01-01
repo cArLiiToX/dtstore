@@ -4371,6 +4371,10 @@ margin-top: 51px;
     line-height: 127px;
 }
 
+.banner-right{
+    display:none;
+}
+
 .cart-table td {
 padding: 0px;
 padding-left: 5px;
