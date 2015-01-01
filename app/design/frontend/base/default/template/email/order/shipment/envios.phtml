@@ -16,7 +16,7 @@
     foreach ($_shipment->getAllTracks() as $_item): $i++
         ?>
 
-        <?php if (!strtolower($this->escapeHtml($_item->getTitle())) == 'servientrega') {
+        <?php if (strtolower($this->escapeHtml($_item->getTitle())) != 'servientrega') {
             ?>
             <p>El Producto se ha enviado desde las instalaciones del fabricante en Asia a través de <b><?php echo $this->escapeHtml($_item->getTitle()) ?></b></p>
             <p>Puedes rastrear el envio desde el Panel de Usuario de DT-Store - <a href="<?php echo $URL_SITE ?>/sales/order/view/order_id/<?php echo $_order->getId() ?>/" target="_blank">Rastrear Envio Aqui</a></p>
