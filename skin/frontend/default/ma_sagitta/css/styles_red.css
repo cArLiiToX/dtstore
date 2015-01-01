@@ -2265,12 +2265,12 @@ p.welcome-msg { margin: 0; line-height: 50px; text-align: center; display: inlin
 }
 .products-list .link-compare,.product-view .link-compare {
     border-bottom: 3px solid #323a45;
-background: #C8411C;
-text-transform: uppercase;
-font-size: 12px;
-color: #FFFFFF;
-padding: 7px 7px;
-font-family: 'titilliumwebsemibold';
+    background: #C8411C;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: #FFFFFF;
+    padding: 7px 7px;
+    font-family: 'titilliumwebsemibold';
 }
 .products-list .link-compare:hover,.product-view .link-compare:hover  {
     background: #474e58;
@@ -2575,12 +2575,12 @@ font-family: 'titilliumwebsemibold';
 }
 .product-view .email-friend a {
     border-bottom: 3px solid #323a45;
-background: #C8411C;
-text-transform: uppercase;
-font-size: 12px;
-color: #FFFFFF;
-padding: 5px 7px;
-font-family: 'titilliumwebsemibold';
+    background: #C8411C;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: #FFFFFF;
+    padding: 5px 7px;
+    font-family: 'titilliumwebsemibold';
 }
 
 .email-friend {
@@ -4331,6 +4331,15 @@ font-family: 'titilliumwebsemibold';
 .jssorb01{
     display: none;
 }
+
+.custom-slider-by-carliitox{
+    width: 190px;
+    float: left;
+    height: 300px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
 #back-top {
     background: url("../images/back-top.png") no-repeat scroll 50% 50% #E73F12;
     bottom: 35px;
@@ -5245,7 +5254,7 @@ fb_button_ps {
 }
 
 .footer-static-container {
- display:none;   
+    display:none;   
 }
 
 .tabs.tabs-new_products{
@@ -5253,11 +5262,11 @@ fb_button_ps {
 }
 
 .top-cart-contain .shopping_cart {
-font-size: 17px;
+    font-size: 17px;
 }
 
 button.button span span {
-font-size: 14px;
+    font-size: 14px;
 }
 
 .cart-collaterals .shipping{
@@ -5283,9 +5292,9 @@ label[for="s_method_freeshipping_freeshipping"]{
 
 
 dl.sp-methods{
-margin-left: 44px;
-font-weight: bold;
-font-size: 17px;    
+    margin-left: 44px;
+    font-weight: bold;
+    font-size: 17px;    
 }
 
 #shipping-method-buttons-container .button{
@@ -5293,36 +5302,39 @@ font-size: 17px;
 }
 
 #payment_form_bankpayment li{
-   font-size: 13px;
-margin: 0px;
-padding: 0px;
-text-align: center;
+    font-size: 13px;
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
 }
 
 
 .link-print{
     display:none;
-    
+
 }
 
 
 .label-pro-sale {
-background: url("../images/bg-sale.png") no-repeat scroll 0 0;
-height: 50px;
-right: -87px;
-position: absolute;
-top: 124px;
-width: 50px;
-z-index: 1;
-position: absolute;
-width: 164px;
-height: 56px;
-margin-top: 10px;
-background-size: 50%;
+    background: url("../images/bg-sale.png") no-repeat scroll 0 0;
+    height: 50px;
+    right: -87px;
+    position: absolute;
+    top: 124px;
+    width: 50px;
+    z-index: 1;
+    position: absolute;
+    width: 164px;
+    height: 56px;
+    margin-top: 10px;
+    background-size: 50%;
 }
 
 .ma-mostview-products .mostview-products .item .label-pro-sale {
-top: 122px;
-right: -100px;
-opacity: 1;
+    top: 122px;
+    right: -100px;
+    opacity: 1;
 }
+
+
+.
