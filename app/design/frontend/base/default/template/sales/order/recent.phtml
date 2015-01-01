@@ -78,7 +78,10 @@
                                     
                                     jQuery("#imageform-<?php echo $_order->getRealOrderId() ?>").ajaxForm(
                                             {
-                                                target: '#preview-<?php echo $_order->getRealOrderId() ?>'
+                                                target: '#preview-<?php echo $_order->getRealOrderId() ?>',
+                                                complete: function (response) {
+                                                    alert('Muchas gracias por enviar tu recibo, será validado pronto.');
+                                                }
                                             }).submit();
                                             
                                             
