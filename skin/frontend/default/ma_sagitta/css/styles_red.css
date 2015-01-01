@@ -5300,3 +5300,6 @@ text-align: center;
 }
 
 
+.link-print{
+    display:none;
+}
