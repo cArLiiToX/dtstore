@@ -16,7 +16,7 @@ $orderCollection = Mage::getResourceModel('sales/order_collection');
 $orderCollection
         ->addFieldToFilter('status', 'pending')
         ->addFieldToFilter('created_at', array(
-            'lt' => new Zend_Db_Expr("DATE_ADD('" . now() . "', INTERVAL 2 DAY)")))
+            'lt' => new Zend_Db_Expr("DATE_ADD('" . now() . "', INTERVAL 3 DAY)")))
         ->getSelect()
         ->order('entity_id')
         ->limit(10);

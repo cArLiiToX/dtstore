@@ -37,45 +37,45 @@
     <dd>
         <?php $_links = $this->getLinks(); ?>
         <ul id="order-info-tabs">
-        <?php foreach ($_links as $_link): ?>
-            <?php if($_link->getUrl()): ?>
-                <li><a href="<?php echo $_link->getUrl() ?>"><?php echo $_link->getLabel() ?></a></li>
-            <?php else: ?>
-                <li class="current"><?php echo $_link->getLabel() ?></li>
-            <?php endif; ?>
-        <?php endforeach; ?>
+            <?php foreach ($_links as $_link): ?>
+                <?php if ($_link->getUrl()): ?>
+                    <li><a href="<?php echo $_link->getUrl() ?>"><?php echo $_link->getLabel() ?></a></li>
+                <?php else: ?>
+                    <li class="current"><?php echo $_link->getLabel() ?></li>
+                <?php endif; ?>
+            <?php endforeach; ?>
         </ul>
-        <script type="text/javascript">decorateGeneric($('order-info-tabs').select('LI'),['first','last']);</script>
+        <script type="text/javascript">decorateGeneric($('order-info-tabs').select('LI'), ['first', 'last']);</script>
     </dd>
 </dl>
 <p class="order-date"><?php echo $this->__('Order Date: %s', $this->formatDate($_order->getCreatedAtStoreDate(), 'long')) ?></p>
 <?php if (!$_order->getIsVirtual()): ?>
-<div class="col2-set order-info-box">
-    <div class="col-1">
-        <div class="box">
-            <div class="box-title">
-                <h2><?php echo $this->__('Shipping Address') ?></h2>
+    <div class="col2-set order-info-box">
+        <div class="col-1">
+            <div class="box">
+                <div class="box-title">
+                    <h2><?php echo $this->__('Shipping Address') ?></h2>
+                </div>
+                <div class="box-content">
+                    <address><?php echo $_order->getShippingAddress()->format('html') ?></address>
+                </div>
             </div>
-            <div class="box-content">
-                <address><?php echo $_order->getShippingAddress()->format('html') ?></address>
+        </div>
+        <div class="col-2">
+            <div class="box">
+                <div class="box-title">
+                    <h2><?php echo $this->__('Shipping Method') ?></h2>
+                </div>
+                <div class="box-content">
+                    <?php if ($_order->getShippingDescription()): ?>
+                        <?php echo $this->escapeHtml($_order->getShippingDescription()) ?>
+                    <?php else: ?>
+                        <p><?php echo $this->helper('sales')->__('No shipping information available'); ?></p>
+                    <?php endif; ?>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-2">
-        <div class="box">
-            <div class="box-title">
-                <h2><?php echo $this->__('Shipping Method') ?></h2>
-            </div>
-            <div class="box-content">
-                <?php if ($_order->getShippingDescription()): ?>
-                    <?php echo $this->escapeHtml($_order->getShippingDescription()) ?>
-                <?php else: ?>
-                    <p><?php echo $this->helper('sales')->__('No shipping information available'); ?></p>
-                <?php endif; ?>
-            </div>
-        </div>
-    </div>
-</div>
 <?php endif; ?>
 <div class="col2-set order-info-box">
     <div class="col-1">
@@ -94,7 +94,79 @@
                 <h2><?php echo $this->__('Payment Method') ?></h2>
             </div>
             <div class="box-content">
-                <?php echo $this->getPaymentInfoHtml() ?>
+                <p>
+                    Consignacion / Giro / Transferencia - <span style="font-style:italic">Datos de pago:</span><br>
+                    <br>
+                </p>
+                <p>
+                    <b style="font-size:12px;">Giro por Efecty: </b>
+                </p>
+
+                <table>
+                    <tbody>
+                        <tr>
+                            <td><label>A nombre de</label>: </td>
+                            <td>Nicolai Santos</td>
+                        </tr>
+                        <tr>
+                            <td><label>Cedula Nro</label>: </td>
+                            <td>1098709411</td>
+                        </tr>
+                        <tr>
+                            <td><label>Ciudad</label>: </td>
+                            <td>Bucaramanga</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br />
+                <p>
+                    <b style="font-size:12px;">Bancolombia <span style="font-style: italic">(Solo Transferencia Bancaria)</span>: </b>
+                </p>
+
+                <table>
+                    <tbody>
+                        <tr>
+                            <td><label>A nombre de</label>: </td>
+                            <td>Nicolai Santos Rey</td>
+                        </tr>
+                        <tr>
+                            <td><label>Nro de Cuenta</label>: </td>
+                            <td># 09011652465 de ahorros</td>
+                        </tr>
+
+                        <tr>
+                            <td><label>Cedula Nro</label>: </td>
+                            <td>1098709411</td>
+                        </tr>
+                        
+
+                    </tbody>
+                </table>
+<br />
+                <p>
+                    <b style="font-size:12px;">Banco Falabella <span style="font-style: italic">(Consignación)</span>: </b>
+                </p>
+                
+                <table>
+                    <tbody>
+                        <tr>
+                            <td><label>A nombre de</label>: </td>
+                            <td>Eduardo Santos Amado</td>
+                        </tr>
+                        <tr>
+                            <td><label>Nro de Cuenta</label>: </td>
+                            <td># 116020067598 de ahorros</td>
+                        </tr>
+
+                        <tr>
+                            <td><label>Cedula Nro</label>: </td>
+                            <td>13831137</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+                <?php //echo $this->getPaymentInfoHtml() ?>
             </div>
         </div>
     </div>
