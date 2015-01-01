@@ -13,13 +13,24 @@
 <?php if ($_shipment && $_order && $_shipment->getAllTracks()): ?>
 
     <?php $i = 0;
-    foreach ($_shipment->getAllTracks() as $_item): $i++ ?>
+    foreach ($_shipment->getAllTracks() as $_item): $i++
+        ?>
 
-        <p>El Producto se ha enviado Por <b><?php echo $this->escapeHtml($_item->getTitle()) ?></b></p>
-        <p>Puede rastrear el envio desde el Panel de Usuario de DT-Store - <a href="<?php echo $URL_SITE ?>/sales/order/view/order_id/<?php echo $_order->getId() ?>/" target="_blank">Rastrear Envio Aqui</a></p>
+        <?php if (!strtolower($this->escapeHtml($_item->getTitle())) == 'servientrega') {
+            ?>
+            <p>El Producto se ha enviado desde las instalaciones del fabricante en Asia a través de <b><?php echo $this->escapeHtml($_item->getTitle()) ?></b></p>
+            <p>Puedes rastrear el envio desde el Panel de Usuario de DT-Store - <a href="<?php echo $URL_SITE ?>/sales/order/view/order_id/<?php echo $_order->getId() ?>/" target="_blank">Rastrear Envio Aqui</a></p>
+            <?php
+        } else {
+            ?>
+            <p>El producto se encuentra actualmente en Colombia y ha sido enviado a través de <b><?php echo $this->escapeHtml($_item->getTitle()) ?>. </b></p> 
+            <p>Puedes rastrear el envio desde el Panel de Usuario de DT-Store - <a href="<?php echo $URL_SITE ?>/sales/order/view/order_id/<?php echo $_order->getId() ?>/" target="_blank">Rastrear Envio Aqui</a></p>
+            <?php
+        }
+        ?>
 
 
-<br />
+        <br />
 
     <?php endforeach ?>
 
