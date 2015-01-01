@@ -77,13 +77,16 @@
                                 {
                                     jQuery("#preview-<?php echo $_order->getRealOrderId() ?>").html('');
                                     jQuery("#preview-<?php echo $_order->getRealOrderId() ?>").html('<img src="/loader.gif" alt="Uploading...."/>');
-                                    
+
                                     jQuery("#imageform-<?php echo $_order->getRealOrderId() ?>").ajaxForm(
                                             {
-                                                target: '#preview-<?php echo $_order->getRealOrderId() ?>'
+                                                target: '#preview-<?php echo $_order->getRealOrderId() ?>',
+                                                complete: function (response) {
+                                                    alert('Muchas gracias por enviar tu recibo, será validado pronto.');
+                                                }
                                             }).submit();
-                                            
-                                            
+
+
                                 });
                             });
                         </script>
@@ -96,19 +99,19 @@
 
                         <div id='preview-<?php echo $_order->getRealOrderId() ?>'>
                             <?php
-                            $sql = 'SELECT * from recibo_upload_sales where orderid = '.$_order->getId();
+                            $sql = 'SELECT * from recibo_upload_sales where orderid = ' . $_order->getId();
                             // fetch write database connection that is used in Mage_Core module
                             $write = Mage::getSingleton('core/resource')->getConnection('core_write');
 
                             // now $write is an instance of Zend_Db_Adapter_Abstract
                             $result = $write->query($sql);
-                            
+
                             while ($row = $result->fetch()) {
                                 ?>
-                            <script>jQuery("#imageform-<?php echo $_order->getRealOrderId() ?>").hide();</script>
-                            
-                            <?php
-                                echo "<img src='/uploads/" . $row['image'] . "' class='preview'>";
+                                <script>jQuery("#imageform-<?php echo $_order->getRealOrderId() ?>").hide();</script>
+
+                                <?php
+                                echo "<img style='height:52px' src='/uploads/" . $row['image'] . "' class='preview'>";
                             }
                             ?>
                         </div>

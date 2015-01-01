@@ -24,6 +24,7 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+<script type="text/javascript" src="http://malsup.github.com/jquery.form.js"></script>
 <div class="box-account box-recent">
 <?php $_orders = $this->getOrders(); ?>
     <div class="box-head">
@@ -46,6 +47,7 @@
                 <th><span class="nobr"><?php echo $this->__('Order Total') ?></span></th>
                 <th><?php echo $this->__('Status') ?></th>
                 <th>&nbsp;</th>
+                <th>Cargar Recibo</th>
             </tr>
         </thead>
         <tbody>
@@ -63,6 +65,52 @@
                             <span class="separator">|</span> <a href="<?php echo $this->getReorderUrl($_order) ?>" class="link-reorder"><?php echo $this->__('Reorder') ?></a>
                         <?php endif ?>
                         </span>
+                    </td>
+                    <td>
+                        
+                        <script type="text/javascript">
+                            jQuery(document).ready(function ()
+                            {
+                                jQuery('#photoimg-<?php echo $_order->getRealOrderId() ?>').live('change', function ()
+                                {
+                                    jQuery("#preview-<?php echo $_order->getRealOrderId() ?>").html('');
+                                    jQuery("#preview-<?php echo $_order->getRealOrderId() ?>").html('<img src="/loader.gif" alt="Uploading...."/>');
+                                    
+                                    jQuery("#imageform-<?php echo $_order->getRealOrderId() ?>").ajaxForm(
+                                            {
+                                                target: '#preview-<?php echo $_order->getRealOrderId() ?>'
+                                            }).submit();
+                                            
+                                            
+                                });
+                            });
+                        </script>
+
+
+                        <form id="imageform-<?php echo $_order->getRealOrderId() ?>" method="post" enctype="multipart/form-data" action='/ajaximage.php'>
+                            <input type="hidden" value="<?php echo $_order->getId() ?>" name="orderid" />
+                            Subir Recibo <input style="width: 133px;" type="file" name="photoimg" id="photoimg-<?php echo $_order->getRealOrderId() ?>" />
+                        </form>
+
+                        <div id='preview-<?php echo $_order->getRealOrderId() ?>'>
+                            <?php
+                            $sql = 'SELECT * from recibo_upload_sales where orderid = '.$_order->getId();
+                            // fetch write database connection that is used in Mage_Core module
+                            $write = Mage::getSingleton('core/resource')->getConnection('core_write');
+
+                            // now $write is an instance of Zend_Db_Adapter_Abstract
+                            $result = $write->query($sql);
+                            
+                            while ($row = $result->fetch()) {
+                                ?>
+                            <script>jQuery("#imageform-<?php echo $_order->getRealOrderId() ?>").hide();</script>
+                            
+                            <?php
+                                echo "<img style='height:52px' src='/uploads/" . $row['image'] . "' class='preview'>";
+                            }
+                            ?>
+                        </div>
+                    
                     </td>
                 </tr>
             <?php endforeach; ?>

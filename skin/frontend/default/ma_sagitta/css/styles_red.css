@@ -5378,4 +5378,6 @@ dl.sp-methods{
 }
 
 
-.
+.data-table td.last, .data-table th.last {
+text-align: center;
+}

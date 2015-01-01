@@ -23,7 +23,6 @@
  * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
-
 /**
  * @deprecated  after 1.4.0.0-alpha3
  */
@@ -34,29 +33,29 @@
 <div class="page-title">
     <h1><?php echo $this->__('My Orders') ?></h1>
 </div>
-<?php if($orders->getSize()): ?>
-<table class="data-table" id="my-orders-table" >
-    <thead>
-        <tr>
-            <th><?php echo $this->__('Order #') ?></th>
-            <th><?php echo $this->__('Date') ?></th>
-            <!--<th class="a-center">Shipped To</th>-->
-            <th><?php echo $this->__('Total') ?></th>
-            <th><?php echo $this->__('Status') ?></th>
-            <th><?php echo $this->__('Details') ?></th>
-            <th><?php echo $this->__('Carga de Recibos') ?></th>
-        </tr>
-    </thead>
-    <tbody>
-    <?php foreach ($orders as $order): ?>
-        <tr>
-            <td><?php echo $order->getRealOrderId() ?>&nbsp;</td>
-            <td><?php echo date("D, j M, Y", strtotime($order->getCreatedAt())) ?>&nbsp;</td>
-            <!--<td class="a-center">{$page.orders[io].customer}</td>-->
-            <td><?php echo $order->getGrandTotal() ?>&nbsp;</td>
-            <td><?php echo $order->getStatus() ?>&nbsp;</td>
-            <td><a href="<?php echo $this->getUrl('customer/order/view', array('order'=>$order->getOrderId())) ?>"><?php echo $this->__('View Order') ?></a>&nbsp;</td>
-        <td>
+<?php if ($orders->getSize()): ?>
+    <table class="data-table" id="my-orders-table" >
+        <thead>
+            <tr>
+                <th><?php echo $this->__('Order #') ?></th>
+                <th><?php echo $this->__('Date') ?></th>
+                <!--<th class="a-center">Shipped To</th>-->
+                <th><?php echo $this->__('Total') ?></th>
+                <th><?php echo $this->__('Status') ?></th>
+                <th><?php echo $this->__('Details') ?></th>
+                <th><?php echo $this->__('Carga de Recibos') ?></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($orders as $order): ?>
+                <tr>
+                    <td><?php echo $order->getRealOrderId() ?>&nbsp;</td>
+                    <td><?php echo date("D, j M, Y", strtotime($order->getCreatedAt())) ?>&nbsp;</td>
+                    <!--<td class="a-center">{$page.orders[io].customer}</td>-->
+                    <td><?php echo $order->getGrandTotal() ?>&nbsp;</td>
+                    <td><?php echo $order->getStatus() ?>&nbsp;</td>
+                    <td><a href="<?php echo $this->getUrl('customer/order/view', array('order' => $order->getOrderId())) ?>"><?php echo $this->__('View Order') ?></a>&nbsp;</td>
+                    <td>
                         <script type="text/javascript">
                             jQuery(document).ready(function ()
                             {
@@ -64,13 +63,16 @@
                                 {
                                     jQuery("#preview-<?php echo $order->getRealOrderId() ?>").html('');
                                     jQuery("#preview-<?php echo $order->getRealOrderId() ?>").html('<img src="/loader.gif" alt="Uploading...."/>');
-                                    
+
                                     jQuery("#imageform-<?php echo $order->getRealOrderId() ?>").ajaxForm(
                                             {
-                                                target: '#preview-<?php echo $order->getRealOrderId() ?>'
+                                                target: '#preview-<?php echo $order->getRealOrderId() ?>',
+                                                complete: function (response) {
+                                                    alert('Muchas gracias por enviar tu recibo, será validado pronto.');
+                                                }
                                             }).submit();
-                                            
-                                            
+
+
                                 });
                             });
                         </script>
@@ -83,28 +85,28 @@
 
                         <div id='preview-<?php echo $order->getRealOrderId() ?>'>
                             <?php
-                            $sql = 'SELECT * from recibo_upload_sales where orderid = '.$order->getId();
+                            $sql = 'SELECT * from recibo_upload_sales where orderid = ' . $order->getId();
                             // fetch write database connection that is used in Mage_Core module
                             $write = Mage::getSingleton('core/resource')->getConnection('core_write');
 
                             // now $write is an instance of Zend_Db_Adapter_Abstract
                             $result = $write->query($sql);
-                            
+
                             while ($row = $result->fetch()) {
                                 ?>
-                            <script>jQuery("#imageform-<?php echo $order->getRealOrderId() ?>").hide();</script>
-                            
-                            <?php
-                                echo "<img src='/uploads/" . $row['image'] . "' class='preview'>";
+                                <script>jQuery("#imageform-<?php echo $order->getRealOrderId() ?>").hide();</script>
+
+                                <?php
+                                echo "<img style='height:52px' src='/uploads/" . $row['image'] . "' class='preview'>";
                             }
                             ?>
                         </div>
                     </td>
-        </tr>
-    <?php endforeach ?>
-    </tbody>
-</table>
-<script type="text/javascript">decorateTable('my-orders-table')</script>
+                </tr>
+            <?php endforeach ?>
+        </tbody>
+    </table>
+    <script type="text/javascript">decorateTable('my-orders-table')</script>
 <?php else: ?>
     <p><?php echo $this->__('You have placed no orders yet.') ?></p>
 <?php endif ?>

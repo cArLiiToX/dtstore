@@ -24,6 +24,8 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+
+<script type="text/javascript" src="http://malsup.github.com/jquery.form.js"></script>
 <div id="as-root"></div><script>(function (e, t, n) {
         var r, i = e.getElementsByTagName(t)[0];
         if (e.getElementById(n))
@@ -95,7 +97,7 @@
                             $Sender = "'<span id=\"form01:textNomRem11\" class=\"outputText\">(.*?)</span>'si";
                             preg_match($Sender, $html, $CSender);
 
-                           // var_dump($CSender[1]);
+                            // var_dump($CSender[1]);
 
                             $AddressDest = "'<span id=\"form01:textDirDes11\" class=\"outputText\">(.*?)</span>'si";
                             preg_match($AddressDest, $html, $CAddressDest);
@@ -120,7 +122,7 @@
                             $DireccionRemitente = "'<span id=\"form01:textDirRem11\" class=\"outputText\">(.*?)</span>'si";
                             preg_match($DireccionRemitente, $html, $CDireccionRemitente);
 
-                           // var_dump($CDireccionRemitente[1]);
+                            // var_dump($CDireccionRemitente[1]);
 
                             $NombreRecip = "'<span id=\"form01:textNomRec11\" class=\"outputText\">(.*?)</span>'si";
                             preg_match($NombreRecip, $html, $CNombreRecip);
@@ -185,12 +187,10 @@
                                                 <b>Regimen: </b><?php echo ucfirst(strtolower($CRegimen[1])) ?>
                                             </div>
                                             <div class="box-title">
-                                                <b>Fecha estimada de entrega: </b><?php 
-                                                $FixDate = explode('/',$CFechaEstim[1]);
-                                               
-                                                    echo  $FixDate[1].'/'.$FixDate[0].'/'.$FixDate[2];
-                                                
-                                                
+                                                <b>Fecha estimada de entrega: </b><?php
+                                                $FixDate = explode('/', $CFechaEstim[1]);
+
+                                                echo $FixDate[1] . '/' . $FixDate[0] . '/' . $FixDate[2];
                                                 ?>
                                             </div>
                                         </div>
@@ -267,7 +267,7 @@
                     <?php else: ?>
                         <br />
                         <div style="margin-top: -3px;margin-left: 30px;" class="as-track-button" data-width="100" data-size="small"   data-support="true"  data-tracking-number="<?php echo $this->escapeHtml($track->getNumber()) ?>"></div> <a href="http://www.17track.net/es/result/post-details.shtml?nums=<?php echo $this->escapeHtml($track->getNumber()) ?>" target="_blank" class="btn btn-warning btn-xs"><?php echo $this->escapeHtml($track->getNumber()) ?> - 17track.net</a>
-                            <br />
+                        <br />
                         <?php /* <a href="#"  onclick="popWin('<?php echo $this->helper('shipping')->getTrackingPopupUrlBySalesModel($track) ?>','trackorder','width=800,height=600,left=0,top=0,resizable=yes,scrollbars=yes')"  ><?php echo $this->escapeHtml($track->getNumber()) ?></a> */ ?>
                     <?php endif; ?>
                     <br />
@@ -286,6 +286,54 @@
     </h2>
 
     <?php echo $this->getChildHtml('order_items') ?>
+
+
+    <script type="text/javascript">
+        jQuery(document).ready(function ()
+        {
+            jQuery('#photoimg-<?php echo $_order->getRealOrderId() ?>').live('change', function ()
+            {
+                jQuery("#preview-<?php echo $_order->getRealOrderId() ?>").html('');
+                jQuery("#preview-<?php echo $_order->getRealOrderId() ?>").html('<img src="/loader.gif" alt="Uploading...."/>');
+
+                jQuery("#imageform-<?php echo $_order->getRealOrderId() ?>").ajaxForm(
+                        {
+                            target: '#preview-<?php echo $_order->getRealOrderId() ?>',
+                            complete: function (response) {
+                                alert('Muchas gracias por enviar tu recibo, será validado pronto.');
+                            }
+                        }).submit();
+
+
+            });
+        });
+    </script>
+
+
+    <form id="imageform-<?php echo $_order->getRealOrderId() ?>" method="post" enctype="multipart/form-data" action='/ajaximage.php'>
+        <input type="hidden" value="<?php echo $_order->getId() ?>" name="orderid" />
+        Subir Recibo <input style="width: 133px;" type="file" name="photoimg" id="photoimg-<?php echo $_order->getRealOrderId() ?>" />
+    </form>
+
+    <div id='preview-<?php echo $_order->getRealOrderId() ?>'>
+        <?php
+        $sql = 'SELECT * from recibo_upload_sales where orderid = ' . $_order->getId();
+// fetch write database connection that is used in Mage_Core module
+        $write = Mage::getSingleton('core/resource')->getConnection('core_write');
+
+// now $write is an instance of Zend_Db_Adapter_Abstract
+        $result = $write->query($sql);
+
+        while ($row = $result->fetch()) {
+            ?>
+            <script>jQuery("#imageform-<?php echo $_order->getRealOrderId() ?>").hide();</script>
+
+            <?php
+            echo "<img style='height:52px;margin-top: 7px;' src='/uploads/" . $row['image'] . "' class='preview'>";
+        }
+        ?>
+    </div>
+
 
     <?php if ($this->helper('giftmessage/message')->getIsMessagesAvailable('order', $_order) && $_order->getGiftMessageId()): ?>
         <div class="order-additional order-gift-message">
