@@ -4355,6 +4355,19 @@ height: 184px;
     line-height: inherit;
 }
 
+
+#shopping-cart-table td.a-center a{
+line-height: 127px;
+position: relative;
+}
+#shopping-cart-table td.a-center input{
+margin-top: 51px;
+}
+
+#shopping-cart-table td.a-right .price {
+    line-height: 127px;
+}
+
 .cart-table td {
 padding: 0px;
 padding-left: 5px;
