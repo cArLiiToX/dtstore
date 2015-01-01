@@ -1,8 +1,27 @@
 <?php
-
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+?>
+<?php $isSecure = Mage::app()->getStore()->isCurrentlySecure(); ?>
+<?php $URL_SITE = Mage::getBaseUrl('web', $isSecure) ?>
+<?php $_shipment = $this->getShipment() ?>
+<?php $_order = $this->getOrder() ?>
+<br />
+<?php if ($_shipment && $_order && $_shipment->getAllTracks()): ?>
+
+    <?php $i = 0;
+    foreach ($_shipment->getAllTracks() as $_item): $i++ ?>
+
+        <p>El Producto se ha enviado Por <b><?php echo $this->escapeHtml($_item->getTitle()) ?></b></p>
+        <p>Puede rastrear el envio desde el Panel de Usuario de DT-Store - <a href="<?php echo $URL_SITE ?>/sales/order/view/order_id/<?php echo $_order->getId() ?>/" target="_blank">Rastrear Envio Aqui</a></p>
+
+
+<br />
+
+    <?php endforeach ?>
+
+<?php endif; ?>
 
