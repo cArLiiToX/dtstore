@@ -4350,7 +4350,17 @@ margin-top: -245px;
 background: transparent;
 height: 184px;
 }
+
+#shopping-cart-table td {
+    line-height: inherit;
 }
+
+.cart-table td {
+padding: 0px;
+padding-left: 5px;
+padding-right: 5px;
+}
+
 #back-top {
     background: url("../images/back-top.png") no-repeat scroll 50% 50% #E73F12;
     bottom: 35px;
