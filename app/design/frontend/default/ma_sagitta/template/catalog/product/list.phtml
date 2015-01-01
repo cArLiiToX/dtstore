@@ -133,7 +133,8 @@
 						$newFromDate = Mage::getModel('catalog/product')->load($_product->getID())->getNewsFromDate();
 						$newToDate = Mage::getModel('catalog/product')->load($_product->getID())->getNewsToDate();                 
 						$now = date("Y-m-d H:m:S");
-						// Get the Special Price
+						var_dump($now);
+                                                // Get the Special Price
 						$specialprice = Mage::getModel('catalog/product')->load($_product->getId())->getSpecialPrice(); 
 						// Get the Special Price FROM date
 						$specialPriceFromDate = Mage::getModel('catalog/product')->load($_product->getId())->getSpecialFromDate();
