@@ -4364,6 +4364,9 @@ position: relative;
 margin-top: 51px;
 }
 
+#payment-progress-opcheckout{
+    display: none;
+}
 #shopping-cart-table td.a-right .price {
     line-height: 127px;
 }
