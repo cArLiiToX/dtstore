@@ -245,22 +245,31 @@ class Cubix_AddressLabel_Model_Pdf extends Mage_Sales_Model_Order_Pdf_Abstract {
             $firstLine = true;
             foreach ($shippingAddress as $value){
                 if ($this->_config(self::XML_BOLDNAME)) {
-                    if ($firstLine) {
+                    if ($firstLine || trim($value)=='De' || trim($value)=='Para' || trim($value)=='Nicolai Santos Rey') {
+                        if(!$firstLine && trim($value)!='Para' && trim($value)!='Nicolai Santos Rey')
+                         $this->_moveRow();
+                        //var_dump($value);
                         $this->_setFontBold($page, $this->_getConfigFontSize());
                         $firstLine = false;
                     }
                     else {
+                        
                         $this->_setFontRegular($page, $this->_getConfigFontSize());
                     }
                 }
+                
+                
                 if ($value!=='') {
                     $page->drawText(strip_tags(ltrim($value)), $this->x, $this->y, 'UTF-8');
                     $this->y -= $fontSize + ($fontSize * 0.2);
                 }
             }
+     
             $this->y = $tempY;
             $this->x = $tempX;
             
+     
+         
             /* Move column */
             $this->_moveColumn();
 
