@@ -116,7 +116,7 @@ class Preguntas_Products_Model_Pregunta extends Mage_Core_Model_Abstract {
 
                 foreach ($toAddresses as $to) {
                     if (mail($to, $subject, $message, $headers)) {
-                        echo "OK - sent message to {$to}";
+                        //echo "OK - sent message to {$to}";
                     }
                 }
             }
