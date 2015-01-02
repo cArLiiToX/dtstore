@@ -5381,3 +5381,8 @@ dl.sp-methods{
 .data-table td.last, .data-table th.last {
 text-align: center;
 }
+
+.top-link ul.links li {
+padding: 0 1px;
+line-height: 25px;
+}
