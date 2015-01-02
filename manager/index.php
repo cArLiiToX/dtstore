@@ -6,7 +6,7 @@
  */
 session_start();
 $_SESSION['passwd'] = false;
-if($_REQUEST['password'] == ''){
+if(isset($_REQUEST['password']) && $_REQUEST['password'] == ''){
     $_SESSION['passwd'] = true;
 }
 
