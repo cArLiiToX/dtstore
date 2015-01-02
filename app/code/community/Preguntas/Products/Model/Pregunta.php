@@ -97,13 +97,15 @@ class Preguntas_Products_Model_Pregunta extends Mage_Core_Model_Abstract {
         while ($row = $Producto->fetch()) {
 
             $product = Mage::getModel('catalog/product')->load($row['product_id']);
-
+            $url = explode('/',rtrim($product->getProductUrl(),"/"));
+            
             if ($this->_data["respuesta"]) {
                 $toAddresses = array('nikolaisan@hotmail.com', 'carlos@xng.bz', $this->_data["email"]);
 
                 $from = 'nikolaisan@hotmail.com';
                 // $this->_data["name"] . ' te envio una pregunta acerca del producto: <br /><b>' . $this->_data["name"] . '</b><br /><br /><br /><b>Pregunta:</b> ' . $_REQUEST['message'] . ' <br /><br /><b>Enviada el:</b> ' . date('Y-m-d H:i:s');
-                $html = "La pregunta que has realizado en " . $product->getName() . " ya ha sido respondida. Puedes ver la respuesta dando click <a href='" . $URL_SITE.'/'.end(explode('/',$product->getProductUrl())) . "'>Aquí</a>";
+                $html = "La pregunta que has realizado en " . $product->getName() . " ya ha sido respondida. Puedes ver la respuesta dando click <a href='" . $URL_SITE.end($url) . ".html'>Aquí</a>";
+                
 // multiple recipients
 
 
