@@ -92,7 +92,8 @@ class Preguntas_Products_Model_Pregunta extends Mage_Core_Model_Abstract {
         $write = Mage::getSingleton('core/resource')->getConnection('core_write');
         $Producto = $write->query($sql);
 
-
+        $isSecure = Mage::app()->getStore()->isCurrentlySecure(); 
+        $URL_SITE = Mage::getBaseUrl('web', $isSecure);
         while ($row = $Producto->fetch()) {
 
             $product = Mage::getModel('catalog/product')->load($row['product_id']);
@@ -102,7 +103,7 @@ class Preguntas_Products_Model_Pregunta extends Mage_Core_Model_Abstract {
 
                 $from = 'nikolaisan@hotmail.com';
                 // $this->_data["name"] . ' te envio una pregunta acerca del producto: <br /><b>' . $this->_data["name"] . '</b><br /><br /><br /><b>Pregunta:</b> ' . $_REQUEST['message'] . ' <br /><br /><b>Enviada el:</b> ' . date('Y-m-d H:i:s');
-                $html = "La pregunta que has realizado en " . $product->getName() . " ya ha sido respondida. Puedes ver la respuesta dando click <a href='" . $product->getProductUrl() . "'>aquí</a>";
+                $html = "La pregunta que has realizado en " . $product->getName() . " ya ha sido respondida. Puedes ver la respuesta dando click <a href='" . $URL_SITE.'/'.end(explode('/',$product->getProductUrl())) . "'>Aquí</a>";
 // multiple recipients
 
 
