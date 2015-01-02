@@ -112,8 +112,8 @@
                     {{depend street4}}{{var street4}}|{{/depend}}|
                     {{if city}}{{var city}}{{/if}}|
                     {{if region}}{{var region}}{{/if}}|
-                    {{if postcode}}{{var postcode}}{{/if}}|
-                    {{var country}}|]]>
+                    {{var country}}|
+                    Cel: {{var telephone}}|]]>
                 </addresslabel>
                 
             </address_templates>
