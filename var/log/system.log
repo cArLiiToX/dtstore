@@ -15328,3 +15328,261 @@
 2015-01-02T04:40:00+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : expected '&gt;'  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
 2015-01-02T04:40:00+00:00 ERR (3): Warning: simplexml_load_string():         &lt;/amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
 2015-01-02T04:40:00+00:00 ERR (3): Warning: simplexml_load_string():                                  ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:11:43+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 21: parser error : Specification mandate value for attribute Products  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:11:43+00:00 ERR (3): Warning: simplexml_load_string():         &lt;amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:11:43+00:00 ERR (3): Warning: simplexml_load_string():                                         ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:11:43+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : expected '&gt;'  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:11:43+00:00 ERR (3): Warning: simplexml_load_string():         &lt;/amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:11:43+00:00 ERR (3): Warning: simplexml_load_string():                                  ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:15:55+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 21: parser error : Specification mandate value for attribute Products  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:15:55+00:00 ERR (3): Warning: simplexml_load_string():         &lt;amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:15:55+00:00 ERR (3): Warning: simplexml_load_string():                                         ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:15:55+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : expected '&gt;'  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:15:55+00:00 ERR (3): Warning: simplexml_load_string():         &lt;/amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:15:55+00:00 ERR (3): Warning: simplexml_load_string():                                  ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:16:05+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 21: parser error : Specification mandate value for attribute Products  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:16:05+00:00 ERR (3): Warning: simplexml_load_string():         &lt;amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:16:05+00:00 ERR (3): Warning: simplexml_load_string():                                         ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:16:05+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : expected '&gt;'  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:16:05+00:00 ERR (3): Warning: simplexml_load_string():         &lt;/amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:16:05+00:00 ERR (3): Warning: simplexml_load_string():                                  ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:30:43+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 21: parser error : Specification mandate value for attribute Products  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:30:43+00:00 ERR (3): Warning: simplexml_load_string():         &lt;amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:30:43+00:00 ERR (3): Warning: simplexml_load_string():                                         ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:30:43+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : expected '&gt;'  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:30:43+00:00 ERR (3): Warning: simplexml_load_string():         &lt;/amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:30:43+00:00 ERR (3): Warning: simplexml_load_string():                                  ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:30:53+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 21: parser error : Specification mandate value for attribute Products  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:30:53+00:00 ERR (3): Warning: simplexml_load_string():         &lt;amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:30:53+00:00 ERR (3): Warning: simplexml_load_string():                                         ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:30:53+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : expected '&gt;'  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:30:53+00:00 ERR (3): Warning: simplexml_load_string():         &lt;/amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:30:53+00:00 ERR (3): Warning: simplexml_load_string():                                  ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:32:46+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 21: parser error : Specification mandate value for attribute Products  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:32:46+00:00 ERR (3): Warning: simplexml_load_string():         &lt;amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:32:46+00:00 ERR (3): Warning: simplexml_load_string():                                         ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:32:46+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : expected '&gt;'  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:32:46+00:00 ERR (3): Warning: simplexml_load_string():         &lt;/amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:32:46+00:00 ERR (3): Warning: simplexml_load_string():                                  ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:36:42+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 21: parser error : Specification mandate value for attribute Products  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:36:42+00:00 ERR (3): Warning: simplexml_load_string():         &lt;amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:36:42+00:00 ERR (3): Warning: simplexml_load_string():                                         ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:36:42+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : expected '&gt;'  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:36:42+00:00 ERR (3): Warning: simplexml_load_string():         &lt;/amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:36:42+00:00 ERR (3): Warning: simplexml_load_string():                                  ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:36:51+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 21: parser error : Specification mandate value for attribute Products  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:36:51+00:00 ERR (3): Warning: simplexml_load_string():         &lt;amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:36:51+00:00 ERR (3): Warning: simplexml_load_string():                                         ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:36:51+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : expected '&gt;'  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:36:51+00:00 ERR (3): Warning: simplexml_load_string():         &lt;/amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:36:51+00:00 ERR (3): Warning: simplexml_load_string():                                  ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:38:53+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 21: parser error : Specification mandate value for attribute Products  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:38:53+00:00 ERR (3): Warning: simplexml_load_string():         &lt;amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:38:53+00:00 ERR (3): Warning: simplexml_load_string():                                         ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:38:53+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : expected '&gt;'  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:38:53+00:00 ERR (3): Warning: simplexml_load_string():         &lt;/amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:38:53+00:00 ERR (3): Warning: simplexml_load_string():                                  ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:39:21+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 21: parser error : Specification mandate value for attribute Products  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:39:21+00:00 ERR (3): Warning: simplexml_load_string():         &lt;amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:39:21+00:00 ERR (3): Warning: simplexml_load_string():                                         ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:39:21+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : expected '&gt;'  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:39:21+00:00 ERR (3): Warning: simplexml_load_string():         &lt;/amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:39:21+00:00 ERR (3): Warning: simplexml_load_string():                                  ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:39:34+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 21: parser error : Specification mandate value for attribute Products  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:39:34+00:00 ERR (3): Warning: simplexml_load_string():         &lt;amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:39:34+00:00 ERR (3): Warning: simplexml_load_string():                                         ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:39:34+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : expected '&gt;'  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:39:34+00:00 ERR (3): Warning: simplexml_load_string():         &lt;/amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:39:34+00:00 ERR (3): Warning: simplexml_load_string():                                  ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:40:56+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 21: parser error : Specification mandate value for attribute Products  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:40:56+00:00 ERR (3): Warning: simplexml_load_string():         &lt;amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:40:56+00:00 ERR (3): Warning: simplexml_load_string():                                         ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:40:56+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : expected '&gt;'  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:40:56+00:00 ERR (3): Warning: simplexml_load_string():         &lt;/amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:40:56+00:00 ERR (3): Warning: simplexml_load_string():                                  ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:41:30+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 21: parser error : Specification mandate value for attribute Products  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:41:30+00:00 ERR (3): Warning: simplexml_load_string():         &lt;amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:41:30+00:00 ERR (3): Warning: simplexml_load_string():                                         ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:41:30+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : expected '&gt;'  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:41:30+00:00 ERR (3): Warning: simplexml_load_string():         &lt;/amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:41:30+00:00 ERR (3): Warning: simplexml_load_string():                                  ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:42:28+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 21: parser error : Specification mandate value for attribute Products  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:42:28+00:00 ERR (3): Warning: simplexml_load_string():         &lt;amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:42:28+00:00 ERR (3): Warning: simplexml_load_string():                                         ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:42:28+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : expected '&gt;'  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:42:28+00:00 ERR (3): Warning: simplexml_load_string():         &lt;/amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:42:28+00:00 ERR (3): Warning: simplexml_load_string():                                  ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:43:40+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 21: parser error : Specification mandate value for attribute Products  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:43:40+00:00 ERR (3): Warning: simplexml_load_string():         &lt;amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:43:40+00:00 ERR (3): Warning: simplexml_load_string():                                         ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:43:40+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : expected '&gt;'  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:43:40+00:00 ERR (3): Warning: simplexml_load_string():         &lt;/amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:43:40+00:00 ERR (3): Warning: simplexml_load_string():                                  ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:44:13+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 21: parser error : Specification mandate value for attribute Products  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:44:13+00:00 ERR (3): Warning: simplexml_load_string():         &lt;amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:44:13+00:00 ERR (3): Warning: simplexml_load_string():                                         ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:44:13+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : expected '&gt;'  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:44:13+00:00 ERR (3): Warning: simplexml_load_string():         &lt;/amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:44:13+00:00 ERR (3): Warning: simplexml_load_string():                                  ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:44:14+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 21: parser error : Specification mandate value for attribute Products  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:44:14+00:00 ERR (3): Warning: simplexml_load_string():         &lt;amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:44:14+00:00 ERR (3): Warning: simplexml_load_string():                                         ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:44:14+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : expected '&gt;'  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:44:14+00:00 ERR (3): Warning: simplexml_load_string():         &lt;/amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:44:14+00:00 ERR (3): Warning: simplexml_load_string():                                  ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:45:08+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 21: parser error : Specification mandate value for attribute Products  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:45:08+00:00 ERR (3): Warning: simplexml_load_string():         &lt;amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:45:08+00:00 ERR (3): Warning: simplexml_load_string():                                         ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:45:08+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : expected '&gt;'  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:45:08+00:00 ERR (3): Warning: simplexml_load_string():         &lt;/amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:45:08+00:00 ERR (3): Warning: simplexml_load_string():                                  ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:45:13+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 21: parser error : Specification mandate value for attribute Products  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:45:13+00:00 ERR (3): Warning: simplexml_load_string():         &lt;amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:45:13+00:00 ERR (3): Warning: simplexml_load_string():                                         ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:45:13+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : expected '&gt;'  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:45:13+00:00 ERR (3): Warning: simplexml_load_string():         &lt;/amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:45:13+00:00 ERR (3): Warning: simplexml_load_string():                                  ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:45:20+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 21: parser error : Specification mandate value for attribute Products  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:45:20+00:00 ERR (3): Warning: simplexml_load_string():         &lt;amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:45:20+00:00 ERR (3): Warning: simplexml_load_string():                                         ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:45:20+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : expected '&gt;'  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:45:20+00:00 ERR (3): Warning: simplexml_load_string():         &lt;/amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:45:20+00:00 ERR (3): Warning: simplexml_load_string():                                  ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:45:26+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 21: parser error : Specification mandate value for attribute Products  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:45:26+00:00 ERR (3): Warning: simplexml_load_string():         &lt;amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:45:26+00:00 ERR (3): Warning: simplexml_load_string():                                         ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:45:26+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : expected '&gt;'  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:45:26+00:00 ERR (3): Warning: simplexml_load_string():         &lt;/amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:45:26+00:00 ERR (3): Warning: simplexml_load_string():                                  ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:45:39+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 21: parser error : Specification mandate value for attribute Products  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:45:39+00:00 ERR (3): Warning: simplexml_load_string():         &lt;amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:45:39+00:00 ERR (3): Warning: simplexml_load_string():                                         ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:45:39+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : expected '&gt;'  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:45:39+00:00 ERR (3): Warning: simplexml_load_string():         &lt;/amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:45:39+00:00 ERR (3): Warning: simplexml_load_string():                                  ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:47:09+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 21: parser error : Specification mandate value for attribute Products  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:47:09+00:00 ERR (3): Warning: simplexml_load_string():         &lt;amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:47:09+00:00 ERR (3): Warning: simplexml_load_string():                                         ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:47:09+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : expected '&gt;'  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:47:09+00:00 ERR (3): Warning: simplexml_load_string():         &lt;/amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:47:09+00:00 ERR (3): Warning: simplexml_load_string():                                  ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:48:21+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 21: parser error : Specification mandate value for attribute Products  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:48:21+00:00 ERR (3): Warning: simplexml_load_string():         &lt;amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:48:21+00:00 ERR (3): Warning: simplexml_load_string():                                         ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:48:21+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : expected '&gt;'  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:48:21+00:00 ERR (3): Warning: simplexml_load_string():         &lt;/amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:48:21+00:00 ERR (3): Warning: simplexml_load_string():                                  ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:48:42+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 21: parser error : Specification mandate value for attribute Products  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:48:42+00:00 ERR (3): Warning: simplexml_load_string():         &lt;amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:48:42+00:00 ERR (3): Warning: simplexml_load_string():                                         ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:48:42+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : expected '&gt;'  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:48:42+00:00 ERR (3): Warning: simplexml_load_string():         &lt;/amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:48:42+00:00 ERR (3): Warning: simplexml_load_string():                                  ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:49:35+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 21: parser error : Specification mandate value for attribute Products  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:49:35+00:00 ERR (3): Warning: simplexml_load_string():         &lt;amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:49:35+00:00 ERR (3): Warning: simplexml_load_string():                                         ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:49:35+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : expected '&gt;'  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:49:35+00:00 ERR (3): Warning: simplexml_load_string():         &lt;/amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:49:35+00:00 ERR (3): Warning: simplexml_load_string():                                  ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:49:40+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 21: parser error : Specification mandate value for attribute Products  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:49:40+00:00 ERR (3): Warning: simplexml_load_string():         &lt;amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:49:40+00:00 ERR (3): Warning: simplexml_load_string():                                         ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:49:40+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : expected '&gt;'  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:49:40+00:00 ERR (3): Warning: simplexml_load_string():         &lt;/amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:49:40+00:00 ERR (3): Warning: simplexml_load_string():                                  ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:50:11+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 21: parser error : Specification mandate value for attribute Products  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:50:11+00:00 ERR (3): Warning: simplexml_load_string():         &lt;amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:50:11+00:00 ERR (3): Warning: simplexml_load_string():                                         ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:50:11+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : expected '&gt;'  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:50:11+00:00 ERR (3): Warning: simplexml_load_string():         &lt;/amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:50:11+00:00 ERR (3): Warning: simplexml_load_string():                                  ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:50:44+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 21: parser error : Specification mandate value for attribute Products  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:50:44+00:00 ERR (3): Warning: simplexml_load_string():         &lt;amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:50:44+00:00 ERR (3): Warning: simplexml_load_string():                                         ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:50:44+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : expected '&gt;'  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:50:44+00:00 ERR (3): Warning: simplexml_load_string():         &lt;/amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:50:44+00:00 ERR (3): Warning: simplexml_load_string():                                  ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:51:13+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 21: parser error : Specification mandate value for attribute Products  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:51:13+00:00 ERR (3): Warning: simplexml_load_string():         &lt;amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:51:13+00:00 ERR (3): Warning: simplexml_load_string():                                         ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:51:13+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : expected '&gt;'  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:51:13+00:00 ERR (3): Warning: simplexml_load_string():         &lt;/amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:51:13+00:00 ERR (3): Warning: simplexml_load_string():                                  ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:51:30+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 21: parser error : Specification mandate value for attribute Products  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:51:30+00:00 ERR (3): Warning: simplexml_load_string():         &lt;amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:51:30+00:00 ERR (3): Warning: simplexml_load_string():                                         ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:51:30+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : expected '&gt;'  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:51:30+00:00 ERR (3): Warning: simplexml_load_string():         &lt;/amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:51:30+00:00 ERR (3): Warning: simplexml_load_string():                                  ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:51:56+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 21: parser error : Specification mandate value for attribute Products  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:51:56+00:00 ERR (3): Warning: simplexml_load_string():         &lt;amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:51:56+00:00 ERR (3): Warning: simplexml_load_string():                                         ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:51:56+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : expected '&gt;'  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:51:56+00:00 ERR (3): Warning: simplexml_load_string():         &lt;/amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:51:56+00:00 ERR (3): Warning: simplexml_load_string():                                  ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:52:23+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 21: parser error : Specification mandate value for attribute Products  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:52:23+00:00 ERR (3): Warning: simplexml_load_string():         &lt;amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:52:23+00:00 ERR (3): Warning: simplexml_load_string():                                         ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:52:23+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : expected '&gt;'  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:52:23+00:00 ERR (3): Warning: simplexml_load_string():         &lt;/amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:52:23+00:00 ERR (3): Warning: simplexml_load_string():                                  ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:53:53+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 21: parser error : Specification mandate value for attribute Products  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:53:53+00:00 ERR (3): Warning: simplexml_load_string():         &lt;amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:53:53+00:00 ERR (3): Warning: simplexml_load_string():                                         ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:53:53+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : expected '&gt;'  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:53:53+00:00 ERR (3): Warning: simplexml_load_string():         &lt;/amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:53:53+00:00 ERR (3): Warning: simplexml_load_string():                                  ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:53:56+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 21: parser error : Specification mandate value for attribute Products  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:53:56+00:00 ERR (3): Warning: simplexml_load_string():         &lt;amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:53:56+00:00 ERR (3): Warning: simplexml_load_string():                                         ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:53:56+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : expected '&gt;'  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:53:56+00:00 ERR (3): Warning: simplexml_load_string():         &lt;/amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:53:56+00:00 ERR (3): Warning: simplexml_load_string():                                  ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:54:15+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 21: parser error : Specification mandate value for attribute Products  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:54:15+00:00 ERR (3): Warning: simplexml_load_string():         &lt;amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:54:15+00:00 ERR (3): Warning: simplexml_load_string():                                         ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:54:15+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : expected '&gt;'  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:54:15+00:00 ERR (3): Warning: simplexml_load_string():         &lt;/amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:54:15+00:00 ERR (3): Warning: simplexml_load_string():                                  ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:54:31+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 21: parser error : Specification mandate value for attribute Products  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:54:31+00:00 ERR (3): Warning: simplexml_load_string():         &lt;amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:54:31+00:00 ERR (3): Warning: simplexml_load_string():                                         ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:54:31+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : expected '&gt;'  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:54:31+00:00 ERR (3): Warning: simplexml_load_string():         &lt;/amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:54:31+00:00 ERR (3): Warning: simplexml_load_string():                                  ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:54:43+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 21: parser error : Specification mandate value for attribute Products  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:54:43+00:00 ERR (3): Warning: simplexml_load_string():         &lt;amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:54:43+00:00 ERR (3): Warning: simplexml_load_string():                                         ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:54:43+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : expected '&gt;'  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:54:43+00:00 ERR (3): Warning: simplexml_load_string():         &lt;/amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:54:43+00:00 ERR (3): Warning: simplexml_load_string():                                  ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:55:09+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 21: parser error : Specification mandate value for attribute Products  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:55:09+00:00 ERR (3): Warning: simplexml_load_string():         &lt;amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:55:09+00:00 ERR (3): Warning: simplexml_load_string():                                         ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:55:09+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : expected '&gt;'  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:55:09+00:00 ERR (3): Warning: simplexml_load_string():         &lt;/amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:55:09+00:00 ERR (3): Warning: simplexml_load_string():                                  ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:58:49+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 21: parser error : Specification mandate value for attribute Products  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:58:49+00:00 ERR (3): Warning: simplexml_load_string():         &lt;amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:58:49+00:00 ERR (3): Warning: simplexml_load_string():                                         ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:58:49+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : expected '&gt;'  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:58:49+00:00 ERR (3): Warning: simplexml_load_string():         &lt;/amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:58:49+00:00 ERR (3): Warning: simplexml_load_string():                                  ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:59:16+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 21: parser error : Specification mandate value for attribute Products  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:59:16+00:00 ERR (3): Warning: simplexml_load_string():         &lt;amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:59:16+00:00 ERR (3): Warning: simplexml_load_string():                                         ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:59:16+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : expected '&gt;'  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:59:16+00:00 ERR (3): Warning: simplexml_load_string():         &lt;/amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:59:16+00:00 ERR (3): Warning: simplexml_load_string():                                  ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:59:52+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 21: parser error : Specification mandate value for attribute Products  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:59:52+00:00 ERR (3): Warning: simplexml_load_string():         &lt;amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:59:52+00:00 ERR (3): Warning: simplexml_load_string():                                         ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:59:52+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : expected '&gt;'  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:59:52+00:00 ERR (3): Warning: simplexml_load_string():         &lt;/amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T06:59:52+00:00 ERR (3): Warning: simplexml_load_string():                                  ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T07:29:34+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 21: parser error : Specification mandate value for attribute Products  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T07:29:34+00:00 ERR (3): Warning: simplexml_load_string():         &lt;amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T07:29:34+00:00 ERR (3): Warning: simplexml_load_string():                                         ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T07:29:34+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : expected '&gt;'  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T07:29:34+00:00 ERR (3): Warning: simplexml_load_string():         &lt;/amazon_products_Amazon Products&gt;  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
+2015-01-03T07:29:34+00:00 ERR (3): Warning: simplexml_load_string():                                  ^  in /var/www/dtstore/lib/Varien/Simplexml/Config.php on line 510
