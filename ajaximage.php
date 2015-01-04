@@ -73,7 +73,7 @@ if (isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST") {
     $size = $_FILES['photoimg']['size'];
     if (strlen($name)) {
         list($txt, $ext) = explode(".", $name);
-        if (in_array($ext, $valid_formats)) {
+        if (in_array(strtolower($ext), $valid_formats)) {
 
             $actual_image_name = time() . $session_id . "." . $ext;
             $tmp = $_FILES['photoimg']['tmp_name'];
@@ -90,10 +90,10 @@ if (isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST") {
                 $mail->Body = 'Gracias <b>'.$custname.'</b> por cargar el recibo del Pedido #'.$Order->getIncrementId().'. <br />Pronto recibira un email de confirmacion el pago.';
 
                 if (!$mail->send()) {
-                    echo 'Message could not be sent.';
-                    echo 'Mailer Error: ' . $mail->ErrorInfo;
+                  //  echo 'Message could not be sent.';
+                  //  echo 'Mailer Error: ' . $mail->ErrorInfo;
                 } else {
-                    echo 'Message has been sent';
+                 //   echo 'Message has been sent';
                 }
 
 
