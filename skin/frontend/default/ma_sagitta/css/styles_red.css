@@ -5261,9 +5261,15 @@ fb_button_ps {
 .fb_button_ps{
     width: 142px;
     margin-top: 14px;
-    margin-left: -78px;
+    margin-left: -138px;
 }
 
+
+#product-attribute-specs-table .label {
+color: #666;
+font-size: 14px;
+line-height: 33px;
+}
 
 #login-form .fb_button_ps{
     width: 142px;
