@@ -59,7 +59,7 @@ $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
 $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name*/
 $mail->isHTML(true);                                  // Set email format to HTML
 
-$mail->Subject = 'Confirmacion de Carga de recibo de compra - DT Store';
+$mail->Subject = 'Confirmacion de Carga de recibo de compra #'.$Order->getIncrementId().'- DT Store';
 //$mail->AltBody = '';
 
 
