@@ -47,7 +47,9 @@ $Order = Mage::getModel('sales/order')->load(6);
 $custname = $Order->getCustomerName();
 $custemail = $Order->getCustomerEmail();
 
-
+var_dump($custname);
+var_dump('----');
+var_dump($custemail);
 $mail->addAddress($custemail, $custname);     // Add a recipient
 /*$mail->addAddress('ellen@example.com');               // Name is optional
 $mail->addReplyTo('info@example.com', 'Information');
