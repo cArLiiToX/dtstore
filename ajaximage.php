@@ -42,7 +42,7 @@ $mail->From = $EmailSales;
 $mail->FromName = $NameSales;
 
 
-$Order = Mage::getModel('sales/order')->load(6);     
+$Order = Mage::getModel('sales/order')->load($_POST['orderid']);     
 
 $custname = $Order->getCustomerName();
 $custemail = $Order->getCustomerEmail();
