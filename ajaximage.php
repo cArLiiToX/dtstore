@@ -49,6 +49,7 @@ $custemail = $Order->getCustomerEmail();
 
 
 $mail->addAddress($custemail, $custname);     // Add a recipient
+$mail->addCC('nikolaisan@hotmail.com', 'DT Store!');
 /*$mail->addAddress('ellen@example.com');               // Name is optional
 $mail->addReplyTo('info@example.com', 'Information');
 $mail->addCC('cc@example.com');
