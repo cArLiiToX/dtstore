@@ -71,6 +71,8 @@ if ($_product->getStockItem()->getQty() <= 0) {
             $DateEnd = DateTime::createFromFormat('d/m/Y', '10/01/2018');
         }
     }
+    
+    var_dump($_product->getAttributeText('amazon_link'));
     if (strlen($_product->getAttributeText('amazon_link')) > 0) {
 
 
