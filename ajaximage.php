@@ -23,6 +23,7 @@ $Auth = (Mage::helper('smtppro')->getSMTPSettingsAuthentication($storeId)=='logi
 $SSL = Mage::helper('smtppro')->getSMTPSettingsSSL($storeId);
 $EmailSales = Mage::getStoreConfig('trans_email/ident_sales/email');
 $NameSales = Mage::getStoreConfig('trans_email/ident_sales/name');
+
 require 'phpmailer/PHPMailerAutoload.php';
 
 $mail = new PHPMailer;
@@ -46,7 +47,7 @@ $Order = Mage::getModel('sales/order')->load(6);
 $custname = $Order->getCustomerName();
 $custemail = $Order->getCustomerEmail();
 
-var_dump($custemail);
+
 $mail->addAddress($custemail, $custname);     // Add a recipient
 /*$mail->addAddress('ellen@example.com');               // Name is optional
 $mail->addReplyTo('info@example.com', 'Information');
@@ -57,9 +58,8 @@ $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
 $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name*/
 $mail->isHTML(true);                                  // Set email format to HTML
 
-$mail->Subject = 'Here is the subject';
-$mail->Body = 'This is the HTML message body <b>in bold!</b>';
-$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+$mail->Subject = 'Confirmacion de Carga de recibo de compra - DT Store';
+//$mail->AltBody = '';
 
 
 
@@ -86,14 +86,15 @@ if (isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST") {
                 // now $write is an instance of Zend_Db_Adapter_Abstract
                 $result = $write->query($sql);
 
+                $mail->addAttachment('/home/nikolaisan/www/uploads/'.$actual_image_name, $actual_image_name);    // Optional name*/
+                $mail->Body = 'Gracias <b>'.$custname.'</b> por cargar el recibo del Pedido #'.$Order->getIncrementId().'. <br />Pronto recibira un email de confirmacion el pago.';
 
-
-if (!$mail->send()) {
-    echo 'Message could not be sent.';
-    echo 'Mailer Error: ' . $mail->ErrorInfo;
-} else {
-    echo 'Message has been sent';
-}
+                if (!$mail->send()) {
+                    echo 'Message could not be sent.';
+                    echo 'Mailer Error: ' . $mail->ErrorInfo;
+                } else {
+                    echo 'Message has been sent';
+                }
 
 
 

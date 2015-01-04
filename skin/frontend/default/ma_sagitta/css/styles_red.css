@@ -5264,6 +5264,9 @@ fb_button_ps {
     margin-left: -138px;
 }
 
+#checkout-step-login .fb_button_ps{
+    margin-left: 6px;
+}
 
 #product-attribute-specs-table .label {
 color: #666;
