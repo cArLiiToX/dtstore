@@ -40,18 +40,10 @@ if ($_product->getStockItem()->getQty() <= 0) {
     <?php endif; ?>
 
     <?php
-    $sql = 'SELECT * FROM  amazon_products_amazon_product as app, amazon_products_amazon as aps WHERE aps.entity_id = app.amazon_id and  status = 1 and product_id=' . $_product->getEntityId();
-// fetch write database connection that is used in Mage_Core module
-    $write = Mage::getSingleton('core/resource')->getConnection('core_write');
-
-// now $write is an instance of Zend_Db_Adapter_Abstract
-    $result = $write->query($sql);
 
 
-    $i = 0;
-    while ($row = $result->fetch()) {
-        $i++;
-    }
+
+    
     $Date = DateTime::createFromFormat('d/m/Y', date('d/m/Y'));
     if (date('Y') == "2014") {
 
@@ -79,7 +71,7 @@ if ($_product->getStockItem()->getQty() <= 0) {
             $DateEnd = DateTime::createFromFormat('d/m/Y', '10/01/2018');
         }
     }
-    if ($i > 0) {
+    if (strlen($_product->getAttributeText('amazon_link')) > 0) {
 
 
         if ($Date >= $DateBegin && $Date <= $DateEnd) {
