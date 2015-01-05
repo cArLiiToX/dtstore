@@ -24,3 +24,6 @@ var/cache/*
 var/media/catalog/*
 var/media/*
 var/report/*
+includes/src/*
+app/etc/local.xml 
+app/etc/local.xml.2
