@@ -5,12 +5,13 @@
  * and open the template in the editor.
  */
 session_start();
-$_SESSION['passwd'] = false;
-if(isset($_REQUEST['password']) && $_REQUEST['password'] == ''){
+
+if(isset($_REQUEST['password']) && $_REQUEST['password'] == 
+'edit0987!'){
     $_SESSION['passwd'] = true;
 }
 
-if ($_SESSION['passwd']) {
+if (isset($_SESSION['passwd'])) {
     error_reporting(E_ALL);
 
     require_once('../app/Mage.php');
@@ -63,7 +64,7 @@ if ($_SESSION['passwd']) {
     ?>
     <label>Habilitar o desabilitar Stock en la tienda.</label>
     <h3><?php echo $mensaje; ?></h3>
-    <form action="/manager/index.php" method="get">
+    <form action="/manager/index.php" method="post">
 
         <input type="password" value="" name="password" />
         <input type="submit" value="Login" name="action"> 

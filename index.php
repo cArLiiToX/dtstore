@@ -1,4 +1,7 @@
 <?php
+ini_set("memory_limit","128M");
+
+date_default_timezone_set('America/Bogota'); 
 /**
  * Magento
  *

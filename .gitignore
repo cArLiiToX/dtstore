@@ -19,3 +19,8 @@ media/bannerdt/
 var/report/
 var/amazoncookie.txt
 media/email/
+var/log/*
+var/cache/*
+var/media/catalog/*
+var/media/*
+var/report/*

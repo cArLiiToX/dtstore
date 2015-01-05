@@ -25,6 +25,8 @@
  */
 
 // Change current directory to the directory of current script
+error_reporting(-1);
+
 chdir(dirname(__FILE__));
 
 require 'app/Mage.php';

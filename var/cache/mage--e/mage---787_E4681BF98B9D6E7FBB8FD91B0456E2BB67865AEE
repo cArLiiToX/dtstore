@@ -1,0 +1,48 @@
+<div class="block block-layered-nav">
+    <div class="block-title">
+        <strong><span>Ver por</span></strong>
+    </div>
+    <div class="block-content">
+        <dl id="narrow-by-list2">
+            <dt>Categoría</dt>
+            <dd>
+                <ol>
+                                                        <li>
+                        <a href="http://www.dtstore.com.co/coleccionables-y-hobbies/anime/dragon-ball.html?___SID=U">Dragon Ball</a> (0)
+                    </li>
+                                                                            <li>
+                        <a href="http://www.dtstore.com.co/coleccionables-y-hobbies/anime/naruto.html?___SID=U">Naruto</a> (0)
+                    </li>
+                                                                            <li>
+                        <a href="http://www.dtstore.com.co/coleccionables-y-hobbies/anime/one-piece.html?___SID=U">One Piece</a> (0)
+                    </li>
+                                                                            <li>
+                        <a href="http://www.dtstore.com.co/coleccionables-y-hobbies/anime/tokyo-ghoul.html?___SID=U">Tokyo Ghoul</a> (1)
+                    </li>
+                                                                            <li>
+                        <a href="http://www.dtstore.com.co/coleccionables-y-hobbies/anime/death-note.html?___SID=U">Death Note</a> (0)
+                    </li>
+                                                                            <li>
+                        <a href="http://www.dtstore.com.co/coleccionables-y-hobbies/anime/neon-genesis-evangelion.html?___SID=U">Neon Genesis Evangelion</a> (0)
+                    </li>
+                                                                            <li>
+                        <a href="http://www.dtstore.com.co/coleccionables-y-hobbies/anime/attack-on-titan.html?___SID=U">Attack On Titan</a> (0)
+                    </li>
+                                                                            <li>
+                        <a href="http://www.dtstore.com.co/coleccionables-y-hobbies/anime/fairy-tail.html?___SID=U">Fairy Tail</a> (0)
+                    </li>
+                                                                            <li>
+                        <a href="http://www.dtstore.com.co/coleccionables-y-hobbies/anime/sailor-moon.html?___SID=U">Sailor Moon</a> (0)
+                    </li>
+                                                                            <li>
+                        <a href="http://www.dtstore.com.co/coleccionables-y-hobbies/anime/inuyasha.html?___SID=U">Inuyasha</a> (0)
+                    </li>
+                                                                            <li>
+                        <a href="http://www.dtstore.com.co/coleccionables-y-hobbies/anime/bleach.html?___SID=U">Bleach</a> (0)
+                    </li>
+                                                    </ol>
+            </dd>
+        </dl>
+        <script type="text/javascript">decorateDataList('narrow-by-list2')</script>
+    </div>
+</div>

@@ -21,6 +21,8 @@ class Magentothem_Onsaleslider_Block_Onsaleslider extends Mage_Catalog_Block_Pro
 		$storeId    = Mage::app()->getStore()->getId();
 		$cateids = $this->getConfig('catsid');
 		$arr_catid = explode(",", $cateids);
+                date_default_timezone_set('America/Bogota');
+                
 		if($cateids) {
 				$arr_productids = $this->getProductByCategory();
 				$products = Mage::getResourceModel('catalog/product_collection')

@@ -45190,9 +45190,9 @@ abstract class Zend_Date_DateObject {
  *
  * @category  Zend
  * @package   Zend_Date
- * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd     New BSD License
- * @version   $Id: Date.php 24880 2012-06-12 20:35:18Z matthew $
+ * @version   $Id: Date.php 22713 2010-07-29 11:41:56Z thomas $
  */
 
 /**
@@ -45204,9 +45204,12 @@ abstract class Zend_Date_DateObject {
 #require_once 'Zend/Locale/Math.php';
 
 /**
+ * This class replaces default Zend_Date because of problem described in Jira ticket MAGE-4872
+ * The only difference between current class and original one is overwritten implementation of mktime method
+ *
  * @category  Zend
  * @package   Zend_Date
- * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd     New BSD License
  */
 class Zend_Date extends Zend_Date_DateObject
@@ -45295,6 +45298,16 @@ class Zend_Date extends Zend_Date_DateObject
     const RFC_3339          = 'RRRRR';
     const RSS               = 'SSS';
     const W3C               = 'WWW';
+
+    /**
+     * Minimum allowed year value
+     */
+    const YEAR_MIN_VALUE = -10000;
+
+    /**
+     * Maximum allowed year value
+     */
+    const YEAR_MAX_VALUE = 10000;
 
     /**
      * Generates the standard date object, could be a unix timestamp, localized date,
@@ -46377,7 +46390,7 @@ class Zend_Date extends Zend_Date_DateObject
         }
 
         preg_match('/([+-]\d{2}):{0,1}\d{2}/', $zone, $match);
-        if (!empty($match) and ($match[count($match) - 1] <= 14) and ($match[count($match) - 1] >= -12)) {
+        if (!empty($match) and ($match[count($match) - 1] <= 12) and ($match[count($match) - 1] >= -12)) {
             $zone = "Etc/GMT";
             $zone .= ($match[count($match) - 1] < 0) ? "+" : "-";
             $zone .= (int) abs($match[count($match) - 1]);
@@ -47283,10 +47296,7 @@ class Zend_Date extends Zend_Date_DateObject
                 break;
 
             case self::RFC_2822:
-                 $result = preg_match('/^\w{3},\s(\d{1,2})\s(\w{3})\s(\d{4})\s'
-                                    . '(\d{2}):(\d{2}):{0,1}(\d{0,2})\s([+-]'
-                                    . '{1}\d{4}|\w{1,20})$/', $date, $match);
-
+                $result = preg_match('/^\w{3},\s(\d{1,2})\s(\w{3})\s(\d{4})\s(\d{2}):(\d{2}):{0,1}(\d{0,2})\s([+-]{1}\d{4})$/', $date, $match);
                 if (!$result) {
                     #require_once 'Zend/Date/Exception.php';
                     throw new Zend_Date_Exception("no RFC 2822 format ($date)", 0, null, $date);
@@ -47820,8 +47830,10 @@ class Zend_Date extends Zend_Date_DateObject
                                 $parsed['day'] = 0;
                             }
 
-                            if (!isset($parsed['year'])) {
-                                $parsed['year'] = 1970;
+                            if (isset($parsed['year'])) {
+                                $parsed['year'] -= 1970;
+                            } else {
+                                $parsed['year'] = 0;
                             }
                         }
 
@@ -47831,7 +47843,7 @@ class Zend_Date extends Zend_Date_DateObject
                             isset($parsed['second']) ? $parsed['second'] : 0,
                             isset($parsed['month']) ? (1 + $parsed['month']) : 1,
                             isset($parsed['day']) ? (1 + $parsed['day']) : 1,
-                            $parsed['year'],
+                            isset($parsed['year']) ? (1970 + $parsed['year']) : 1970,
                             false), $this->getUnixTimestamp(), false);
                     } catch (Zend_Locale_Exception $e) {
                         if (!is_numeric($date)) {
@@ -48415,7 +48427,7 @@ class Zend_Date extends Zend_Date_DateObject
     /**
      * Check if location is supported
      *
-     * @param array $location locations array
+     * @param $location array - locations array
      * @return $horizon float
      */
     private function _checkLocation($location)
@@ -48458,7 +48470,7 @@ class Zend_Date extends Zend_Date_DateObject
      * Returns the time of sunrise for this date and a given location as new date object
      * For a list of cities and correct locations use the class Zend_Date_Cities
      *
-     * @param array $location location of sunrise
+     * @param  $location array - location of sunrise
      *                   ['horizon']   -> civil, nautic, astronomical, effective (default)
      *                   ['longitude'] -> longitude of location
      *                   ['latitude']  -> latitude of location
@@ -48478,7 +48490,7 @@ class Zend_Date extends Zend_Date_DateObject
      * Returns the time of sunset for this date and a given location as new date object
      * For a list of cities and correct locations use the class Zend_Date_Cities
      *
-     * @param array $location location of sunset
+     * @param  $location array - location of sunset
      *                   ['horizon']   -> civil, nautic, astronomical, effective (default)
      *                   ['longitude'] -> longitude of location
      *                   ['latitude']  -> latitude of location
@@ -48498,7 +48510,7 @@ class Zend_Date extends Zend_Date_DateObject
      * Returns an array with the sunset and sunrise dates for all horizon types
      * For a list of cities and correct locations use the class Zend_Date_Cities
      *
-     * @param array $location location of suninfo
+     * @param  $location array - location of suninfo
      *                   ['horizon']   -> civil, nautic, astronomical, effective (default)
      *                   ['longitude'] -> longitude of location
      *                   ['latitude']  -> latitude of location
@@ -48963,7 +48975,7 @@ class Zend_Date extends Zend_Date_DateObject
      * Returns the day as new date object
      * Example: 20.May.1986 -> 20.Jan.1970 00:00:00
      *
-     * @param Zend_Locale $locale OPTIONAL Locale for parsing input
+     * @param $locale  string|Zend_Locale  OPTIONAL Locale for parsing input
      * @return Zend_Date
      */
     public function getDay($locale = null)
@@ -48975,9 +48987,9 @@ class Zend_Date extends Zend_Date_DateObject
     /**
      * Returns the calculated day
      *
-     * @param string      $calc    Type of calculation to make
-     * @param Zend_Date   $day     Day to calculate, when null the actual day is calculated
-     * @param Zend_Locale $locale  Locale for parsing input
+     * @param $calc    string                    Type of calculation to make
+     * @param $day     string|integer|Zend_Date  Day to calculate, when null the actual day is calculated
+     * @param $locale  string|Zend_Locale        Locale for parsing input
      * @return Zend_Date|integer
      */
     private function _day($calc, $day, $locale)
@@ -49106,7 +49118,7 @@ class Zend_Date extends Zend_Date_DateObject
      * Weekday is always from 1-7
      * Example: 09-Jan-2007 -> 2 = Tuesday -> 02-Jan-1970 (when 02.01.1970 is also Tuesday)
      *
-     * @param Zend_Locale $locale OPTIONAL Locale for parsing input
+     * @param $locale  string|Zend_Locale  OPTIONAL Locale for parsing input
      * @return Zend_Date
      */
     public function getWeekday($locale = null)
@@ -49124,9 +49136,9 @@ class Zend_Date extends Zend_Date_DateObject
     /**
      * Returns the calculated weekday
      *
-     * @param  string      $calc     Type of calculation to make
-     * @param  Zend_Date   $weekday  Weekday to calculate, when null the actual weekday is calculated
-     * @param  Zend_Locale $locale   Locale for parsing input
+     * @param  $calc     string                          Type of calculation to make
+     * @param  $weekday  string|integer|array|Zend_Date  Weekday to calculate, when null the actual weekday is calculated
+     * @param  $locale   string|Zend_Locale              Locale for parsing input
      * @return Zend_Date|integer
      * @throws Zend_Date_Exception
      */
@@ -49343,7 +49355,7 @@ class Zend_Date extends Zend_Date_DateObject
      * Returns the hour as new date object
      * Example: 02.Feb.1986 10:30:25 -> 01.Jan.1970 10:00:00
      *
-     * @param Zend_Locale $locale OPTIONAL Locale for parsing input
+     * @param $locale  string|Zend_Locale  OPTIONAL Locale for parsing input
      * @return Zend_Date
      */
     public function getHour($locale = null)
@@ -49794,7 +49806,7 @@ class Zend_Date extends Zend_Date_DateObject
      * Returns the week as new date object using monday as begining of the week
      * Example: 12.Jan.2007 -> 08.Jan.1970 00:00:00
      *
-     * @param Zend_Locale $locale OPTIONAL Locale for parsing input
+     * @param $locale  string|Zend_Locale  OPTIONAL Locale for parsing input
      * @return Zend_Date
      */
     public function getWeek($locale = null)
@@ -50127,6 +50139,47 @@ class Zend_Date extends Zend_Date_DateObject
         }
 
         return $token;
+    }
+
+    /**
+     * Get unix timestamp.
+     * Added limitation: $year value must be between -10 000 and 10 000
+     * Parent method implementation causes 504 error if it gets too big(small) year value
+     *
+     * @see Zend_Date_DateObject::mktime
+     * @throws Zend_Date_Exception
+     * @param $hour
+     * @param $minute
+     * @param $second
+     * @param $month
+     * @param $day
+     * @param $year
+     * @param bool $gmt
+     * @return float|int
+     */
+    protected function mktime($hour, $minute, $second, $month, $day, $year, $gmt = false)
+    {
+        $day   = intval($day);
+        $month = intval($month);
+        $year  = intval($year);
+
+        // correct months > 12 and months < 1
+        if ($month > 12) {
+            $overlap = floor($month / 12);
+            $year   += $overlap;
+            $month  -= $overlap * 12;
+        } else {
+            $overlap = ceil((1 - $month) / 12);
+            $year   -= $overlap;
+            $month  += $overlap * 12;
+        }
+
+        if ($year > self::YEAR_MAX_VALUE || $year < self::YEAR_MIN_VALUE) {
+            throw new Zend_Date_Exception('Invalid year, it must be between ' . self::YEAR_MIN_VALUE . ' and '
+                . self::YEAR_MAX_VALUE);
+        }
+
+        return parent::mktime($hour, $minute, $second, $month, $day, $year, $gmt);
     }
 }
 /**

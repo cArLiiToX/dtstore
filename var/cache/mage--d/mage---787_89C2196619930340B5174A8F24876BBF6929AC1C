@@ -1,0 +1,33 @@
+<div class="block block-layered-nav">
+    <div class="block-title">
+        <strong><span>Ver por</span></strong>
+    </div>
+    <div class="block-content">
+        <dl id="narrow-by-list2">
+            <dt>Categoría</dt>
+            <dd>
+                <ol>
+                                                        <li>
+                        <a href="http://www.dtstore.com.co/ropa-y-accesorios/hombre/camisas-y-camisetas.html?___SID=U">Camisas y Camisetas</a> (0)
+                    </li>
+                                                                            <li>
+                        <a href="http://www.dtstore.com.co/ropa-y-accesorios/hombre/buzos-y-chaquetas.html?___SID=U">Buzos Y Chaquetas</a> (0)
+                    </li>
+                                                                            <li>
+                        <a href="http://www.dtstore.com.co/ropa-y-accesorios/hombre/pantalones.html?___SID=U">Pantalones</a> (0)
+                    </li>
+                                                                            <li>
+                        <a href="http://www.dtstore.com.co/ropa-y-accesorios/hombre/joyeria.html?___SID=U">Joyería</a> (17)
+                    </li>
+                                                                            <li>
+                        <a href="http://www.dtstore.com.co/ropa-y-accesorios/hombre/accesorios-hombre.html?___SID=U">Relojes</a> (2)
+                    </li>
+                                                                            <li>
+                        <a href="http://www.dtstore.com.co/ropa-y-accesorios/hombre/bolsos-y-billeteras.html?___SID=U">Bolsos y Billeteras</a> (2)
+                    </li>
+                                                    </ol>
+            </dd>
+        </dl>
+        <script type="text/javascript">decorateDataList('narrow-by-list2')</script>
+    </div>
+</div>

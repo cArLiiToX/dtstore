@@ -1,0 +1,33 @@
+<div class="block block-layered-nav">
+    <div class="block-title">
+        <strong><span>Ver por</span></strong>
+    </div>
+    <div class="block-content">
+        <dl id="narrow-by-list2">
+            <dt>Categoría</dt>
+            <dd>
+                <ol>
+                                                        <li>
+                        <a href="http://www.dtstore.com.co/ropa-y-accesorios/mujer/blusas.html?___SID=U">Blusas</a> (0)
+                    </li>
+                                                                            <li>
+                        <a href="http://www.dtstore.com.co/ropa-y-accesorios/mujer/vestidos.html?___SID=U">Vestidos</a> (0)
+                    </li>
+                                                                            <li>
+                        <a href="http://www.dtstore.com.co/ropa-y-accesorios/mujer/faldas.html?___SID=U">Faldas</a> (0)
+                    </li>
+                                                                            <li>
+                        <a href="http://www.dtstore.com.co/ropa-y-accesorios/mujer/accesorios-mujer.html?___SID=U">Joyería</a> (22)
+                    </li>
+                                                                            <li>
+                        <a href="http://www.dtstore.com.co/ropa-y-accesorios/mujer/relojes.html?___SID=U">Relojes</a> (4)
+                    </li>
+                                                                            <li>
+                        <a href="http://www.dtstore.com.co/ropa-y-accesorios/mujer/bolsos-y-billeteras.html?___SID=U">Bolsos y Billeteras</a> (5)
+                    </li>
+                                                    </ol>
+            </dd>
+        </dl>
+        <script type="text/javascript">decorateDataList('narrow-by-list2')</script>
+    </div>
+</div>
