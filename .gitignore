@@ -25,5 +25,6 @@ var/media/catalog/*
 var/media/*
 var/report/*
 includes/src/*
-includes/src
-includes/src/*.php
+app/etc/local.xml
+app/etc/local.xml.2
+.gitignore
