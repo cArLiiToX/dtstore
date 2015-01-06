@@ -5396,3 +5396,7 @@ text-align: center;
 padding: 0 1px;
 line-height: 25px;
 }
+
+#billing-progress-opcheckout{
+    display: none;
+}

@@ -24,3 +24,6 @@ var/cache/*
 var/media/catalog/*
 var/media/*
 var/report/*
+includes/src/*
+includes/src
+includes/src/*.php
