@@ -5400,3 +5400,7 @@ line-height: 25px;
 #billing-progress-opcheckout{
     display: none;
 }
+
+#popup_pt_item_menu_featured_custom{
+    width: 923px!important;
+}
