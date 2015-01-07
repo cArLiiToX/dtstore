@@ -1,6 +1,0 @@
-app/code/community/Amazon_Products    app/code/community/Amazon_Products
-app/design/adminhtml/default/default/layout/amazon_products.xml    app/design/adminhtml/default/default/layout/amazon_products.xml
-app/design/adminhtml/default/default/template/amazon_products    app/design/adminhtml/default/default/template/amazon_products
-app/design/frontend/base/default/layout/amazon_products.xml    app/design/frontend/base/default/layout/amazon_products.xml
-app/etc/modules/Amazon_Products.xml    app/etc/modules/Amazon_Products.xml
-app/locale/en_US/Amazon_Products.csv    app/locale/en_US/Amazon_Products.csv
