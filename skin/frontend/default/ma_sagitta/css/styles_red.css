@@ -5397,10 +5397,12 @@ padding: 0 1px;
 line-height: 25px;
 }
 
-#billing-progress-opcheckout, .top-link-onestepcheckout{
+#billing-progress-opcheckout{
     display: none;
 }
-
+ .top-link-onestepcheckout{
+    display: none!important;
+}
 #popup_pt_item_menu_featured_custom{
     width: 923px!important;
 }
