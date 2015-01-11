@@ -9,16 +9,15 @@ Mage::register('isSecureArea', true);
 
 
 
-var_dump('http://dolar.wilkinsonpc.com.co/widgets/gratis/dolar-cop-usd-1.html');
-$html = file_get_contents('http://dolar.wilkinsonpc.com.co/widgets/gratis/dolar-cop-usd-1.html');
-
-$patron = '/<div id="widget_valor">(.*)</';
+var_dump('http://www.colombia.com/includes/2007/enlaces/actualidad_indicadores.js');
+$html = file_get_contents('http://www.colombia.com/includes/2007/enlaces/actualidad_indicadores.js');
+var_dump($html);
+$patron = '/var IndDolTRM = "(.*)"/';
 preg_match_all($patron, $html, $coincidencias);
 
 $Items = array();
 
-$TRM = str_replace(',', '', $coincidencias[1][0]);
-$TRM = str_replace('.', ',', $TRM);
+$TRM =  $coincidencias[1][0];
 $TRM = str_replace('$', '', $TRM);
 
 
@@ -28,7 +27,7 @@ $NewValueRoundUp50_ = explode(',', $TRM);
 
 $NewValueRoundUp50 = substr($NewValueRoundUp50_[0], -2);
 
-//var_dump('Precio Redondeado Dolar: '.$NewValueRoundUp50);
+var_dump('Precio Redondeado Dolar: '.$NewValueRoundUp50);
 if ($NewValueRoundUp50 < 50) {
 
     $NewValueRoundUp50 = substr($NewValueRoundUp50_[0], 0, -2) . '50';
