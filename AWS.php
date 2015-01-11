@@ -980,7 +980,7 @@ $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
 
 
 
-    $NuevoPrecio = $Items[1];
+    $NuevoPrecio = str_replace('','',$Items[1]);
 
 
 
