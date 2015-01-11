@@ -980,18 +980,18 @@ $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
 
 
 
-    $NuevoPrecio = str_replace('','',$Items[1]);
+    $NuevoPrecio = str_replace('.','',$Items[1][0]);
 
 
 
     $PrecioImportacion = $_product->getResource()->getAttribute('precio_importacion')->getFrontend()->getValue($_product);
     $PrecioEnvioNacional = $_product->getResource()->getAttribute('envionacional')->getFrontend()->getValue($_product);
 
-    var_dump('Nuevo precio del articulo '.(int) round($NuevoPrecio[0]));
+    var_dump('Nuevo precio del articulo '.(int) round($NuevoPrecio));
     var_dump('Precio de Importacion '.(int) round($PrecioImportacion));
     var_dump('Nuevo precio del dolar redondeado '.(int) round($NewValueRoundUp50));
 
-    $NuevoPrecioCalculado = (int) round($NuevoPrecio[0]) + (int) round($PrecioImportacion) + (int) round($PrecioShipping);
+    $NuevoPrecioCalculado = (int) round($NuevoPrecio) + (int) round($PrecioImportacion) + (int) round($PrecioShipping);
     var_dump($NuevoPrecioCalculado);
 
     $New_Price = (($NuevoPrecioCalculado * $NewValueRoundUp50) + 10000) + (int) $PrecioEnvioNacional;
