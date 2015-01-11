@@ -27,6 +27,8 @@ $NewValueRoundUp50_ = explode(',', $TRM);
 
 $NewValueRoundUp50 = substr($NewValueRoundUp50_[0], -2);
 
+$NewValueRoundUp50 = str_replace('.','',$NewValueRoundUp50);
+
 var_dump('Precio Redondeado Dolar: '.$NewValueRoundUp50);
 if ($NewValueRoundUp50 < 50) {
 
