@@ -27,7 +27,7 @@ $NewValueRoundUp50_ = explode(',', $TRM);
 
 $NewValueRoundUp50 = substr($NewValueRoundUp50_[0], -2);
 
-$NewValueRoundUp50 = str_replace('.','',$NewValueRoundUp50);
+
 
 var_dump('Precio Redondeado Dolar: '.$NewValueRoundUp50);
 if ($NewValueRoundUp50 < 50) {
@@ -36,8 +36,11 @@ if ($NewValueRoundUp50 < 50) {
 } else {
     $NewValueRoundUp50 = (substr($NewValueRoundUp50_[0], 0, -2) + 1) . '00';
 }
+
+$NewValueRoundUp50 = str_replace('.','',$NewValueRoundUp50);
 var_dump('Nuevo precio dolar: ' . $NewValueRoundUp50);
 //die($NewValueRoundUp50);
+
 
 $productsCollection = Mage::getResourceModel('catalog/product_collection')
         ->addAttributeToFilter('amazon_link', array('notnull' => true))
@@ -982,7 +985,7 @@ $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
 
 
 
-    $NuevoPrecio = str_replace('.','',$Items[1][0]);
+    $NuevoPrecio = $Items[1][0];
 
 
 
