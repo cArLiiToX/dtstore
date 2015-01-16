@@ -28,6 +28,37 @@
  */
 ?>
 
+
+<style>
+    #header-account{
+        position: absolute;
+        right: 170px;
+        z-index: 99999999999;
+        background: #fff;
+        margin-top: 39px;
+    }
+    
+
+</style>
+
+<script>
+    jQuery(document).ready(function(){
+        jQuery("ul.links li a[title='Log In'], .no-logueado a[title='My Account']").toggle(function(){
+        jQuery(".youama-login-window").show();
+    }, function(){
+        jQuery(".youama-login-window").hide();
+    })
+    
+    
+    })
+    
+    
+</script>
+<div id="header-account" class="skip-content">
+    <div class="links">
+        
+    </div>
+    </div>
 <div class="header-container">
     <div class="header-container-inner">
         <div class="top-link">
@@ -112,7 +143,7 @@
                         </p>
                     </div>
 
-                    <div class="col-md-4 col-sms12">
+                    <div class="col-md-4 col-sms12 <?php echo (Mage::getSingleton('customer/session')->isLoggedIn())?'logueado':'no-logueado'; ?>">
                         <?php echo $this->getChildHtml('topLinks') ?>
                     </div>
 
