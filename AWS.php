@@ -18,10 +18,13 @@ preg_match_all($patron, $html, $coincidencias);
 $Items = array();
 
 $TRM =  $coincidencias[1][0];
-$TRM = str_replace('$', '', $TRM);
 
+$TRM = str_replace('.', '', $TRM);
+//$TRM = str_replace('.', ',', $TRM);
 
 var_dump('Precio Base Dolar: ' . $TRM);
+
+var_dump(explode(',', $TRM));
 
 $NewValueRoundUp50_ = explode(',', $TRM);
 
