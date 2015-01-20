@@ -202,6 +202,9 @@ if ($_SERVER["SERVER_PORT"] != "80") {
                 window.location = '<?php echo $pageURL ?>';
             })
         })
+        jQuery('.login.no-logged').click(function(){
+            window.location = '/customer/account/login/'
+        })
     })
         </script>
     </div>
@@ -230,7 +233,7 @@ if ($_SERVER["SERVER_PORT"] != "80") {
                                 <?php
                             } else {
                                 ?>
-                                <a class="btn btn-primary btn-sm pull-right login" style="margin-top: -11px;margin-right: 8px;" href="/customer/account/login/">Login</a>
+                                <a class="btn btn-primary btn-sm pull-right login no-logged" style="margin-top: -11px;margin-right: 8px;" href="/customer/account/login/">Login</a>
 
                                 <?php
                             }
