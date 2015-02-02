@@ -21,10 +21,6 @@ $orderCollection
         ->order('entity_id')
         ->limit(10);
 
-var_dump($orderCollection->getSelect()->__toString());
-echo '<pre>';
-//var_dump($orderCollection->getItems());
-echo '</pre>';
 $orders = "";
 foreach ($orderCollection->getItems() as $order) {
     $orderModel = Mage::getModel('sales/order');
@@ -37,6 +33,9 @@ foreach ($orderCollection->getItems() as $order) {
     $orderIncrementId = $orderModel->getData()['increment_id'];
 
     var_dump($orderModel->getData()['increment_id']);
+    
+    var_dump($orderModel->getSelect()->__toString());
+
     $order = Mage::getModel('sales/order')->loadByIncrementId($orderIncrementId);
     $items = $order->getAllVisibleItems();
     foreach ($items as $i):
@@ -51,9 +50,9 @@ foreach ($orderCollection->getItems() as $order) {
         $stock_item->setData('is_in_stock', 1); // is 0 or 1
         $stock_item->setData('qty', $ReStock); 
         
-       $orderModel->cancel();
+        $orderModel->cancel();
         $orderModel->setStatus('canceled');
-        $orderModel->save();
+        $orderModel->save();*/
 
         try {
             $stock_item->save();
