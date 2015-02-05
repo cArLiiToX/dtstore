@@ -14,14 +14,13 @@ Mage::register('isSecureArea', true);
 $orderCollection = Mage::getResourceModel('sales/order_collection');
 
 $orderCollection
-        ->addFieldToFilter('status', 'pending')
+        ->addFieldToFilter('status', 'pending_payment')
         ->addFieldToFilter('created_at', array(
-            'lt' => new Zend_Db_Expr("DATE_ADD('" . now() . "', INTERVAL 3 DAY)")))
+            'lt' => new Zend_Db_Expr("DATE_ADD('" . now() . "', INTERVAL -3 DAY)")))
         ->getSelect()
         ->order('entity_id')
         ->limit(10);
 
-var_dump($orderCollection->getSelect()->__toString());
 $orders = "";
 foreach ($orderCollection->getItems() as $order) {
     $orderModel = Mage::getModel('sales/order');
@@ -51,7 +50,7 @@ foreach ($orderCollection->getItems() as $order) {
         $stock_item->setData('is_in_stock', 1); // is 0 or 1
         $stock_item->setData('qty', $ReStock); 
         
-       /* $orderModel->cancel();
+        $orderModel->cancel();
         $orderModel->setStatus('canceled');
         $orderModel->save();*/
 

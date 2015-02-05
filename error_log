@@ -140,3 +140,24 @@ Stack trace:
 [04-Jan-2015 20:43:04 America/Bogota] PHP Warning:  include_once(): Failed opening '/home/nikolaisan/public_html/includes/src/Varien_Autoload.php' for inclusion (include_path='/home/nikolaisan/public_html/includes/src:.:/usr/lib/php:/usr/local/lib/php') in /home/nikolaisan/public_html/app/Mage.php on line 37
 [04-Jan-2015 20:43:04 America/Bogota] PHP Fatal error:  Class 'Varien_Autoload' not found in /home/nikolaisan/public_html/app/Mage.php on line 54
 [05-Jan-2015 01:44:31 UTC] PHP Fatal error:  Class 'Ultimate_ModuleCreator_Helper_Data' not found in /home/nikolaisan/public_html/app/Mage.php on line 547
+[05-Jan-2015 03:29:22 UTC] PHP Fatal error:  Uncaught exception 'Zend_Exception' with message 'dbModel read resource does not implement Zend_Db_Adapter_Abstract' in /home/nikolaisan/public_html/lib/Varien/Data/Collection/Db.php:187
+Stack trace:
+#0 /home/nikolaisan/public_html/app/code/core/Mage/Core/Model/Resource/Db/Collection/Abstract.php(134): Varien_Data_Collection_Db->setConnection(false)
+#1 /home/nikolaisan/public_html/app/code/core/Mage/Core/Model/Config.php(1348): Mage_Core_Model_Resource_Db_Collection_Abstract->__construct(Object(Mage_Core_Model_Resource_Website))
+#2 /home/nikolaisan/public_html/app/code/core/Mage/Core/Model/Config.php(1380): Mage_Core_Model_Config->getModelInstance('core_resource/w...', Object(Mage_Core_Model_Resource_Website))
+#3 /home/nikolaisan/public_html/app/Mage.php(491): Mage_Core_Model_Config->getResourceModelInstance('core/website_co...', Object(Mage_Core_Model_Resource_Website))
+#4 /home/nikolaisan/public_html/app/code/core/Mage/Core/Model/Abstract.php(208): Mage::getResourceModel('core/website_co...', Object(Mage_Co in /home/nikolaisan/public_html/lib/Varien/Data/Collection/Db.php on line 187
+[05-Jan-2015 03:34:06 UTC] PHP Fatal error:  Uncaught exception 'Zend_Exception' with message 'dbModel read resource does not implement Zend_Db_Adapter_Abstract' in /home/nikolaisan/public_html/lib/Varien/Data/Collection/Db.php:187
+Stack trace:
+#0 /home/nikolaisan/public_html/app/code/core/Mage/Core/Model/Resource/Db/Collection/Abstract.php(134): Varien_Data_Collection_Db->setConnection(false)
+#1 /home/nikolaisan/public_html/app/code/core/Mage/Core/Model/Config.php(1348): Mage_Core_Model_Resource_Db_Collection_Abstract->__construct(Object(Mage_Core_Model_Resource_Website))
+#2 /home/nikolaisan/public_html/app/code/core/Mage/Core/Model/Config.php(1380): Mage_Core_Model_Config->getModelInstance('core_resource/w...', Object(Mage_Core_Model_Resource_Website))
+#3 /home/nikolaisan/public_html/app/Mage.php(491): Mage_Core_Model_Config->getResourceModelInstance('core/website_co...', Object(Mage_Core_Model_Resource_Website))
+#4 /home/nikolaisan/public_html/app/code/core/Mage/Core/Model/Abstract.php(208): Mage::getResourceModel('core/website_co...', Object(Mage_Co in /home/nikolaisan/public_html/lib/Varien/Data/Collection/Db.php on line 187
+[24-Jan-2015 03:33:46 UTC] PHP Fatal error:  Call to a member function getSelect() on a non-object in /home/nikolaisan/public_html/CancelOrdersAndRestocking.php on line 24
+[28-Jan-2015 14:25:34 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'File '/home/nikolaisan/public_html/media/catalog/' does not exists.' in /home/nikolaisan/public_html/lib/Varien/File/Transfer/Adapter/Http.php:96
+Stack trace:
+#0 /home/nikolaisan/public_html/get.php(205): Varien_File_Transfer_Adapter_Http->send('/home/nikolaisa...')
+#1 /home/nikolaisan/public_html/get.php(165): sendFile('/home/nikolaisa...')
+#2 {main}
+  thrown in /home/nikolaisan/public_html/lib/Varien/File/Transfer/Adapter/Http.php on line 96
