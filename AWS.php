@@ -20,7 +20,7 @@ $Items = array();
 $TRM =  $coincidencias[1][0];
 
 $TRM = reset(explode('.', $TRM));
-$TRM = str_replace(',', '.', $TRM);
+$TRM = str_replace(',', '', $TRM);
 
 var_dump('Precio Base Dolar: ' . $TRM);
 
