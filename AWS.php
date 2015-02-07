@@ -17,9 +17,10 @@ preg_match_all($patron, $html, $coincidencias);
 
 $Items = array();
 
-$TRM =  $coincidencias[1][0];
-
-$TRM = reset(explode('.', $TRM));
+$TRM =  str_replace('.', '',$coincidencias[1][0]);
+//var_dump('Precio Base Dolar: ' . $TRM);
+$TRM = reset(explode(',', $TRM));
+//var_dump('Precio Base Dolar: ' . $TRM);
 $TRM = str_replace(',', '', $TRM);
 
 var_dump('Precio Base Dolar: ' . $TRM);
