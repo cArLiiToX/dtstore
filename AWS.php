@@ -16,24 +16,43 @@ $patron = '/var IndDolTRM = "(.*)"/';
 preg_match_all($patron, $html, $coincidencias);
 
 $Items = array();
+$result = substr($coincidencias[1][0], 1, 1);
 
-$TRM =  str_replace('.', '',$coincidencias[1][0]);
+$Normalize = $result;
+
+if ($Normalize == ',') {
+    $TRM = str_replace(',', '', $coincidencias[1][0]);
 //var_dump('Precio Base Dolar: ' . $TRM);
-$TRM = reset(explode(',', $TRM));
+    $TRM = reset(explode('.', $TRM));
 //var_dump('Precio Base Dolar: ' . $TRM);
-$TRM = str_replace(',', '', $TRM);
+    $TRM = str_replace('.', '', $TRM);
 
-var_dump('Precio Base Dolar: ' . $TRM);
+    var_dump('Precio Base Dolar: ' . $TRM);
 
-var_dump(explode(',', $TRM));
+    var_dump(explode('.', $TRM));
 
-$NewValueRoundUp50_ = explode(',', $TRM);
+    $NewValueRoundUp50_ = explode(',', $TRM);
+} else if ($Normalize == '.') {
+    $TRM = str_replace('.', '', $coincidencias[1][0]);
+//var_dump('Precio Base Dolar: ' . $TRM);
+    $TRM = reset(explode(',', $TRM));
+//var_dump('Precio Base Dolar: ' . $TRM);
+    $TRM = str_replace(',', '', $TRM);
+
+    var_dump('Precio Base Dolar: ' . $TRM);
+
+    var_dump(explode(',', $TRM));
+
+    $NewValueRoundUp50_ = explode(',', $TRM);
+}
+
+
 
 $NewValueRoundUp50 = substr($NewValueRoundUp50_[0], -2);
 
 
 
-var_dump('Precio Redondeado Dolar: '.$NewValueRoundUp50);
+var_dump('Precio Redondeado Dolar: ' . $NewValueRoundUp50);
 if ($NewValueRoundUp50 < 50) {
 
     $NewValueRoundUp50 = substr($NewValueRoundUp50_[0], 0, -2) . '50';
@@ -41,7 +60,7 @@ if ($NewValueRoundUp50 < 50) {
     $NewValueRoundUp50 = (substr($NewValueRoundUp50_[0], 0, -2) + 1) . '00';
 }
 
-$NewValueRoundUp50 = str_replace('.','',$NewValueRoundUp50);
+$NewValueRoundUp50 = str_replace('.', '', $NewValueRoundUp50);
 var_dump('Nuevo precio dolar: ' . $NewValueRoundUp50);
 //die($NewValueRoundUp50);
 
@@ -77,13 +96,13 @@ foreach ($productsCollection as $product) {
     foreach ($coincidencias as $key => $value) {
         $Items[] = str_replace('</b>&nbsp;$', '', $value);
     }
-    
-    
+
+
     $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
     preg_match($patron_, $html, $coincidencias_);
-    
-    $PrecioShipping = str_replace('$','',trim(str_replace('+','',$coincidencias_[1])));
-    
+
+    $PrecioShipping = str_replace('$', '', trim(str_replace('+', '', $coincidencias_[1])));
+
     var_dump($Items);
     var_dump('---->' . count($Items[1]) . '<------');
     if (count($Items[1]) < 1) {
@@ -101,12 +120,12 @@ foreach ($productsCollection as $product) {
             $Items[] = str_replace('</b>&nbsp;$', '', $value);
         }
 
-       $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
-    preg_match($patron_, $html, $coincidencias_);
-    
-    $PrecioShipping = str_replace('$','',trim(str_replace('+','',$coincidencias_[1])));
-    
-    
+        $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
+        preg_match($patron_, $html, $coincidencias_);
+
+        $PrecioShipping = str_replace('$', '', trim(str_replace('+', '', $coincidencias_[1])));
+
+
         var_dump($Items);
 
         if (count($Items[1]) < 1) {
@@ -125,11 +144,11 @@ foreach ($productsCollection as $product) {
             }
 
             $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
-    preg_match($patron_, $html, $coincidencias_);
-    
-    $PrecioShipping = str_replace('$','',trim(str_replace('+','',$coincidencias_[1])));
-    
-    
+            preg_match($patron_, $html, $coincidencias_);
+
+            $PrecioShipping = str_replace('$', '', trim(str_replace('+', '', $coincidencias_[1])));
+
+
             var_dump($Items);
 
             if (count($Items[1]) < 1) {
@@ -148,11 +167,11 @@ foreach ($productsCollection as $product) {
                 }
 
                 var_dump($Items);
-            $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
-    preg_match($patron_, $html, $coincidencias_);
-    
-    $PrecioShipping = str_replace('$','',trim(str_replace('+','',$coincidencias_[1])));
-    
+                $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
+                preg_match($patron_, $html, $coincidencias_);
+
+                $PrecioShipping = str_replace('$', '', trim(str_replace('+', '', $coincidencias_[1])));
+
 
                 if (count($Items[1]) < 1) {
                     var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
@@ -169,11 +188,11 @@ foreach ($productsCollection as $product) {
                         $Items[] = str_replace('</b>&nbsp;$', '', $value);
                     }
 
-                  $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
-    preg_match($patron_, $html, $coincidencias_);
-    
-    $PrecioShipping = str_replace('$','',trim(str_replace('+','',$coincidencias_[1])));
-    
+                    $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
+                    preg_match($patron_, $html, $coincidencias_);
+
+                    $PrecioShipping = str_replace('$', '', trim(str_replace('+', '', $coincidencias_[1])));
+
                     var_dump($Items);
                     if (count($Items[1]) < 1) {
                         var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
@@ -190,11 +209,11 @@ foreach ($productsCollection as $product) {
                             $Items[] = str_replace('</b>&nbsp;$', '', $value);
                         }
 
-                       $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
-    preg_match($patron_, $html, $coincidencias_);
-    
-    $PrecioShipping = str_replace('$','',trim(str_replace('+','',$coincidencias_[1])));
-    
+                        $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
+                        preg_match($patron_, $html, $coincidencias_);
+
+                        $PrecioShipping = str_replace('$', '', trim(str_replace('+', '', $coincidencias_[1])));
+
                         var_dump($Items);
                         if (count($Items[1]) < 1) {
                             var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
@@ -210,12 +229,12 @@ foreach ($productsCollection as $product) {
                             foreach ($coincidencias as $key => $value) {
                                 $Items[] = str_replace('</b>&nbsp;$', '', $value);
                             }
-$patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
-    preg_match($patron_, $html, $coincidencias_);
-    
-    $PrecioShipping = str_replace('$','',trim(str_replace('+','',$coincidencias_[1])));
-    
-    
+                            $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
+                            preg_match($patron_, $html, $coincidencias_);
+
+                            $PrecioShipping = str_replace('$', '', trim(str_replace('+', '', $coincidencias_[1])));
+
+
                             var_dump($Items);
                             if (count($Items[1]) < 1) {
                                 var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
@@ -232,12 +251,12 @@ $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
                                     $Items[] = str_replace('</b>&nbsp;$', '', $value);
                                 }
 
-                               $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
-    preg_match($patron_, $html, $coincidencias_);
-    
-    $PrecioShipping = str_replace('$','',trim(str_replace('+','',$coincidencias_[1])));
-    
-    
+                                $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
+                                preg_match($patron_, $html, $coincidencias_);
+
+                                $PrecioShipping = str_replace('$', '', trim(str_replace('+', '', $coincidencias_[1])));
+
+
                                 var_dump($Items);
                                 if (count($Items[1]) < 1) {
                                     var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
@@ -253,12 +272,12 @@ $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
                                     foreach ($coincidencias as $key => $value) {
                                         $Items[] = str_replace('</b>&nbsp;$', '', $value);
                                     }
-                                    
-                                $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
-    preg_match($patron_, $html, $coincidencias_);
-    
-    $PrecioShipping = str_replace('$','',trim(str_replace('+','',$coincidencias_[1])));
-    
+
+                                    $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
+                                    preg_match($patron_, $html, $coincidencias_);
+
+                                    $PrecioShipping = str_replace('$', '', trim(str_replace('+', '', $coincidencias_[1])));
+
 
                                     var_dump($Items);
                                     if (count($Items[1]) < 1) {
@@ -277,10 +296,10 @@ $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
                                         }
 
                                         $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
-    preg_match($patron_, $html, $coincidencias_);
-    
-    $PrecioShipping = str_replace('$','',trim(str_replace('+','',$coincidencias_[1])));
-    
+                                        preg_match($patron_, $html, $coincidencias_);
+
+                                        $PrecioShipping = str_replace('$', '', trim(str_replace('+', '', $coincidencias_[1])));
+
                                         var_dump($Items);
                                         if (count($Items[1]) < 1) {
                                             var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
@@ -296,11 +315,11 @@ $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
                                             foreach ($coincidencias as $key => $value) {
                                                 $Items[] = str_replace('</b>&nbsp;$', '', $value);
                                             }
-$patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
-    preg_match($patron_, $html, $coincidencias_);
-    
-    $PrecioShipping = str_replace('$','',trim(str_replace('+','',$coincidencias_[1])));
-    
+                                            $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
+                                            preg_match($patron_, $html, $coincidencias_);
+
+                                            $PrecioShipping = str_replace('$', '', trim(str_replace('+', '', $coincidencias_[1])));
+
                                             var_dump($Items);
                                             if (count($Items[1]) < 1) {
                                                 var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
@@ -318,10 +337,10 @@ $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
                                                 }
 
                                                 $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
-    preg_match($patron_, $html, $coincidencias_);
-    
-    $PrecioShipping = str_replace('$','',trim(str_replace('+','',$coincidencias_[1])));
-    
+                                                preg_match($patron_, $html, $coincidencias_);
+
+                                                $PrecioShipping = str_replace('$', '', trim(str_replace('+', '', $coincidencias_[1])));
+
                                                 var_dump($Items);
                                                 if (count($Items[1]) < 1) {
                                                     var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
@@ -337,13 +356,13 @@ $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
                                                     foreach ($coincidencias as $key => $value) {
                                                         $Items[] = str_replace('</b>&nbsp;$', '', $value);
                                                     }
-                                                   
-                                                    
+
+
                                                     $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
-    preg_match($patron_, $html, $coincidencias_);
-    
-    $PrecioShipping = str_replace('$','',trim(str_replace('+','',$coincidencias_[1])));
-    
+                                                    preg_match($patron_, $html, $coincidencias_);
+
+                                                    $PrecioShipping = str_replace('$', '', trim(str_replace('+', '', $coincidencias_[1])));
+
 
                                                     var_dump($Items);
                                                     if (count($Items[1]) < 1) {
@@ -362,11 +381,11 @@ $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
                                                         }
 
                                                         $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
-    preg_match($patron_, $html, $coincidencias_);
-    
-    $PrecioShipping = str_replace('$','',trim(str_replace('+','',$coincidencias_[1])));
-    
-    
+                                                        preg_match($patron_, $html, $coincidencias_);
+
+                                                        $PrecioShipping = str_replace('$', '', trim(str_replace('+', '', $coincidencias_[1])));
+
+
                                                         var_dump($Items);
 
                                                         if (count($Items[1]) < 1) {
@@ -385,10 +404,10 @@ $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
                                                             }
 
                                                             $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
-    preg_match($patron_, $html, $coincidencias_);
-    
-    $PrecioShipping = str_replace('$','',trim(str_replace('+','',$coincidencias_[1])));
-    
+                                                            preg_match($patron_, $html, $coincidencias_);
+
+                                                            $PrecioShipping = str_replace('$', '', trim(str_replace('+', '', $coincidencias_[1])));
+
                                                             var_dump($Items);
 
                                                             if (count($Items[1]) < 1) {
@@ -407,10 +426,10 @@ $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
                                                                 }
 
                                                                 $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
-    preg_match($patron_, $html, $coincidencias_);
-    
-    $PrecioShipping = str_replace('$','',trim(str_replace('+','',$coincidencias_[1])));
-    
+                                                                preg_match($patron_, $html, $coincidencias_);
+
+                                                                $PrecioShipping = str_replace('$', '', trim(str_replace('+', '', $coincidencias_[1])));
+
                                                                 var_dump($Items);
 
                                                                 if (count($Items[1]) < 1) {
@@ -429,10 +448,10 @@ $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
                                                                     }
 
                                                                     $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
-    preg_match($patron_, $html, $coincidencias_);
-    
-    $PrecioShipping = str_replace('$','',trim(str_replace('+','',$coincidencias_[1])));
-    
+                                                                    preg_match($patron_, $html, $coincidencias_);
+
+                                                                    $PrecioShipping = str_replace('$', '', trim(str_replace('+', '', $coincidencias_[1])));
+
                                                                     var_dump($Items);
                                                                     if (count($Items[1]) < 1) {
                                                                         var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
@@ -450,10 +469,10 @@ $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
                                                                         }
 
                                                                         $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
-    preg_match($patron_, $html, $coincidencias_);
-    
-    $PrecioShipping = str_replace('$','',trim(str_replace('+','',$coincidencias_[1])));
-    
+                                                                        preg_match($patron_, $html, $coincidencias_);
+
+                                                                        $PrecioShipping = str_replace('$', '', trim(str_replace('+', '', $coincidencias_[1])));
+
                                                                         var_dump($Items);
                                                                         if (count($Items[1]) < 1) {
                                                                             var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
@@ -469,11 +488,11 @@ $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
                                                                             foreach ($coincidencias as $key => $value) {
                                                                                 $Items[] = str_replace('</b>&nbsp;$', '', $value);
                                                                             }
-$patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
-    preg_match($patron_, $html, $coincidencias_);
-    
-    $PrecioShipping = str_replace('$','',trim(str_replace('+','',$coincidencias_[1])));
-    
+                                                                            $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
+                                                                            preg_match($patron_, $html, $coincidencias_);
+
+                                                                            $PrecioShipping = str_replace('$', '', trim(str_replace('+', '', $coincidencias_[1])));
+
                                                                             var_dump($Items);
                                                                             if (count($Items[1]) < 1) {
                                                                                 var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
@@ -489,11 +508,11 @@ $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
                                                                                 foreach ($coincidencias as $key => $value) {
                                                                                     $Items[] = str_replace('</b>&nbsp;$', '', $value);
                                                                                 }
-$patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
-    preg_match($patron_, $html, $coincidencias_);
-    
-    $PrecioShipping = str_replace('$','',trim(str_replace('+','',$coincidencias_[1])));
-    
+                                                                                $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
+                                                                                preg_match($patron_, $html, $coincidencias_);
+
+                                                                                $PrecioShipping = str_replace('$', '', trim(str_replace('+', '', $coincidencias_[1])));
+
                                                                                 var_dump($Items);
                                                                                 if (count($Items[1]) < 1) {
                                                                                     var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
@@ -509,11 +528,11 @@ $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
                                                                                     foreach ($coincidencias as $key => $value) {
                                                                                         $Items[] = str_replace('</b>&nbsp;$', '', $value);
                                                                                     }
-$patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
-    preg_match($patron_, $html, $coincidencias_);
-    
-    $PrecioShipping = str_replace('$','',trim(str_replace('+','',$coincidencias_[1])));
-    
+                                                                                    $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
+                                                                                    preg_match($patron_, $html, $coincidencias_);
+
+                                                                                    $PrecioShipping = str_replace('$', '', trim(str_replace('+', '', $coincidencias_[1])));
+
                                                                                     var_dump($Items);
                                                                                     if (count($Items[1]) < 1) {
                                                                                         var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
@@ -529,11 +548,11 @@ $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
                                                                                         foreach ($coincidencias as $key => $value) {
                                                                                             $Items[] = str_replace('</b>&nbsp;$', '', $value);
                                                                                         }
-$patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
-    preg_match($patron_, $html, $coincidencias_);
-    
-    $PrecioShipping = str_replace('$','',trim(str_replace('+','',$coincidencias_[1])));
-    
+                                                                                        $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
+                                                                                        preg_match($patron_, $html, $coincidencias_);
+
+                                                                                        $PrecioShipping = str_replace('$', '', trim(str_replace('+', '', $coincidencias_[1])));
+
                                                                                         var_dump($Items);
                                                                                         if (count($Items[1]) < 1) {
                                                                                             var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
@@ -551,10 +570,10 @@ $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
                                                                                             }
 
                                                                                             $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
-    preg_match($patron_, $html, $coincidencias_);
-    
-    $PrecioShipping = str_replace('$','',trim(str_replace('+','',$coincidencias_[1])));
-    
+                                                                                            preg_match($patron_, $html, $coincidencias_);
+
+                                                                                            $PrecioShipping = str_replace('$', '', trim(str_replace('+', '', $coincidencias_[1])));
+
                                                                                             var_dump($Items);
                                                                                             if (count($Items[1]) < 1) {
                                                                                                 var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
@@ -572,10 +591,10 @@ $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
                                                                                                 }
 
                                                                                                 $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
-    preg_match($patron_, $html, $coincidencias_);
-    
-    $PrecioShipping = str_replace('$','',trim(str_replace('+','',$coincidencias_[1])));
-    
+                                                                                                preg_match($patron_, $html, $coincidencias_);
+
+                                                                                                $PrecioShipping = str_replace('$', '', trim(str_replace('+', '', $coincidencias_[1])));
+
                                                                                                 var_dump($Items);
                                                                                                 if (count($Items[1]) < 1) {
                                                                                                     var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
@@ -591,11 +610,11 @@ $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
                                                                                                     foreach ($coincidencias as $key => $value) {
                                                                                                         $Items[] = str_replace('</b>&nbsp;$', '', $value);
                                                                                                     }
-$patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
-    preg_match($patron_, $html, $coincidencias_);
-    
-    $PrecioShipping = str_replace('$','',trim(str_replace('+','',$coincidencias_[1])));
-    
+                                                                                                    $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
+                                                                                                    preg_match($patron_, $html, $coincidencias_);
+
+                                                                                                    $PrecioShipping = str_replace('$', '', trim(str_replace('+', '', $coincidencias_[1])));
+
                                                                                                     var_dump($Items);
                                                                                                     if (count($Items[1]) < 1) {
                                                                                                         var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
@@ -611,11 +630,11 @@ $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
                                                                                                         foreach ($coincidencias as $key => $value) {
                                                                                                             $Items[] = str_replace('</b>&nbsp;$', '', $value);
                                                                                                         }
-$patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
-    preg_match($patron_, $html, $coincidencias_);
-    
-    $PrecioShipping = str_replace('$','',trim(str_replace('+','',$coincidencias_[1])));
-    
+                                                                                                        $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
+                                                                                                        preg_match($patron_, $html, $coincidencias_);
+
+                                                                                                        $PrecioShipping = str_replace('$', '', trim(str_replace('+', '', $coincidencias_[1])));
+
                                                                                                         var_dump($Items);
                                                                                                         if (count($Items[1]) < 1) {
                                                                                                             var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
@@ -633,10 +652,10 @@ $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
                                                                                                             }
 
                                                                                                             $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
-    preg_match($patron_, $html, $coincidencias_);
-    
-    $PrecioShipping = str_replace('$','',trim(str_replace('+','',$coincidencias_[1])));
-    
+                                                                                                            preg_match($patron_, $html, $coincidencias_);
+
+                                                                                                            $PrecioShipping = str_replace('$', '', trim(str_replace('+', '', $coincidencias_[1])));
+
                                                                                                             var_dump($Items);
                                                                                                             if (count($Items[1]) < 1) {
                                                                                                                 var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
@@ -652,11 +671,11 @@ $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
                                                                                                                 foreach ($coincidencias as $key => $value) {
                                                                                                                     $Items[] = str_replace('</b>&nbsp;$', '', $value);
                                                                                                                 }
-$patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
-    preg_match($patron_, $html, $coincidencias_);
-    
-    $PrecioShipping = str_replace('$','',trim(str_replace('+','',$coincidencias_[1])));
-    
+                                                                                                                $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
+                                                                                                                preg_match($patron_, $html, $coincidencias_);
+
+                                                                                                                $PrecioShipping = str_replace('$', '', trim(str_replace('+', '', $coincidencias_[1])));
+
                                                                                                                 var_dump($Items);
 
                                                                                                                 if (count($Items[1]) < 1) {
@@ -673,11 +692,11 @@ $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
                                                                                                                     foreach ($coincidencias as $key => $value) {
                                                                                                                         $Items[] = str_replace('</b>&nbsp;$', '', $value);
                                                                                                                     }
-$patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
-    preg_match($patron_, $html, $coincidencias_);
-    
-    $PrecioShipping = str_replace('$','',trim(str_replace('+','',$coincidencias_[1])));
-    
+                                                                                                                    $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
+                                                                                                                    preg_match($patron_, $html, $coincidencias_);
+
+                                                                                                                    $PrecioShipping = str_replace('$', '', trim(str_replace('+', '', $coincidencias_[1])));
+
                                                                                                                     var_dump($Items);
                                                                                                                     if (count($Items[1]) < 1) {
                                                                                                                         var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
@@ -693,11 +712,11 @@ $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
                                                                                                                         foreach ($coincidencias as $key => $value) {
                                                                                                                             $Items[] = str_replace('</b>&nbsp;$', '', $value);
                                                                                                                         }
-$patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
-    preg_match($patron_, $html, $coincidencias_);
-    
-    $PrecioShipping = str_replace('$','',trim(str_replace('+','',$coincidencias_[1])));
-    
+                                                                                                                        $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
+                                                                                                                        preg_match($patron_, $html, $coincidencias_);
+
+                                                                                                                        $PrecioShipping = str_replace('$', '', trim(str_replace('+', '', $coincidencias_[1])));
+
                                                                                                                         var_dump($Items);
                                                                                                                         if (count($Items[1]) < 1) {
                                                                                                                             var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
@@ -713,12 +732,12 @@ $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
                                                                                                                             foreach ($coincidencias as $key => $value) {
                                                                                                                                 $Items[] = str_replace('</b>&nbsp;$', '', $value);
                                                                                                                             }
-$patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
-    preg_match($patron_, $html, $coincidencias_);
-    
-    $PrecioShipping = str_replace('$','',trim(str_replace('+','',$coincidencias_[1])));
-    
-    
+                                                                                                                            $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
+                                                                                                                            preg_match($patron_, $html, $coincidencias_);
+
+                                                                                                                            $PrecioShipping = str_replace('$', '', trim(str_replace('+', '', $coincidencias_[1])));
+
+
                                                                                                                             var_dump($Items);
                                                                                                                             if (count($Items[1]) < 1) {
                                                                                                                                 var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
@@ -736,10 +755,10 @@ $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
                                                                                                                                 }
 
                                                                                                                                 $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
-    preg_match($patron_, $html, $coincidencias_);
-    
-    $PrecioShipping = str_replace('$','',trim(str_replace('+','',$coincidencias_[1])));
-    
+                                                                                                                                preg_match($patron_, $html, $coincidencias_);
+
+                                                                                                                                $PrecioShipping = str_replace('$', '', trim(str_replace('+', '', $coincidencias_[1])));
+
                                                                                                                                 var_dump($Items);
                                                                                                                                 if (count($Items[1]) < 1) {
                                                                                                                                     var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
@@ -757,10 +776,10 @@ $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
                                                                                                                                     }
 
                                                                                                                                     $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
-    preg_match($patron_, $html, $coincidencias_);
-    
-    $PrecioShipping = str_replace('$','',trim(str_replace('+','',$coincidencias_[1])));
-    
+                                                                                                                                    preg_match($patron_, $html, $coincidencias_);
+
+                                                                                                                                    $PrecioShipping = str_replace('$', '', trim(str_replace('+', '', $coincidencias_[1])));
+
                                                                                                                                     var_dump($Items);
                                                                                                                                     if (count($Items[1]) < 1) {
                                                                                                                                         var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
@@ -776,11 +795,11 @@ $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
                                                                                                                                         foreach ($coincidencias as $key => $value) {
                                                                                                                                             $Items[] = str_replace('</b>&nbsp;$', '', $value);
                                                                                                                                         }
-$patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
-    preg_match($patron_, $html, $coincidencias_);
-    
-    $PrecioShipping = str_replace('$','',trim(str_replace('+','',$coincidencias_[1])));
-    
+                                                                                                                                        $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
+                                                                                                                                        preg_match($patron_, $html, $coincidencias_);
+
+                                                                                                                                        $PrecioShipping = str_replace('$', '', trim(str_replace('+', '', $coincidencias_[1])));
+
                                                                                                                                         var_dump($Items);
                                                                                                                                         if (count($Items[1]) < 1) {
                                                                                                                                             var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
@@ -796,11 +815,11 @@ $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
                                                                                                                                             foreach ($coincidencias as $key => $value) {
                                                                                                                                                 $Items[] = str_replace('</b>&nbsp;$', '', $value);
                                                                                                                                             }
-$patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
-    preg_match($patron_, $html, $coincidencias_);
-    
-    $PrecioShipping = str_replace('$','',trim(str_replace('+','',$coincidencias_[1])));
-    
+                                                                                                                                            $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
+                                                                                                                                            preg_match($patron_, $html, $coincidencias_);
+
+                                                                                                                                            $PrecioShipping = str_replace('$', '', trim(str_replace('+', '', $coincidencias_[1])));
+
                                                                                                                                             var_dump($Items);
                                                                                                                                             if (count($Items[1]) < 1) {
                                                                                                                                                 var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
@@ -816,11 +835,11 @@ $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
                                                                                                                                                 foreach ($coincidencias as $key => $value) {
                                                                                                                                                     $Items[] = str_replace('</b>&nbsp;$', '', $value);
                                                                                                                                                 }
-$patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
-    preg_match($patron_, $html, $coincidencias_);
-    
-    $PrecioShipping = str_replace('$','',trim(str_replace('+','',$coincidencias_[1])));
-    
+                                                                                                                                                $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
+                                                                                                                                                preg_match($patron_, $html, $coincidencias_);
+
+                                                                                                                                                $PrecioShipping = str_replace('$', '', trim(str_replace('+', '', $coincidencias_[1])));
+
                                                                                                                                                 var_dump($Items);
                                                                                                                                                 if (count($Items[1]) < 1) {
                                                                                                                                                     var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
@@ -836,11 +855,11 @@ $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
                                                                                                                                                     foreach ($coincidencias as $key => $value) {
                                                                                                                                                         $Items[] = str_replace('</b>&nbsp;$', '', $value);
                                                                                                                                                     }
-$patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
-    preg_match($patron_, $html, $coincidencias_);
-    
-    $PrecioShipping = str_replace('$','',trim(str_replace('+','',$coincidencias_[1])));
-    
+                                                                                                                                                    $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
+                                                                                                                                                    preg_match($patron_, $html, $coincidencias_);
+
+                                                                                                                                                    $PrecioShipping = str_replace('$', '', trim(str_replace('+', '', $coincidencias_[1])));
+
                                                                                                                                                     var_dump($Items);
                                                                                                                                                     if (count($Items[1]) < 1) {
                                                                                                                                                         var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
@@ -856,11 +875,11 @@ $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
                                                                                                                                                         foreach ($coincidencias as $key => $value) {
                                                                                                                                                             $Items[] = str_replace('</b>&nbsp;$', '', $value);
                                                                                                                                                         }
-$patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
-    preg_match($patron_, $html, $coincidencias_);
-    
-    $PrecioShipping = str_replace('$','',trim(str_replace('+','',$coincidencias_[1])));
-    
+                                                                                                                                                        $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
+                                                                                                                                                        preg_match($patron_, $html, $coincidencias_);
+
+                                                                                                                                                        $PrecioShipping = str_replace('$', '', trim(str_replace('+', '', $coincidencias_[1])));
+
                                                                                                                                                         var_dump($Items);
                                                                                                                                                         if (count($Items[1]) < 1) {
                                                                                                                                                             var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
@@ -876,11 +895,11 @@ $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
                                                                                                                                                             foreach ($coincidencias as $key => $value) {
                                                                                                                                                                 $Items[] = str_replace('</b>&nbsp;$', '', $value);
                                                                                                                                                             }
-$patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
-    preg_match($patron_, $html, $coincidencias_);
-    
-    $PrecioShipping = str_replace('$','',trim(str_replace('+','',$coincidencias_[1])));
-    
+                                                                                                                                                            $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
+                                                                                                                                                            preg_match($patron_, $html, $coincidencias_);
+
+                                                                                                                                                            $PrecioShipping = str_replace('$', '', trim(str_replace('+', '', $coincidencias_[1])));
+
                                                                                                                                                             var_dump($Items);
                                                                                                                                                             if (count($Items[1]) < 1) {
                                                                                                                                                                 var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
@@ -896,11 +915,11 @@ $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
                                                                                                                                                                 foreach ($coincidencias as $key => $value) {
                                                                                                                                                                     $Items[] = str_replace('</b>&nbsp;$', '', $value);
                                                                                                                                                                 }
-$patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
-    preg_match($patron_, $html, $coincidencias_);
-    
-    $PrecioShipping = str_replace('$','',trim(str_replace('+','',$coincidencias_[1])));
-    
+                                                                                                                                                                $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
+                                                                                                                                                                preg_match($patron_, $html, $coincidencias_);
+
+                                                                                                                                                                $PrecioShipping = str_replace('$', '', trim(str_replace('+', '', $coincidencias_[1])));
+
                                                                                                                                                                 var_dump($Items);
                                                                                                                                                                 if (count($Items[1]) < 1) {
                                                                                                                                                                     var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
@@ -916,11 +935,11 @@ $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
                                                                                                                                                                     foreach ($coincidencias as $key => $value) {
                                                                                                                                                                         $Items[] = str_replace('</b>&nbsp;$', '', $value);
                                                                                                                                                                     }
-$patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
-    preg_match($patron_, $html, $coincidencias_);
-    
-    $PrecioShipping = str_replace('$','',trim(str_replace('+','',$coincidencias_[1])));
-    
+                                                                                                                                                                    $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
+                                                                                                                                                                    preg_match($patron_, $html, $coincidencias_);
+
+                                                                                                                                                                    $PrecioShipping = str_replace('$', '', trim(str_replace('+', '', $coincidencias_[1])));
+
                                                                                                                                                                     var_dump($Items);
                                                                                                                                                                     if (count($Items[1]) < 1) {
                                                                                                                                                                         var_dump('http://www.amazon.com/gp/aw/d/' . $code[1]);
@@ -936,11 +955,11 @@ $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
                                                                                                                                                                         foreach ($coincidencias as $key => $value) {
                                                                                                                                                                             $Items[] = str_replace('</b>&nbsp;$', '', $value);
                                                                                                                                                                         }
-$patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
-    preg_match($patron_, $html, $coincidencias_);
-    
-    $PrecioShipping = str_replace('$','',trim(str_replace('+','',$coincidencias_[1])));
-    
+                                                                                                                                                                        $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
+                                                                                                                                                                        preg_match($patron_, $html, $coincidencias_);
+
+                                                                                                                                                                        $PrecioShipping = str_replace('$', '', trim(str_replace('+', '', $coincidencias_[1])));
+
                                                                                                                                                                         var_dump($Items);
                                                                                                                                                                     }
                                                                                                                                                                 }
@@ -996,9 +1015,9 @@ $patron_ = '"&nbsp;<br />+(.*?)shipping<br />"';
     $PrecioImportacion = $_product->getResource()->getAttribute('precio_importacion')->getFrontend()->getValue($_product);
     $PrecioEnvioNacional = $_product->getResource()->getAttribute('envionacional')->getFrontend()->getValue($_product);
 
-    var_dump('Nuevo precio del articulo '.(int) round($NuevoPrecio));
-    var_dump('Precio de Importacion '.(int) round($PrecioImportacion));
-    var_dump('Nuevo precio del dolar redondeado '.(int) round($NewValueRoundUp50));
+    var_dump('Nuevo precio del articulo ' . (int) round($NuevoPrecio));
+    var_dump('Precio de Importacion ' . (int) round($PrecioImportacion));
+    var_dump('Nuevo precio del dolar redondeado ' . (int) round($NewValueRoundUp50));
 
     $NuevoPrecioCalculado = (int) round($NuevoPrecio) + (int) round($PrecioImportacion) + (int) round($PrecioShipping);
     var_dump($NuevoPrecioCalculado);
