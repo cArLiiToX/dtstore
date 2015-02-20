@@ -76,19 +76,36 @@
 
                             $Items = array();
 
-                            
-$TRM =  str_replace('.', '',$coincidencias[1][0]);
+
+                            $result = substr($coincidencias[1][0], 1, 1);
+
+                            $Normalize = $result;
+
+                            if ($Normalize == ',') {
+                                $TRM = str_replace(',', '', $coincidencias[1][0]);
 //var_dump('Precio Base Dolar: ' . $TRM);
-$TRM = reset(explode(',', $TRM));
+                                $TRM = reset(explode('.', $TRM));
 //var_dump('Precio Base Dolar: ' . $TRM);
-$TRM = str_replace(',', '', $TRM);
-//$TRM = str_replace('.', ',', $TRM);
+                                $TRM = str_replace('.', '', $TRM);
 
-                           // var_dump('Precio Base Dolar: ' . $TRM);
+                                var_dump('Precio Base Dolar: ' . $TRM);
 
-                            //var_dump(explode(',', $TRM));
+                                var_dump(explode('.', $TRM));
 
-                            $NewValueRoundUp50_ = explode(',', $TRM);
+                                $NewValueRoundUp50_ = explode(',', $TRM);
+                            } else if ($Normalize == '.') {
+                                $TRM = str_replace('.', '', $coincidencias[1][0]);
+//var_dump('Precio Base Dolar: ' . $TRM);
+                                $TRM = reset(explode(',', $TRM));
+//var_dump('Precio Base Dolar: ' . $TRM);
+                                $TRM = str_replace(',', '', $TRM);
+
+                                var_dump('Precio Base Dolar: ' . $TRM);
+
+                                var_dump(explode(',', $TRM));
+
+                                $NewValueRoundUp50_ = explode(',', $TRM);
+                            }
 
                             $NewValueRoundUp50 = substr($NewValueRoundUp50_[0], -2);
 
